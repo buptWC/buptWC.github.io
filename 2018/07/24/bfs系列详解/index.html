@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="bfs,经典算法分析," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="演员的自我修养" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="BFS算法基本套路本文默认读者是有一定算法基础的，对于基本的语法和bfs概念都了解，本文由浅入深(也不是很深咯)，让你知道碰到bfs系列题目应该去怎么想，代码应该怎么去写，OK，直接进入正题。">
+<meta name="keywords" content="bfs,经典算法分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bfs系列详解">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/bfs系列详解/index.html">
+<meta property="og:site_name" content="演员的自我修养">
+<meta property="og:description" content="BFS算法基本套路本文默认读者是有一定算法基础的，对于基本的语法和bfs概念都了解，本文由浅入深(也不是很深咯)，让你知道碰到bfs系列题目应该去怎么想，代码应该怎么去写，OK，直接进入正题。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/bfs_1.png">
+<meta property="og:image" content="http://yoursite.com/images/bfs_2.png">
+<meta property="og:image" content="http://yoursite.com/images/bfs_3.png">
+<meta property="og:image" content="http://yoursite.com/images/bfs_4.png">
+<meta property="og:image" content="http://yoursite.com/images/bfs_5.png">
+<meta property="og:updated_time" content="2018-08-04T06:56:48.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bfs系列详解">
+<meta name="twitter:description" content="BFS算法基本套路本文默认读者是有一定算法基础的，对于基本的语法和bfs概念都了解，本文由浅入深(也不是很深咯)，让你知道碰到bfs系列题目应该去怎么想，代码应该怎么去写，OK，直接进入正题。">
+<meta name="twitter:image" content="http://yoursite.com/images/bfs_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/bfs系列详解/"/>
+
+
+
+
+
+  <title>bfs系列详解 | 演员的自我修养</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">演员的自我修养</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+            
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/bfs系列详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王琛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="演员的自我修养">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">bfs系列详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T14:58:41+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="BFS算法基本套路"><a href="#BFS算法基本套路" class="headerlink" title="BFS算法基本套路"></a>BFS算法基本套路</h1><p>本文默认读者是有一定算法基础的，对于基本的语法和bfs概念都了解，本文由浅入深(也不是很深咯)，让你知道碰到bfs系列题目应该去怎么想，代码应该怎么去写，OK，直接进入正题。</p>
+<a id="more"></a>
+<h2 id="基本bfs算法"><a href="#基本bfs算法" class="headerlink" title="基本bfs算法"></a>基本bfs算法</h2><p>这一部分是<code>重中之重</code>，因为在这里给出最基本bfs算法的写法，之后底下大部分的题，只是在这个基础上加一点东西罢了，所以这里的代码得牢记。<br>本文默认所有二叉树的定义如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># class TreeNode(object):</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br></pre></td></tr></table></figure></p>
+<p>那么最基本的，用bfs算法去遍历一颗二叉树(bfs算法基本格式，很好记)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span></span><br><span class="line">    Q = collections.deque([root])</span><br><span class="line">    <span class="keyword">while</span> Q:</span><br><span class="line">        node = Q.popleft()</span><br><span class="line">        <span class="keyword">if</span> node.left: Q.append(node.left)</span><br><span class="line">        <span class="keyword">if</span> node.right: Q.append(node.right)</span><br></pre></td></tr></table></figure></p>
+<p>以小见大，我们就从最基本的bfs算法中总结一下bfs算法的流程。</p>
+<ol>
+<li>初始化队列，将起始点保存</li>
+<li>节点依次出队列，并将出队列的节点的所有相邻节点加入队列</li>
+<li>直至找到所求或队列遍历结束</li>
+</ol>
+<p>bfs不仅用在树中，在二维数组（也可看成是一个图）中，也是经常使用的，正好利用上面总结的流程来看bfs算法在数组中怎么写<br>不妨设给定数组名为matrix，matrix[i][j]为起始点<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(i,j)</span>:</span></span><br><span class="line">    m,n = len(matrix), len(matrix[<span class="number">0</span>])</span><br><span class="line">    visited = set((i,j))</span><br><span class="line">    <span class="comment"># 初始化队列，保存起始点</span></span><br><span class="line">    Q = collections.deque([(i,j)])</span><br><span class="line">    <span class="keyword">while</span> Q:</span><br><span class="line">        i,j = Q.popleft()</span><br><span class="line">        <span class="comment"># visited.add((x,y))</span></span><br><span class="line">        <span class="comment"># 所有相邻节点加入队列</span></span><br><span class="line">        <span class="keyword">for</span> x,y <span class="keyword">in</span> [(i+<span class="number">1</span>,j),(i<span class="number">-1</span>,j),(i,j+<span class="number">1</span>),(i,j<span class="number">-1</span>)]:</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span>&lt;=x&lt;m <span class="keyword">and</span> <span class="number">0</span>&lt;=y&lt;n <span class="keyword">and</span> (x,y) <span class="keyword">not</span> <span class="keyword">in</span> visited: <span class="comment"># 未出界and不走回头路</span></span><br><span class="line">                Q.append((x,y))</span><br><span class="line">                <span class="comment"># 注意visited一定要放在这里，不能是放在上面注释的地方，否则产生大量重复计算</span></span><br><span class="line">                visited.add((x,y))</span><br></pre></td></tr></table></figure></p>
+<p><strong>OK，基本套路在心里有个印象，然后来看两个简单例子巩固一下</strong></p>
+<hr>
+<h2 id="leetcode-107-Binary-Tree-Level-Order-Traversal"><a href="#leetcode-107-Binary-Tree-Level-Order-Traversal" class="headerlink" title="leetcode 107 Binary Tree Level Order Traversal"></a>leetcode 107 Binary Tree Level Order Traversal</h2><p>给定一棵树的根节点，按照自下而上的顺序依次输出每层节点<br><img src="/images/bfs_1.png" alt=""><br>显然，这道题应用bfs进行遍历，但是需要一层一层的遍历，如何在遍历过程中知道现在这个节点是该层的最后一个节点呢？<br>这道题就体现了一个思路，每次记录一下当前队列的长度<code>l</code>，然后用一个长度为l的循环来pop node，循环结束时，刚好遍历完一层的节点<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line">    Q = collections.deque([root])</span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">while</span> Q:</span><br><span class="line">        rec = [] <span class="comment"># record all node in the same level</span></span><br><span class="line">        l = len(Q)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(l):</span><br><span class="line">            node = Q.popleft()</span><br><span class="line">            rec.append(node.val)</span><br><span class="line">            <span class="keyword">if</span> node.left: Q.append(node.left)</span><br><span class="line">            <span class="keyword">if</span> node.right: Q.append(node.right)</span><br><span class="line">        <span class="comment"># 循环结束rec正好储存了该层的所有节点</span></span><br><span class="line">        res.append(rec)</span><br><span class="line">    <span class="keyword">return</span> res[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="leetcode-103-Binary-Tree-Zigzag-Level-Order-Traversal"><a href="#leetcode-103-Binary-Tree-Zigzag-Level-Order-Traversal" class="headerlink" title="leetcode 103 Binary Tree Zigzag Level Order Traversal"></a>leetcode 103 Binary Tree Zigzag Level Order Traversal</h2><p>给定一棵树的根节点，按照zigzag顺序输出每层节点，即第一层节点从左至右，第二层节点从右至左，第三层节点从左至右，依次类推。<br><img src="/images/bfs_2.png" alt=""><br>这道题和上道基本一样，无非是在处理某些层时，记录的节点顺序需要反转一下，引入一个level变量判定是否反转即可<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line">    Q = collections.deque([root])</span><br><span class="line">    res = []</span><br><span class="line">    level = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> Q:</span><br><span class="line">        rec = [] <span class="comment"># record all node in the same level</span></span><br><span class="line">        l = len(Q)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(l):</span><br><span class="line">            node = Q.popleft()</span><br><span class="line">            rec.append(node.val)</span><br><span class="line">            <span class="keyword">if</span> node.left: Q.append(node.left)</span><br><span class="line">            <span class="keyword">if</span> node.right: Q.append(node.right)</span><br><span class="line">        <span class="comment"># 循环结束rec正好储存了该层的所有节点</span></span><br><span class="line">        <span class="keyword">if</span> level % <span class="number">2</span> != <span class="number">0</span>: res.append(rec)</span><br><span class="line">        <span class="keyword">else</span>: res.append(rec[::<span class="number">-1</span>])</span><br><span class="line">        level += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>上面两个跟树相关的bfs相对较为简单，因为对于总结的流程来说，二叉树通常有：</p>
+<ol>
+<li><code>明确的起点，通常是根节点</code></li>
+<li><code>明确的相邻节点且不用考虑重复遍历的情况（因为单向）</code></li>
+</ol>
+<p>但在更多的题目中却不是这样，不论是起始点还是相邻节点，都需要我们自己去分析判断才能得出。再来看下面两个例子，感受下这类题目如何去找流程中的两个关键点。</p>
+<h2 id="leetcode-542-01-Matrix"><a href="#leetcode-542-01-Matrix" class="headerlink" title="leetcode 542 01 Matrix"></a>leetcode 542 01 Matrix</h2><p>给定一个矩阵matrix（只包含0or1，保证至少有一个0），返回一个矩阵res，其中res[i][j]代表距离matrix[i][j]处最近的0的距离。<br><img src="/images/bfs_3.png" alt=""><br>对于这道题，<strong>怎么找bfs的起始点呢</strong>，我们可能最初想到的是对每一个1都进行一次bfs遍历，去寻找与他最近的0的位置，但这样显然会超时，因为当1都聚集在一起的时候会有大量重复计算。<br>换个思路，既然1不行，那0行吗，以单个的0肯定不行，因为这个0找到的最近的1，并不一定是最短的，还得计算别的0然后来比较，所以还是得有大量重复计算和比较。<br>既然起始点找单个不行，我们可以找多个，我们<code>将所有的0作为起始点</code>，去找所有最后res[i][j]=1的点，然后<code>将res=1的点作为起始点</code>，去找所有最后res[i][j]=2的点，以此类推。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(matrix)</span>:</span></span><br><span class="line">    m,n = len(matrix),len(matrix[<span class="number">0</span>])</span><br><span class="line">    Q = collections.deque([])</span><br><span class="line">    visited = set()</span><br><span class="line">    <span class="comment"># 初始化队列，将所有起始点加入</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> matrix[i][j] == <span class="number">0</span>:</span><br><span class="line">                Q.append((i,j))</span><br><span class="line">                visited.add((i,j))</span><br><span class="line">    <span class="comment"># 标准bfs写法，将相邻节点加入队列</span></span><br><span class="line">    <span class="keyword">while</span> Q:</span><br><span class="line">        i,j = Q.popleft()</span><br><span class="line">        <span class="keyword">for</span> x,y <span class="keyword">in</span> [(i+<span class="number">1</span>,j),(i<span class="number">-1</span>,j),(i,j+<span class="number">1</span>),(i,j<span class="number">-1</span>)]:</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span>&lt;=x&lt;m <span class="keyword">and</span> <span class="number">0</span>&lt;=y&lt;n <span class="keyword">and</span> (x,y) <span class="keyword">not</span> <span class="keyword">in</span> visited:<span class="comment"># 不出界 and 不走回头路</span></span><br><span class="line">                matrix[x][y] = matrix[i][j] + <span class="number">1</span></span><br><span class="line">                <span class="comment"># visited一定要在这里添加，否则产生大量重复计算</span></span><br><span class="line">                visited.add((x,y))</span><br><span class="line">                Q.append((x,y))</span><br><span class="line">    <span class="keyword">return</span> matrix</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="leetcode-279-Perfect-Squares"><a href="#leetcode-279-Perfect-Squares" class="headerlink" title="leetcode 279 Perfect Squares"></a>leetcode 279 Perfect Squares</h2><p>给定一个正整数n，找到m个平方数(1,4,9…)使得m个数的和为n，返回满足条件的最小的m<br>n = 12, return 3; because 12 = 4 + 4 + 4<br>n = 13, return 2; because 13 = 4 + 9</p>
+<p>一般看到这道题大家第一反应可能是dp，记dp[i]表示组成和为i的平方数的最优个数，则dp[n]为所求。<br>递推式为：<code>dp[n] = 1 + min(dp[n-1],dp[n-4],dp[n-9],...)</code><br>当然这是完全正确的，但是这里我们如果用bfs方法应该怎么做呢？</p>
+<ol>
+<li>找起点，显然是n本身。</li>
+<li>找相邻节点，显然为n-1,n-4,n-9,…,n-k^2，k满足(k+1)^2 &gt; n。<br><img src="/images/bfs_4.png" alt=""><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(n)</span>:</span></span><br><span class="line">    Q = collections.deque([n])</span><br><span class="line">    visited = set()</span><br><span class="line">    level = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> Q:</span><br><span class="line">        l = len(Q)<span class="comment"># 按层处理</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(l):</span><br><span class="line">            n = Q.popleft()</span><br><span class="line">            <span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">return</span> level</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,int(n**<span class="number">0.5</span>)+<span class="number">1</span>):<span class="comment"># 遍历相邻节点 and  不重复计算</span></span><br><span class="line">                val = n - i**<span class="number">2</span></span><br><span class="line">                <span class="keyword">if</span> val <span class="keyword">in</span> visited: <span class="keyword">continue</span></span><br><span class="line">                Q.append(val)</span><br><span class="line">                visited.add(val)</span><br><span class="line">        level += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<p>如果你看到这里觉得仿佛有点感觉了，那么建议你用这道题练一练<br><a href="https://leetcode.com/problems/open-the-lock/description/" target="_blank" rel="noopener">https://leetcode.com/problems/open-the-lock/description/</a></p>
+<hr>
+<p>OK，截至到目前位置，我默认你应该对这种比较基础的bfs问题已经“一般”掌握了<br>所以我们稍微来看一点进阶的题目</p>
+<h2 id="leetcode-127-Word-Ladder"><a href="#leetcode-127-Word-Ladder" class="headerlink" title="leetcode 127 Word Ladder"></a>leetcode 127 Word Ladder</h2><p>给定一个word1和word2，和一个转换列表wlist，找出最短的变换路径使word1变成word2，其变换规则需满足：</p>
+<ol>
+<li>一次只能改变word1中的一个字母</li>
+<li>每次改变后的单词必须存在于wlist中</li>
+<li>如果无法转换则返回0</li>
+</ol>
+<p>word1 = “hit”,word2= “cog”<br>wlist = [“hot”,”dot”,”dog”,”lot”,”log”,”cog”]<br>return 5; because hit -&gt; hot -&gt; dot -&gt; dog -&gt; cog</p>
+<p>相信你看了上面那么多题之后这道题应该不用我详细分析了吧，如图就完事了：<br><img src="/images/bfs_5.png" alt=""><br>我们仍然根据之前说的bfs解题思路来分析：</p>
+<ol>
+<li>找起始点，显然是word1</li>
+<li>找相邻节点，显然是与当前单词只有一处地方不同的单词</li>
+</ol>
+<p>那么我们得想办法保存一下每个单词的“相邻”单词。<br>例如对于’hot’，我们分别去找形如’_ot’,’h_t’,’ho_’ 的单词，又想到如果看到一个再去找一个复杂度也太高了，不如最初就把他们按照这种规则存在字典里面。<br>例如’hot’就分别存入d[‘_ot’],d[‘h_t’],d[‘ho_’]中，这样只花费了n*m个空间，其中n=len(wlist),m=len(wlist[0])<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(word1,word2,wlist)</span>:</span></span><br><span class="line">    <span class="comment"># 按照上述规则存储每个字符</span></span><br><span class="line">    d = collections.defaultdict(list)</span><br><span class="line">    visited = set()</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> wlist:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            d[s[i:]+<span class="string">'_'</span>+s[i+<span class="number">1</span>:]].append(s)</span><br><span class="line">    <span class="comment"># 初始化队列，将起点加入</span></span><br><span class="line">    Q = collections.deque([word1])</span><br><span class="line">    level = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> Q:</span><br><span class="line">        l = len(Q)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(l):</span><br><span class="line">            s = Q.popleft()</span><br><span class="line">            <span class="keyword">if</span> s == word2: <span class="keyword">return</span> level  <span class="comment"># 找到s</span></span><br><span class="line">            <span class="comment"># visited.add(s)</span></span><br><span class="line">            <span class="comment"># 添加相邻节点 and 不重复计算</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(s)):</span><br><span class="line">                <span class="keyword">for</span> s1 <span class="keyword">in</span> d[s[:j]+<span class="string">'_'</span>+s[j+<span class="number">1</span>:]]:</span><br><span class="line">                    <span class="keyword">if</span> s1 <span class="keyword">not</span> <span class="keyword">in</span> visited: </span><br><span class="line">                        Q.append(s1)</span><br><span class="line">                        <span class="comment"># visited一定要放在这，不能在上面注释的地方，否则产生大量重复计算</span></span><br><span class="line">                        visited.add(s1)</span><br><span class="line">        level += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>未完待续！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bfs/" rel="tag"># bfs</a>
+          
+            <a href="/tags/经典算法分析/" rel="tag"># 经典算法分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/22/Leetcode-875-Koko-Eating-Bananas/" rel="next" title="Leetcode 875 Koko Eating Bananas">
+                <i class="fa fa-chevron-left"></i> Leetcode 875 Koko Eating Bananas
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/29/Leetcode-878-Nth-Magical-Number/" rel="prev" title="Leetcode 878 Nth Magical Number">
+                Leetcode 878 Nth Magical Number <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzI0OS8xMzc4Mw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog_logo.jpg"
+                alt="王琛" />
+            
+              <p class="site-author-name" itemprop="name">王琛</p>
+              <p class="site-description motion-element" itemprop="description">我一定要证明谁才是世界第一的actor</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BFS算法基本套路"><span class="nav-number">1.</span> <span class="nav-text">BFS算法基本套路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本bfs算法"><span class="nav-number">1.1.</span> <span class="nav-text">基本bfs算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-107-Binary-Tree-Level-Order-Traversal"><span class="nav-number">1.2.</span> <span class="nav-text">leetcode 107 Binary Tree Level Order Traversal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-103-Binary-Tree-Zigzag-Level-Order-Traversal"><span class="nav-number">1.3.</span> <span class="nav-text">leetcode 103 Binary Tree Zigzag Level Order Traversal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-542-01-Matrix"><span class="nav-number">1.4.</span> <span class="nav-text">leetcode 542 01 Matrix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-279-Perfect-Squares"><span class="nav-number">1.5.</span> <span class="nav-text">leetcode 279 Perfect Squares</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-127-Word-Ladder"><span class="nav-number">1.6.</span> <span class="nav-text">leetcode 127 Word Ladder</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王琛</span>
+
+  
+</div>
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+
+<!-- 后来新加的，出现背景动画 -->
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+</body>
+</html>
+
+<!-- 后来新加的，页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
