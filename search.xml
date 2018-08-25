@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>搜狗输入法换肤功能</title>
+      <link href="/2018/08/25/%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E6%8D%A2%E8%82%A4%E5%8A%9F%E8%83%BD/"/>
+      <url>/2018/08/25/%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E6%8D%A2%E8%82%A4%E5%8A%9F%E8%83%BD/</url>
+      <content type="html"><![CDATA[<p>嗨呀，之前在dilidili上看到好多有意思的东西，像什么windows主题换肤啊，QQ主题换肤啊，输入法主题换肤啊，感觉都好骚啊！这些画师太秀了，忍不住就先弄了个最简单的输入法换肤玩一玩。</p><a id="more"></a><p>还是老样子，先来看下效果，我是用的最近有丶火的血小板皮肤<br><img src="/images/sougou.png" alt=""></p><p>这里以搜狗输入法为例，其他的输入法大同小异，首先我们了解一下搜狗输入法本身的一些构造。<br>我们右键输入法图标点击设置，弹出控制面板的语言界面，然后点击选项<br><img src="/images/sougou_1.png" alt=""><br>然后选择对应输入法的选项按钮，进入设置界面，依次如图选择：<br><img src="/images/sougou_2.png" alt=""><br><img src="/images/sougou_3.png" alt=""><br><img src="/images/sougou_4.png" alt=""></p><p>点开使用皮肤那一栏之后我们可以看到有很多皮肤可以供我们选择。我们作为coder肯定能意识到这些主题皮肤肯定是存储在某个特定目录下面的特定文件啦。于是稍微找一下，我的目录是：<br><code>C:/Program Files (x86)/SogouInput/9.0.0.2502/AllSkin</code><br>这是因为当时我安装搜狗输入法时选择的默认安装，实际目录需以各人当时安装目录为准！</p><p>OK，现在找到源文件的安放地点了，得去下一些有意思的主题皮肤了<br>dilidili皮肤网站： <a href="http://moe.005.tv/style/srf/" target="_blank" rel="noopener">http://moe.005.tv/style/srf/</a><br>这里面包含挺多有意思的皮肤吧，当然你也可以选择去搜狗皮肤官网上去下载。<br>之后过程超级简单，将下载的文件存放进之前找到的皮肤目录，然后在选择皮肤处选择新下好的皮肤就OK了！<br><img src="/images/sougou_5.png" alt=""></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 有趣的东西 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>贴吧emoji表情导入微信</title>
       <link href="/2018/08/24/%E8%B4%B4%E5%90%A7emoji%E8%A1%A8%E6%83%85%E5%AF%BC%E5%85%A5%E5%BE%AE%E4%BF%A1/"/>
       <url>/2018/08/24/%E8%B4%B4%E5%90%A7emoji%E8%A1%A8%E6%83%85%E5%AF%BC%E5%85%A5%E5%BE%AE%E4%BF%A1/</url>
@@ -1598,7 +1613,7 @@
       
         <tags>
             
-            <tag> 技术心得 </tag>
+            <tag> 有趣的东西 </tag>
             
         </tags>
       
