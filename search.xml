@@ -3,6 +3,57 @@
   
     
     <entry>
+      <title>Leetcode 3 Longest Substring Without Repeating Characters</title>
+      <link href="/2018/10/09/Leetcode-3-Longest-Substring-Without-Repeating-Characters/"/>
+      <url>/2018/10/09/Leetcode-3-Longest-Substring-Without-Repeating-Characters/</url>
+      <content type="html"><![CDATA[<p>给定一个字符串，找出不含有重复字符的最长子串的长度。<br>示例 1:<br>输入: “abcabcbb”<br>输出: 3<br>解释: 无重复字符的最长子串是 “abc”，其长度为 3。<br><a id="more"></a></p><p>示例 2:<br>输入: “bbbbb”<br>输出: 1<br>解释: 无重复字符的最长子串是 “b”，其长度为 1。</p><p>示例 3:<br>输入: “pwwkew”<br>输出: 3<br>解释: 无重复字符的最长子串是 “wke”，其长度为 3。<br>     请注意，答案必须是一个子串，”pwke” 是一个子序列 而不是子串。</p><p> <strong>题意分析：</strong><br> 在一个字符串中找最长子串(substring)，我们需要知道子串是连续的，而子序列(subsequence)是可以不连续的，这是两个不同的定义</p><p><strong>思路分析：</strong><br>通常对于这种在字符串中寻找最长XX的问题，都是使用双指针法。</p><p>我们首先固定左边，然后第二个指针向右遍历，使用一个空间记录我们已经访问过的元素，当第二个指针遍历到某个记录过的元素即停止，记录一次长度。</p><p>然后第一个指针向右移动，将遍历过的元素从记录中删除，直到完全删除掉第二个指针指向的元素为止。</p><p>例如对于示例1中的 ‘abcabcbb’，过程如图所示(只截取了一部分，后面同理)：<br><img src="/images/leetcode_3_1.png" alt=""></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 176ms, beats 18.11% (最初写的弱智解法反而运行时间更低，可能是初始化Counter()有点费时间)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        i,j = <span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        <span class="comment"># 使用d作为记录，等价于图中的vis</span></span><br><span class="line">        d = collections.Counter()</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; len(s):</span><br><span class="line">            <span class="keyword">while</span> j &lt; len(s) <span class="keyword">and</span> s[j] <span class="keyword">not</span> <span class="keyword">in</span> d:</span><br><span class="line">                d[s[j]] += <span class="number">1</span></span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">            res = max(res, j - i)</span><br><span class="line">            <span class="keyword">if</span> j &gt;= len(s): <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; len(s) <span class="keyword">and</span> s[j] <span class="keyword">in</span> d:</span><br><span class="line">                d[s[i]] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> d[s[i]] == <span class="number">0</span>: <span class="keyword">del</span> d[s[i]]</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Leetcode problems </tag>
+            
+            <tag> two pointers </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Leetcode 2 Add Two Numbers</title>
+      <link href="/2018/10/09/Leetcode-2-Add-Two-Numbers/"/>
+      <url>/2018/10/09/Leetcode-2-Add-Two-Numbers/</url>
+      <content type="html"><![CDATA[<p>给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。<br>你可以假设除了数字 0 之外，这两个数字都不会以零开头。</p><blockquote><p>example：<br>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807<br><a id="more"></a></p></blockquote><p><strong>题意分析：</strong><br>用两个非空链表表示两个数字，然后将这两个数字作加法，最后所求结果也以链表形式表示</p><p><strong>思路分析：</strong><br>这道题十分友好，因为我们作加法需要从个位开始计算，这道题直接将个位就放在链表的头部，方便我们计算。</p><p>唯一要注意的点就是考虑进位的问题，我们使用一个flag来表示是否要进位，初始为0</p><p>有个小技巧，当l1和l2长度不相等时，我们可以默认长度不够的那一段全都是0</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 68ms, beats 95.45%</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1, l2)</span>:</span></span><br><span class="line">        <span class="comment"># 表示进位</span></span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="comment"># ret存储返回结果</span></span><br><span class="line">        ret = head = ListNode(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># 以长的为标准</span></span><br><span class="line">        <span class="keyword">while</span> l1 <span class="keyword">or</span> l2:</span><br><span class="line">            <span class="comment"># 长度不够的按0算</span></span><br><span class="line">            val1 = l1.val <span class="keyword">if</span> l1 <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            val2 = l2.val <span class="keyword">if</span> l2 <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            val = (val1 + val2 + flag) % <span class="number">10</span></span><br><span class="line">            head.next = ListNode(val)</span><br><span class="line">            head = head.next</span><br><span class="line">            flag = (val1 + val2 + flag) // <span class="number">10</span></span><br><span class="line">            <span class="keyword">if</span> l1: l1 = l1.next</span><br><span class="line">            <span class="keyword">if</span> l2: l2 = l2.next</span><br><span class="line">        <span class="comment"># 考虑l1 = [5], l2=[5]这种情况，循环结束后还有进位没有处理，所以单独处理</span></span><br><span class="line">        <span class="keyword">if</span> flag == <span class="number">1</span>: head.next = ListNode(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> ret.next</span><br></pre></td></tr></table></figure><p>(trick: 我们也可以分别把每个链表中的数字真正读出来，然后做加法，最后再转成成链表的形式)</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Leetcode problems </tag>
+            
+            <tag> implementation </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Leetcode 1 Two Sum</title>
+      <link href="/2018/10/09/Leetcode-1-Two-Sum/"/>
+      <url>/2018/10/09/Leetcode-1-Two-Sum/</url>
+      <content type="html"><![CDATA[<p>给定一个数组nums，一个目标值target，在数组找两个数满足这两个数的和为target。<br>返回这两个数在nums中的下标。</p><blockquote><p>example:<br>nums = [2,7,11,15]<br>target = 9<br>return [0,1]<br><a id="more"></a></p></blockquote><p><strong>题意分析：</strong><br>在数组中寻找两个数a,b，使得a+b = target，返回a,b的下标</p><p><strong>思路分析：</strong><br>这是一道经典的在数组中找和为定值的题目。通常这种题目有以下几种解法：</p><ol><li>先将数组进行排序，然后用双指针遍历。（time: O(nlogn), space: O(1)）</li><li>将遍历过的数a全部记录下来，然后对正在遍历的数b进行判断，判断target - b是否已经遍历过。（time: O(n), space: O(n)）</li></ol><p>以上两种解法同样适用于找a+b+c=target的问题（3Sum），只是具体操作时会有一点不同。</p><p>再来看这道题，因为我们需要返回下标，如果我们使用第一种方法会将本来的下标打乱（当然你可以新开一个空间专门记录下标，但是这白浪费O(n)的空间，丧失了排序的优势），所以我们直接选择第二种方法</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 28ms, beats 65.80%</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        vis = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> target - nums[i] <span class="keyword">in</span> vis:</span><br><span class="line">                <span class="comment"># 因为题目保证一定有解，所以可以直接返回</span></span><br><span class="line">                <span class="keyword">return</span> [vis[target- nums[i]], i]</span><br><span class="line">            vis[nums[i]] = i</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Leetcode problems </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Leetcode 920 Number of Music Playlists</title>
       <link href="/2018/10/08/Leetcode-920-Number-of-Music-Playlists/"/>
       <url>/2018/10/08/Leetcode-920-Number-of-Music-Playlists/</url>
