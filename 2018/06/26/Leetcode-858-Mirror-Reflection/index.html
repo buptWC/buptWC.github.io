@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -129,7 +129,7 @@
 <meta property="og:image" content="http://yoursite.com/images/leetcode_858_1.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_858_2.jpg">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_858_3.jpg">
-<meta property="og:updated_time" content="2018-06-26T09:49:36.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:16:33.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 858 Mirror Reflection">
 <meta name="twitter:description" content="这道题超有意思！">
@@ -391,14 +391,14 @@
       
         <p><img src="/images/leetcode_858_1.png" alt="题目描述"></p>
 <p><font color="#660000">这道题超有意思！</font><br><br><a id="more"></a></p>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>我们首先需要知道镜面反射的一些小技巧，如下图，也就是我们可以作延长线来判断反射之后的线将会落于何处。<br><img src="/images/leetcode_858_2.jpg" alt="示例图1"></li>
 <li>题目既然保证一定会碰到012中的某一个点，那么我只要疯狂做延长线，总会交于某个角</li>
 <li>再来举个例子，如下图，p = 4,q = 3，最后落于点2处,<strong>图中虚线和实线根据标号一一对应，且保证了两线方向一致</strong><br><img src="/images/leetcode_858_3.jpg" alt="示例图2"></li>
 <li>延长线每次交于边界点记作A,B,C,…,显然若A的横坐标为x，则B的横坐标为2x，C的横坐标为3x，依次类推，我们只需要找到某个点其横坐标恰好是p的倍数即可</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>显然若横坐标是x的偶数倍，说明相交点在下边界线，也就是0处！返回0即可</li>
 <li>若横坐标是x的奇数倍，说明相交点在上边界线，或许是2，或许是1</li>
@@ -1122,6 +1122,8 @@
   
 
   
+  
+
 
   
 

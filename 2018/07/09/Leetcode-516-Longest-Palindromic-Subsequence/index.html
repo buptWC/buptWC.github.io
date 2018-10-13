@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个字符串s，找到其中最长的回文子序列。可以假设s的最大长度为1000。  示例 1:输入:“bbbab”输出:4一个可能的最长回文子序列为 “bbbb”。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-09T15:04:48.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:07:07.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 516 Longest Palindromic Subsequence">
 <meta name="twitter:description" content="给定一个字符串s，找到其中最长的回文子序列。可以假设s的最大长度为1000。  示例 1:输入:“bbbab”输出:4一个可能的最长回文子序列为 “bbbb”。">
@@ -393,13 +393,13 @@
 <blockquote>
 <p>示例 2:<br>输入:<br>“cbbd”<br>输出:<br>2<br>一个可能的最长回文子序列为 “bb”。</p>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>这道题如果能想到定义<code>dp[i][j]表示s[i:j+1]的最长回文子序列长度</code>的话就很简单了，所以在这里的话，我更想去说一下我是怎么想到要用dp以及这样来定义dp的，我认为这才是有帮助的</li>
 <li>看到示例1的时候，’bbbab’，我想首先依次遍历，然后看此时遍历的字符有没有在之前出现过，如果出现过，以这个两个相同字符为边界，看是否能找到一个回文串，那么中间的字符是什么状态呢？是本身就是回文串呢或者说其子串包含回文串呢，想到这一步我突然意识到，这不就是问题的解依赖于其子问题的解吗，于是想到用dp来解决</li>
 <li>那么怎么定义dp呢，因为按照我的思路是固定住两边观察中间，所以我定义一个二维dp，那么上面说的那种情况就可以写成<code>dp[i][j] = dp[i+1][j-1] + 2</code>，到这里豁然开朗，我知道自己没想错……</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li><code>if s[i] == s[j]: dp[i][j] = dp[i+1][j-1] + 2</code></li>
 <li><code>else: dp[i][j] = max(dp[i+1][j], dp[i][j-1])</code></li>
@@ -1131,6 +1131,8 @@
   
 
   
+  
+
 
   
 

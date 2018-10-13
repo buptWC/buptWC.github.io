@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="The Hamming distance between two integers is the number of positions at which the corresponding bits are different.Now your job is to find the total Hamming distance between all pairs of the given num">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-11T11:48:36.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:04:08.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 477 Total Hamming Distance">
 <meta name="twitter:description" content="The Hamming distance between two integers is the number of positions at which the corresponding bits are different.Now your job is to find the total Hamming distance between all pairs of the given num">
@@ -397,8 +397,8 @@
 <li>Length of the array will not exceed 10^4.</li>
 </ol>
 </blockquote>
-<p><strong>分析：</strong><br>在leetcode 461中有如何计算海明距离的方法，这里数据长度不超过10^4，讲道理n^2可行，但是还涉及到数据本身长度（虽然长度很短，不超过32），所以还是会tle<br>所以仔细想想，发现是可以用O(n)的方法来做的</p>
-<p><strong>思路：</strong><br>分别观察每一位，比如所有数的最后一位，假设有m个1，n个0， 那么这一位产生的海明距离之和应该为 m * n（易证）</p>
+<p><b>分析：</b><br>在leetcode 461中有如何计算海明距离的方法，这里数据长度不超过10^4，讲道理n^2可行，但是还涉及到数据本身长度（虽然长度很短，不超过32），所以还是会tle<br>所以仔细想想，发现是可以用O(n)的方法来做的</p>
+<p><b>思路：</b><br>分别观察每一位，比如所有数的最后一位，假设有m个1，n个0， 那么这一位产生的海明距离之和应该为 m * n（易证）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">totalHammingDistance</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span>):</span><br><span class="line">        	<span class="comment"># 从最后一位开始</span></span><br><span class="line">            cnt, mask = <span class="number">0</span>, <span class="number">1</span> &lt;&lt; i</span><br><span class="line">            <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">                <span class="comment"># count the number of '1'</span></span><br><span class="line">                cnt += num &amp; mask != <span class="number">0</span></span><br><span class="line">            <span class="comment"># cnt '1' and (n-cnt) '0', the distance is the product!</span></span><br><span class="line">            res += cnt * (len(nums)-cnt)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># O(n) time, O(1) space</span></span><br><span class="line"><span class="number">47</span> / <span class="number">47</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">337</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1116,6 +1116,8 @@
   
 
   
+  
+
 
   
 

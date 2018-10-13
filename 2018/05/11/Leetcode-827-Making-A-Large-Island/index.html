@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="In a 2D grid of 0s and 1s, we change at most one 0 to a 1. After, what is the size of the largest island? (An island is a 4-directionally connected group of 1s).  Example 1:Input: [[1, 0], [0, 1]]Outp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:50:36.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:12:04.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_827_Making_A_Large_Island">
 <meta name="twitter:description" content="In a 2D grid of 0s and 1s, we change at most one 0 to a 1. After, what is the size of the largest island? (An island is a 4-directionally connected group of 1s).  Example 1:Input: [[1, 0], [0, 1]]Outp">
@@ -398,8 +398,8 @@
 <p>Example 3:<br>Input: [[1,1],[1,1]]<br>Output: 4<br>Explanation: 4</p>
 </blockquote>
 <p>Notes:<br>    1 &lt;= grid.length = grid[0].length &lt;= 50.<br>    0 &lt;= grid[i][j] &lt;= 1.</p>
-<p><strong>分析：这道题意思就是把连续的1认为是一块地,现在可以将某个0改成1，使连续的1最多，并求出对应的数量。<br>先看一下变量的取值，长宽都是50，则最多2500个元素，这告诉我们n^2复杂度是可以的</strong></p>
-<p><strong>思路：我们给每块地进行编号，然后记录下这块地的大小，最后找0的时候将0周边不同地的面积相加最大的就是结果</strong></p>
+<p><b>分析：</b><br>这道题意思就是把连续的1认为是一块地,现在可以将某个0改成1，使连续的1最多，并求出对应的数量。<br>先看一下变量的取值，长宽都是50，则最多2500个元素，这告诉我们n^2复杂度是可以的</p>
+<p><b>思路：</b><br>我们给每块地进行编号，然后记录下这块地的大小，最后找0的时候将0周边不同地的面积相加最大的就是结果</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">largestIsland</span><span class="params">(grid)</span>:</span></span><br><span class="line">    directions = ((<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">-1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">-1</span>))</span><br><span class="line">    area = [<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">    index = <span class="number">2</span> <span class="comment"># grid中包含0，1，所以地的编号从2开始必不会重复</span></span><br><span class="line">    n = len(grid)</span><br><span class="line">    <span class="comment"># 用dfs计算一块地的面积，并修改grid</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(i,j,index)</span>:</span></span><br><span class="line">        res = <span class="number">1</span></span><br><span class="line">        grid[i][j] = index</span><br><span class="line">        <span class="keyword">for</span> x,y <span class="keyword">in</span> directions:</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span>&lt;=i+x&lt;n <span class="keyword">and</span> <span class="number">0</span>&lt;=j+y&lt;n:</span><br><span class="line">                <span class="keyword">if</span> grid[i+x][j+y] == <span class="number">1</span>:</span><br><span class="line">                    res += dfs(i+x,j+y,index)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 用area数组记录对应地的面积</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</span><br><span class="line">                area.append(dfs(i,j,index))</span><br><span class="line">                index += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="number">0</span>:</span><br><span class="line">                s = set()</span><br><span class="line">                <span class="keyword">for</span> x,y <span class="keyword">in</span> directions:</span><br><span class="line">                    <span class="keyword">if</span> <span class="number">0</span>&lt;=i+x&lt;n <span class="keyword">and</span> <span class="number">0</span>&lt;=j+y&lt;n <span class="keyword">and</span> grid[i+x][j+y]&gt;<span class="number">1</span>:</span><br><span class="line">                        s.add(grid[i+x][j+y])</span><br><span class="line">                res = max(res,sum(area[i] <span class="keyword">for</span> i <span class="keyword">in</span> s)+<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 如果grid中全为1，上一个循环中的判断就进不去，res就为0，此时结果应该为grid的面积</span></span><br><span class="line">    <span class="keyword">return</span> res <span class="keyword">or</span> n**<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="string">"difficulty:hard</span></span><br><span class="line"><span class="string">63/63 test cases passed</span></span><br><span class="line"><span class="string">runtime: 127ms"</span></span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1117,6 +1117,8 @@
   
 
   
+  
+
 
   
 

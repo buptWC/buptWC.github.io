@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_498_1.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_498_2.png">
-<meta property="og:updated_time" content="2018-07-05T02:56:26.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:06:27.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 498 Diagonal Traverse">
 <meta name="twitter:image" content="http://yoursite.com/images/leetcode_498_1.png">
@@ -385,13 +385,13 @@
       
 
       
-        <p><img src="/images/leetcode_498_1.png" alt=""><br><a id="more"></a><br><strong>分析：</strong></p>
+        <p><img src="/images/leetcode_498_1.png" alt=""><br><a id="more"></a><br><b>分析：</b></p>
 <ol>
 <li>这道题像我们之前做的那种走迷宫的问题，给一个矩阵，0代表可以通信，1代表有障碍，问从左上走到右下最短距离是多少，走不到返回-1，这种就是标准的bfs问题</li>
 <li>这道题中我们按层依次遍历，始终从左下到右上，只要额外判断一下本身该是从右上到左下的层数即可</li>
 </ol>
 <p><img src="/images/leetcode_498_2.png" alt=""></p>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>用visited记录已经遍历过的下标，rec记录每一层的所有元素，level判断奇偶来决定是否要反转rec</li>
 <li>用（-1，-1）作为每一层的终止条件，处理下最后只剩(-1,-1)的情况</li>
@@ -1113,6 +1113,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="对于一个正整数n，如果将n化作k进制表示后，n的所有位全是1，我们将k叫做n的一个good base现在给定一个字符串代表n，要求你以字符串的形式返回n的最小good base  Example 1:Input: “13”Output: “3”Explanation: 13 base 3 is 111.  这道题超有意思！！！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T08:32:16.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:04:41.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 483 Smallest Good Base">
 <meta name="twitter:description" content="对于一个正整数n，如果将n化作k进制表示后，n的所有位全是1，我们将k叫做n的一个good base现在给定一个字符串代表n，要求你以字符串的形式返回n的最小good base  Example 1:Input: “13”Output: “3”Explanation: 13 base 3 is 111.  这道题超有意思！！！">
@@ -401,7 +401,7 @@
 <li>n的取值范围为 [3, 10^18]</li>
 <li>给出的代表n的字符串你可以认为是始终合法的，不存在前导0的情况</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>对于给定的n，假设我们将其划为<code>k进制数</code>，那么k的可能取值有2，n-1，在n比较大的时候显然这种方法是会超时的</li>
 <li>那么我们需要反向思维一下，对于给定的n，将其划为<code>长度为k</code>的字符串，即<code>&#39;1&#39;*k</code>，那么此时的k的取值最多到60，因为 2^60 &gt; 10^18，我们固定住k，去看能否找到一个x使得<code>1+x+x^2+...+x^(k-1) = n</code>，k从大往小遍历，第一个找到的x就是最小的good base</li>
@@ -415,7 +415,7 @@
 </li>
 <li>根据4中步骤对于每一个k可以得到一个x值，我们接下来只需要判断3中式子是否成立了，即<code>(x^k-1)/(x-1) == n</code></li>
 </ol>
-<p><strong>注意：</strong></p>
+<p><b>注意：</b></p>
 <ol>
 <li>这道题其实是有漏洞的，因为当n&gt;10^16时，可能是和计算机内部存储数的方式有关，有：<ol>
 <li>n^1.0 = n^1 但 n^1.0 - 1 != n^1 - 1</li>
@@ -1142,6 +1142,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="On a N * N grid, we place some 1 * 1 * 1 cubes.Each value v = grid[i][j] represents a tower of v cubes placed on top of grid cell (i, j).Return the total surface area of the resulting shapes.  Example">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-26T05:50:12.822Z">
+<meta property="og:updated_time" content="2018-10-13T08:19:52.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 892 Surface Area of 3D Shapes">
 <meta name="twitter:description" content="On a N * N grid, we place some 1 * 1 * 1 cubes.Each value v = grid[i][j] represents a tower of v cubes placed on top of grid cell (i, j).Return the total surface area of the resulting shapes.  Example">
@@ -407,12 +407,12 @@
 <li>1 &lt;= N &lt;= 50</li>
 <li>0 &lt;= grid[i][j] &lt;= 50</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>根据样例1可以知道这里是需要计算上下底面积的，并且上下底面积是不会被遮盖的，所以每遍历到一个非0的grid[i][j]，结果都需加上2</li>
 <li>然后考虑侧面积，侧面积是有可能被覆盖的，对于一个格子上的柱子，四个侧面被覆盖的面积取决于他周围4个柱子的高度，两者高度取最低值即可。</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>当我们计算周围柱子的时候，可能出现越界的情况，那么这需要单独处理，我们用一个函数处理这种情况，将其视作高度为的柱子，其余照常即可。</li>
 </ol>
@@ -1134,6 +1134,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="N cars are going to the same destination along a one lane road.  The destination is target miles away.Each car i has a constant speed speed[i]  (in miles per hour), and initial position position[i] mi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T10:48:56.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:15:56.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 853 Car Fleet">
 <meta name="twitter:description" content="N cars are going to the same destination along a one lane road.  The destination is target miles away.Each car i has a constant speed speed[i]  (in miles per hour), and initial position position[i] mi">
@@ -396,13 +396,13 @@
 <blockquote>
 <p>Note:<br>0 &lt;= N &lt;= 10 ^ 4<br>0 &lt; target &lt;= 10 ^ 6<br>0 &lt; speed[i] &lt;= 10 ^ 6<br>0 &lt;= position[i] &lt; target<br>All initial positions are different.</p>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>这道题还有点意思，在不同的点有一系列的车，每辆车有不同的速度，都朝同一个target前进</li>
 <li>无法超车，也就是初始位置在前面的车永远在前面</li>
 <li>若追赶上前面的车则认为这些车属于一个集群，问到达终点后有多少个集群</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>显然我们先根据车的位置进行排序，从前面的车开始分析，如有A,B,C,D,E 5辆车，p[a] &gt; p[b] &gt; p[c] &gt;…</li>
 <li>我们先判断A到达终点前是否能被B追上，若追不上显然A自身是一个集群，再从B开始判断，若能追上，则判断C能不能追上，依次类推</li>
@@ -1125,6 +1125,8 @@
   
 
   
+  
+
 
   
 

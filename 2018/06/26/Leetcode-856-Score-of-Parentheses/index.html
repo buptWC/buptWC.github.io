@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Given a balanced parentheses string S, compute the score of the string based on the following rule:() has score 1AB has score A + B, where A and B are balanced parentheses strings.(A) has score 2 * A,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-26T07:24:14.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:16:11.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 856 Score of Parentheses">
 <meta name="twitter:description" content="Given a balanced parentheses string S, compute the score of the string based on the following rule:() has score 1AB has score A + B, where A and B are balanced parentheses strings.(A) has score 2 * A,">
@@ -404,11 +404,8 @@
 <li>S is a balanced parentheses string, containing only ( and ).</li>
 <li>2 &lt;= S.length &lt;= 50</li>
 </ol>
-<p><strong>分析：</strong></p>
-<ol>
-<li>一个基础()得1分，被括起来是两倍，保证了S一定合法，且S的长度小于50，那么显然随意递归都OK</li>
-</ol>
-<p><strong>思路：</strong><br>S的第一位一定是左括号，找到与之对应的右括号，然后递归即可<br>即形如 (s1)s2，可写成 func(s1)*2 + func(s2)</p>
+<p><b>分析：</b><br>1.一个基础()得1分，被括起来是两倍，保证了S一定合法，且S的长度小于50，那么显然随意递归都OK</p>
+<p><b>思路：</b><br>S的第一位一定是左括号，找到与之对应的右括号，然后递归即可<br>即形如 (s1)s2，可写成 func(s1)*2 + func(s2)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">scoreOfParentheses</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 设置终止条件</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> S: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(S)):</span><br><span class="line">            <span class="keyword">if</span> S[i] == <span class="string">'('</span>:</span><br><span class="line">                stack.append(S[i])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                stack.pop()</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> stack:</span><br><span class="line">                    index = i</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="comment"># 当已经是最基本的()时，直接返回1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> S[<span class="number">1</span>:index]:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> + self.scoreOfParentheses(S[index+<span class="number">1</span>:])</span><br><span class="line">        <span class="keyword">return</span> self.scoreOfParentheses(S[<span class="number">1</span>:index]) * <span class="number">2</span> + self.scoreOfParentheses(S[index+<span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">85</span> / <span class="number">85</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">34</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1126,6 +1123,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="The i-th person has weight people[i], and each boat can carry a maximum weight of limit.Each boat carries at most 2 people at the same time, provided the sum of the weight of those people is at most l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-05T07:34:00.662Z">
+<meta property="og:updated_time" content="2018-10-13T08:19:28.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 885 Boats to Save People">
 <meta name="twitter:description" content="The i-th person has weight people[i], and each boat can carry a maximum weight of limit.Each boat carries at most 2 people at the same time, provided the sum of the weight of those people is at most l">
@@ -398,13 +398,13 @@
 <li>1 &lt;= people.length &lt;= 50000</li>
 <li>1 &lt;= people[i] &lt;= limit &lt;= 30000</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>我感觉这道题该归为easy才对，每条船最多只能装两个人，那么只要能装两个人我就装</li>
 <li>从重量最大的人开始分析，能不能和重量最小的人一起呢？能就一起不能就拉倒！为什么在这里贪心不会出错呢？</li>
 <li>因为之后分析的人的重量都比这个人要小，也就不存在某个人不能和现在这个人一起反而能和比这个人轻的人一起的情况。</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>用一个双向队列，分别把最重最轻的人依次出队</li>
 <li>如果目前最重的人和最轻的人加一起比Limit要小，就都pop出来，否则就只pop最重的人</li>
@@ -1127,6 +1127,8 @@
   
 
   
+  
+
 
   
 

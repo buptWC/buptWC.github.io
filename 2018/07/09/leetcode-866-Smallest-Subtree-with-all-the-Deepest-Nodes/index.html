@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -127,7 +127,7 @@
 <meta property="og:description" content="Given a binary tree rooted at root, the depth of each node is the shortest distance to the root.A node is deepest if it has the largest depth possible among any node in the entire tree.The subtree of">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_866.png">
-<meta property="og:updated_time" content="2018-07-09T11:52:50.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:18:02.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 866 Smallest Subtree with all the Deepest Nodes">
 <meta name="twitter:description" content="Given a binary tree rooted at root, the depth of each node is the shortest distance to the root.A node is deepest if it has the largest depth possible among any node in the entire tree.The subtree of">
@@ -390,12 +390,12 @@
         <p>Given a binary tree rooted at root, the depth of each node is the shortest distance to the root.<br>A node is deepest if it has the largest depth possible among any node in the entire tree.<br>The subtree of a node is that node, plus the set of all descendants of that node.<br>Return the node with the largest depth such that it contains all the deepest nodes in it’s subtree.</p>
 <p><img src="/images/leetcode_866.png" alt="题目描述"></p>
 <a id="more"></a>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>标准的bfs问题，我们只需要记录最后一层的所有节点，然后获取他们的父节点，依次类推，当父节点的数量只有1个时，说明找到了最后所求</li>
 <li>bfs中队列存储数据格式为<code>(node,parent_node)</code>，初始化为<code>(root,None)</code>,让我们用字典能建立对应关系!</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>我们在用bfs遍历时，用一个字典记录下结点与其父节点的对应关系，并用一个列表记录下每一层的所有结点，当bfs遍历结束时，列表中所存结点即为最后一层结点</li>
 <li>对列表中结点进行迭代，用一个集合来记录父节点，当集合长度为1时，循环结束</li>
@@ -1119,6 +1119,8 @@
   
 
   
+  
+
 
   
 

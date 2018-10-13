@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="We are given a 2-dimensional grid. “.” is an empty cell, “#” is a wall, “@” is the starting point, (“a”, “b”, …) are keys, and (“A”, “B”, …) are locks.We start at the starting point, and one move cons">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-09T08:22:52.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:17:52.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode 865 Shortest Path to Get All keys">
 <meta name="twitter:description" content="We are given a 2-dimensional grid. “.” is an empty cell, “#” is a wall, “@” is the starting point, (“a”, “b”, …) are keys, and (“A”, “B”, …) are locks.We start at the starting point, and one move cons">
@@ -400,13 +400,13 @@
 <li>grid[i][j] contains only ‘.’, ‘#’, ‘@’, ‘a’-‘f’ and ‘A’-‘F’</li>
 <li>The number of keys is in [1, 6].  Each key has a different letter and opens exactly one lock.</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>这道题就像我在498题中说的迷宫问题一样，求到达某点的最短路径，显然是用bfs</li>
 <li>那么这和普通的bfs有什么不同呢，现在给出一个具体实例[[@…a],[.###A],[b.BCc]]，你会发现这里要走回头路的，那么如果凭空就可以来回走的话，会是一个死循环，但我们稍微仔细思考一下，我认为想到<code>走回头路的条件是获得一个新key</code>这个点应该不难想到，那么我们只需要将标准bfs写法中的visited中key值变为(i,j,key)即可</li>
 <li>虽然我做出来了，但是我的代码目前比较凌乱（因为经过多次修改），现在借助一位老哥的代码，和我的思路是完全一样的，来看一看具体如何实现</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>首先遍历一次数组，记录下起始位置，即‘@’，以及key的数量，即小写字母的数量，记为numOfKey</li>
 <li>队列中的每项元素具有如下结构<code>(i,j,step,key,collectedkey)</code>:<ol>
@@ -1134,6 +1134,8 @@
   
 
   
+  
+
 
   
 

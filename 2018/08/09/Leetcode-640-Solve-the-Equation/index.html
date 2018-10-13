@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Solve a given equation and return the value of x in the form of string “x=#value”. The equation contains only ‘+’, ‘-‘ operation, the variable x and its coefficient.If there is no solution for the equ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-09T07:42:24.116Z">
+<meta property="og:updated_time" content="2018-10-13T08:09:23.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 640 Solve the Equation">
 <meta name="twitter:description" content="Solve a given equation and return the value of x in the form of string “x=#value”. The equation contains only ‘+’, ‘-‘ operation, the variable x and its coefficient.If there is no solution for the equ">
@@ -393,7 +393,7 @@
 <blockquote>
 <p>Example 2:<br>Input: “x=x”<br>Output: “Infinite solutions”<br>Example 3:<br>Input: “2x=x”<br>Output: “x=0”<br>Example 4:<br>Input: “2x+3x-6x=x+2”<br>Output: “x=-1”<br>Example 5:<br>Input: “x=x+2”<br>Output: “No solution”</p>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>题目意思是求解一个只含加减法的方程，我们自然想到平常是如何去解方程的<ol>
 <li>把含x的项都移到左边，把常数项都移到右边</li>
@@ -407,7 +407,7 @@
 <li>如何去计算呢，我们发现不管是常数项还是未知项都是处于+-号中间的，那么有最简单的思路，我直接将一对+-号中间的字符串取出来，判断其是不是以x结尾，若是，则前面的系数加到v上，反之则加到c上，只需要注意处理下边界情况即可（但是这种思路当你真去写的时候发现有点坑，因为测试样例稀奇古怪，有好多烦人的情况）</li>
 <li>所以还是采用直接迭代的方式是最稳的(也有点麻烦，垃圾样例)，具体见代码</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>因为s包含’=’，所以我们应该对左右两边分别求系数，然后再进行分析</li>
 <li>构建函数求一串字符串的x系数和常数项大小</li>
@@ -1130,6 +1130,8 @@
   
 
   
+  
+
 
   
 

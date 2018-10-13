@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，在字符串中增加空格来构建一个句子，使得句子中所有的单词都在词典中。返回所有这些可能的句子。说明：分隔时可以重复使用字典中的单词。你可以假设字典中没有重复的单词。  示例 1：输入:s = “catsanddog”wordDict = [“cat”, “cats”, “and”, “sand”, “dog”]输出:[ “cats">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T08:22:18.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:01:09.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 140 Word Break II">
 <meta name="twitter:description" content="给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，在字符串中增加空格来构建一个句子，使得句子中所有的单词都在词典中。返回所有这些可能的句子。说明：分隔时可以重复使用字典中的单词。你可以假设字典中没有重复的单词。  示例 1：输入:s = “catsanddog”wordDict = [“cat”, “cats”, “and”, “sand”, “dog”]输出:[ “cats">
@@ -396,13 +396,13 @@
 <blockquote>
 <p>示例 3：<br>输入:<br>s = “catsandog”<br>wordDict = [“cats”, “dog”, “sand”, “and”, “cat”]<br>输出:<br>[]</p>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>标准的回溯思想，我们先从暴力法开始分析，直接遍历wordDict中的每个字符串word，看是否满足s.startwith(word)，若满足再重新开始遍历，这样的话时间复杂度应该是O(kn^2)，其中n为wordDict长度，k为word平均长度。这样显然复杂度太高。</li>
 <li>那么我们容易想到，使用一个字典根据每个单词的首字母来存储，这样我们可以只遍历以s[0]开头的word，这样平均复杂度能够到O(kn)，但若wordDict中大量单词是以同一字母开头，复杂度在最坏情况下仍会是O(kn^2)。但单就这道题来说，这样优化之后是可以通过的。</li>
 <li>在这道题中还有一点无法处理，那就是在上述最坏情况下，s实际上并不能用wordDict构建，这种情况也会导致TLE，故在开始时先判断s是否能有wordDict表示(借鉴于discuss)</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>定义breakable函数判断s是否可分</li>
 <li>建立字典根据首字母存储wordDict中单词及长度(用来分片)</li>
@@ -1125,6 +1125,8 @@
   
 
   
+  
+
 
   
 

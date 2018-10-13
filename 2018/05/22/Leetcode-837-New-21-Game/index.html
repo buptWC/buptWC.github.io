@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Alice plays the following game, loosely based on the card game “21”. Alice starts with 0 points, and draws numbers while she has less than K points.  During each draw, she gains an integer number of p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:51:18.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:13:10.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 837 New 21 Game">
 <meta name="twitter:description" content="Alice plays the following game, loosely based on the card game “21”. Alice starts with 0 points, and draws numbers while she has less than K points.  During each draw, she gains an integer number of p">
@@ -399,8 +399,8 @@
 <p>Example 3:<br>Input: N = 21, K = 17, W = 10<br>Output: 0.73278</p>
 </blockquote>
 <p><strong>Note:</strong><br>    1.0 &lt;= K &lt;= N &lt;= 10000<br>    2.1 &lt;= W &lt;= 10000<br>    3.Answers will be accepted as correct if they are within 10^-5 of the correct answer.<br>    4.The judging time limit has been reduced for this question.</p>
-<p>分析：这道题是在求概率，在已有点数不超过K的情况下从1至w中选数，之后和不超过N,注意K,N,W可以取到10000,所以N^2是肯定不行的，并且递归也会超出最大深度(即使使用记忆化也不行)。</p>
-<p>思路：使用动态规划，dp[i]表示点数和为i的概率，那么最后结果应该是dp[k]+dp[k+1]+…+dp[n]<br>其中，dp[i]又应该为前w个的dp的平均值<br>例如W=10，那么dp[20] = 1/10 * (dp[10]+dp[11]+…+dp[19])</p>
+<p><b>分析：</b><br>这道题是在求概率，在已有点数不超过K的情况下从1至w中选数，之后和不超过N,注意K,N,W可以取到10000,所以N^2是肯定不行的，并且递归也会超出最大深度(即使使用记忆化也不行)。</p>
+<p><b>思路：</b><br>使用动态规划，dp[i]表示点数和为i的概率，那么最后结果应该是dp[k]+dp[k+1]+…+dp[n]<br>其中，dp[i]又应该为前w个的dp的平均值<br>例如W=10，那么dp[20] = 1/10 * (dp[10]+dp[11]+…+dp[19])</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new21Game</span><span class="params">(N, K, W)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> K == <span class="number">0</span>: <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    dp = [<span class="number">1.0</span>] + [<span class="number">0.0</span>] * N</span><br><span class="line">    <span class="comment"># 用Wsum 记录前w个dp之和</span></span><br><span class="line">    Wsum = <span class="number">1.0000</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">        dp[i] = Wsum / W</span><br><span class="line">        <span class="keyword">if</span> i &lt; K: Wsum += dp[i]</span><br><span class="line">        <span class="comment"># 假设K = 15，那么上面的例子d[20] = 1/10 * (dp[10]+...+dp[14]),因为拿到15之后就不能拿了，所以不存在从15拿5拿到20的情况</span></span><br><span class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt;= i - W &lt; K: Wsum -= dp[i - W]</span><br><span class="line">    <span class="keyword">return</span> sum(dp[K:])</span><br><span class="line"></span><br><span class="line"><span class="number">146</span> / <span class="number">146</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">122</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1118,6 +1118,8 @@
   
 
   
+  
+
 
   
 

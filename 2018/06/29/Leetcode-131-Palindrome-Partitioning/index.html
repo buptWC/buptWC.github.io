@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个字符串 s，将 s 分割成一些子串，使每个子串都是回文串。返回 s 所有可能的分割方案。  示例:输入: “aab”输出:[ [“aa”,”b”], [“a”,”a”,”b”]]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T09:05:32.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:00:52.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 131 Palindrome Partitioning">
 <meta name="twitter:description" content="给定一个字符串 s，将 s 分割成一些子串，使每个子串都是回文串。返回 s 所有可能的分割方案。  示例:输入: “aab”输出:[ [“aa”,”b”], [“a”,”a”,”b”]]">
@@ -390,14 +390,14 @@
 <p>示例:<br>输入: “aab”<br>输出:<br>[<br> [“aa”,”b”],<br> [“a”,”a”,”b”]<br>]</p>
 </blockquote>
 <a id="more"></a>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>这种题其实都是有固定解法的，显然partition(s)定义为s所能组成的回文字符串列表</li>
 <li>那么我们依次截取s的前i个字符，判断其是否为回文字符串。若是，则显然 s[:i] + l for l in partition(s[i:])，就为最后的答案</li>
 <li>例如aab,先判断第一个’a’为回文,则剩余的partition(‘ab’)会返回[[‘a’,’b’]]，然后用第一个’a’分别加上返回的值变为[[‘a’,’a’,’b’]]</li>
 <li>然后判断前两个’aa’为回文，剩余的partition(‘b’)会返回[[‘b’]],加上变为[[‘aa’,’b’]]</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>定义函数isPalin(s)判断s是否为回文字符串</li>
 <li>设定递归终止条件</li>
@@ -1119,6 +1119,8 @@
   
 
   
+  
+
 
   
 

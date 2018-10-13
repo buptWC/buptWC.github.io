@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定不同面额的硬币和一个总金额。写出函数来计算可以凑成总金额的硬币组合数。假设每一种面额的硬币有无限个。  注意: 你可以假设  0 &amp;lt;= amount (总金额) &amp;lt;= 5000 1 &amp;lt;= coin (硬币面额) &amp;lt;= 5000 硬币种类不超过500种 结果符合32位符号整数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-09T16:24:38.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:07:18.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 518 Coin Change 2">
 <meta name="twitter:description" content="给定不同面额的硬币和一个总金额。写出函数来计算可以凑成总金额的硬币组合数。假设每一种面额的硬币有无限个。  注意: 你可以假设  0 &amp;lt;= amount (总金额) &amp;lt;= 5000 1 &amp;lt;= coin (硬币面额) &amp;lt;= 5000 硬币种类不超过500种 结果符合32位符号整数">
@@ -403,14 +403,14 @@
 <blockquote>
 <p>示例 3:<br>输入: amount = 10, coins = [10]<br>输出: 1</p>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>回溯过不了，因为最小的coin会很小，当amount达到5000的时候递归爆炸</li>
 <li>只能是用dp[i]记录组成i元钱有多少种方法，最后返回dp[amount]即可</li>
 <li>这种思想还挺常见的，我要不是以前做过好几道这样的题目可能也想不到，所以你如果也没想到不要担心，多做之后自然就能想到了</li>
 <li>不过这里有一个点和我以前见到用这个方法的题目是不太一样的，那就是这里是对dp进行<code>顺序遍历</code>，以往都是需要<code>逆序遍历</code>的，就为了<code>防止重复利用数字</code>，但这里恰恰是要重复使用！</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>建立dp数组，初始化dp[0] = 1</li>
 <li><code>dp[i] += dp[i-coins[j]] for j in range(len(coins)</code></li>
@@ -1139,6 +1139,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation.Note:The given integer is guaranteed to fit within the range of a 32-bi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-11T10:29:48.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:03:57.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 476 Number Complement">
 <meta name="twitter:description" content="Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation.Note:The given integer is guaranteed to fit within the range of a 32-bi">
@@ -392,8 +392,8 @@
 <blockquote>
 <p>Example 2:<br>Input: 1<br>Output: 0<br>Explanation: The binary representation of 1 is 1 (no leading zero bits), and its complement is 0. So you need to output 0.</p>
 </blockquote>
-<p><strong>分析：</strong><br>就是求一个数的反码，还保证了是32bit的数</p>
-<p><strong>思路：</strong><br>这里介绍两种方法：</p>
+<p><b>分析：</b><br>就是求一个数的反码，还保证了是32bit的数</p>
+<p><b>思路：</b><br>这里介绍两种方法：</p>
 <ol>
 <li>用Python内置的bin()函数获得Num的二进制表示形式，然后’0’ ‘1’互换即可</li>
 <li>101 -&gt; 010， 我们可以发现其实就是找0的位置，想到用全1的数来进行异或操作, 即101 ^ 111 = 010</li>
@@ -1115,6 +1115,8 @@
   
 
   
+  
+
 
   
 

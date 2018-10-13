@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="在选举中，第 i 张票是在时间为 times[i] 时投给 persons[i] 的。现在，我们想要实现下面的查询函数： TopVotedCandidate.q(int t) 将返回在t时刻主导选举的候选人的编号。在t时刻投出的选票也将被计入我们的查询之中。在平局的情况下，最近获得投票的候选人将会获胜。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-24T14:08:07.031Z">
+<meta property="og:updated_time" content="2018-10-13T08:21:13.490Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 911 Online Election">
 <meta name="twitter:description" content="在选举中，第 i 张票是在时间为 times[i] 时投给 persons[i] 的。现在，我们想要实现下面的查询函数： TopVotedCandidate.q(int t) 将返回在t时刻主导选举的候选人的编号。在t时刻投出的选票也将被计入我们的查询之中。在平局的情况下，最近获得投票的候选人将会获胜。">
@@ -398,8 +398,8 @@
 <li>每个测试用例最多调用 10000 次 TopVotedCandidate.q。</li>
 <li>TopVotedCandidate.q(int t) 被调用时总是满足 t &gt;= times[0]。</li>
 </ol>
-<p><strong>题意分析：</strong><br>给定一系列的时间点，在每个时间点会投出一票，在每个时间点都会有票数最高的人存在，现在有若干次询问，需要我们给询问的时间点票数最高的人</p>
-<p><strong>思路：</strong><br>显然我们可以将初始给定的每个时间点的得票数最高的人记录下来，对于上面的例子有：<br>Q = {0:0, 5:1, 10:1, 15:0, 20:0, 25:1, 30:0}<br>然后对于问询的时间点t，我们只需要在Q中找到第一个比t小的时间点即可，显然是二分法！<br>由于t会比较大，所以可能存在大量重复问询，所以还需要用到缓存机制！</p>
+<p><b>题意分析：</b><br>给定一系列的时间点，在每个时间点会投出一票，在每个时间点都会有票数最高的人存在，现在有若干次询问，需要我们给询问的时间点票数最高的人</p>
+<p><b>思路：</b><br>显然我们可以将初始给定的每个时间点的得票数最高的人记录下来，对于上面的例子有：<br>Q = {0:0, 5:1, 10:1, 15:0, 20:0, 25:1, 30:0}<br>然后对于问询的时间点t，我们只需要在Q中找到第一个比t小的时间点即可，显然是二分法！<br>由于t会比较大，所以可能存在大量重复问询，所以还需要用到缓存机制！</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TopVotedCandidate</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, persons, times)</span>:</span></span><br><span class="line">        maxCount = <span class="number">0</span></span><br><span class="line">        d = collections.defaultdict(int)</span><br><span class="line">        self.Q = &#123;&#125;</span><br><span class="line">        self.cache = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(persons)):</span><br><span class="line">            d[persons[i]] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> d[persons[i]] &gt;= maxCount:</span><br><span class="line">                maxCount = d[persons[i]]</span><br><span class="line">                self.Q[times[i]] = persons[i]</span><br><span class="line">        self.res = sorted(self.Q.keys())</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">q</span><span class="params">(self, t)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> t <span class="keyword">not</span> <span class="keyword">in</span> self.cache:</span><br><span class="line">            index = bisect.bisect_right(self.res, t)</span><br><span class="line">            self.cache[t] = self.Q[self.res[index<span class="number">-1</span>]]</span><br><span class="line">        <span class="keyword">return</span> self.cache[t]</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1117,6 +1117,8 @@
   
 
   
+  
+
 
   
 

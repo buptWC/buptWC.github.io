@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="A 3 x 3 magic square is a 3 x 3 grid filled with distinct numbers from 1 to 9 such that each row, column, and both diagonals all have the same sum. Given an grid of integers, how many 3 x 3 “magic squ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:51:38.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:13:58.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 840 Magic Squares In Grid">
 <meta name="twitter:description" content="A 3 x 3 magic square is a 3 x 3 grid filled with distinct numbers from 1 to 9 such that each row, column, and both diagonals all have the same sum. Given an grid of integers, how many 3 x 3 “magic squ">
@@ -391,8 +391,8 @@
 <p><strong>Example 1:</strong><br><strong>Input</strong>:<br>[[4,3,8,4],<br>[9,5,1,9],<br> 2,7,6,2]]<br><strong>Output:</strong> 1<br><strong>Explanation:</strong><br>The following subgrid is a 3 x 3 magic square:<br>438<br>951<br>276<br>while this one is not:<br>384<br>519<br>762<br>In total, there is only one magic square inside the given grid.</p>
 </blockquote>
 <p>Note:<br>    1 &lt;= grid.length &lt;= 10<br>    1 &lt;= grid[0].length &lt;= 10<br>    0 &lt;= grid[i][j] &lt;= 15</p>
-<p><strong>分析：题目定义了一个概念，3x3的矩阵，元素从1到9，横纵对角线之和相等，把这个称为”magic square”，给定一个二维列表，找有多少个magic square，数据长度不超过10 x 10，说明这道题随便写都不会超时</strong></p>
-<p><strong>思路：从1到9取值，那么最中间的数必是5，至于为什么，想不通的我建议你放弃，只要从1，1到n-1,n-1遍历，如果满足值为5就进行判断</strong></p>
+<p><b>分析：</b><br>题目定义了一个概念，3x3的矩阵，元素从1到9，横纵对角线之和相等，把这个称为”magic square”，给定一个二维列表，找有多少个magic square，数据长度不超过10 x 10，说明这道题随便写都不会超时</p>
+<p><b>思路：</b><br>从1到9取值，那么最中间的数必是5，至于为什么，想不通的我建议你放弃，只要从1，1到n-1,n-1遍历，如果满足值为5就进行判断</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numMagicSquaresInside</span><span class="params">(grid)</span>:</span></span><br><span class="line">	m,n = len(grid),len(grid[<span class="number">0</span>])</span><br><span class="line">	res = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">isMagic</span><span class="params">(i,j)</span>:</span></span><br><span class="line">		<span class="keyword">for</span> x,y <span class="keyword">in</span> [(<span class="number">-1</span>,<span class="number">-1</span>),(<span class="number">-1</span>,<span class="number">0</span>),(<span class="number">-1</span>,<span class="number">1</span>),(<span class="number">0</span>,<span class="number">-1</span>),(<span class="number">0</span>,<span class="number">1</span>),(<span class="number">1</span>,<span class="number">-1</span>),(<span class="number">1</span>,<span class="number">1</span>)]:</span><br><span class="line">			<span class="keyword">if</span> grid[i+x][j+y] &gt; <span class="number">9</span> <span class="keyword">or</span> grid[i+x][j+y] &lt; <span class="number">1</span>: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">		<span class="keyword">return</span> grid[i<span class="number">-1</span>][j<span class="number">-1</span>]+grid[i+<span class="number">1</span>][j+<span class="number">1</span>] == grid[i+<span class="number">1</span>][j<span class="number">-1</span>]+grid[i<span class="number">-1</span>][j+<span class="number">1</span>] == grid[i][j<span class="number">-1</span>]+grid[i][j+<span class="number">1</span>] == grid[i+<span class="number">1</span>][j]+grid[i<span class="number">-1</span>][j] </span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,m<span class="number">-1</span>):</span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,n<span class="number">-1</span>):</span><br><span class="line">			<span class="keyword">if</span> grid[i][j] == <span class="number">5</span> <span class="keyword">and</span> isMagic(i,j): res += <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">87</span> / <span class="number">87</span> test cases passed.</span><br><span class="line">difficulty: easy</span><br><span class="line">Runtime: <span class="number">33</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1110,6 +1110,8 @@
   
 
   
+  
+
 
   
 

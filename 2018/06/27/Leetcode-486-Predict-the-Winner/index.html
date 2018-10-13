@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个表示分数的非负整数数组。 玩家1从数组任意一端拿取一个分数，随后玩家2继续从剩余数组任意一端拿取分数，然后玩家1拿，……。每次一个玩家只能拿取一个分数，分数被拿取之后不再可取。直到没有剩余分数可取时游戏结束。最终获得分数总和最多的玩家获胜。给定一个表示分数的数组，预测玩家1是否会成为赢家。你可以假设每个玩家的玩法都会使他的分数最大化。  示例 1:输入: [1, 5, 2]输出: Fals">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-28T01:15:42.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:05:34.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 486 Predict the Winner">
 <meta name="twitter:description" content="给定一个表示分数的非负整数数组。 玩家1从数组任意一端拿取一个分数，随后玩家2继续从剩余数组任意一端拿取分数，然后玩家1拿，……。每次一个玩家只能拿取一个分数，分数被拿取之后不再可取。直到没有剩余分数可取时游戏结束。最终获得分数总和最多的玩家获胜。给定一个表示分数的数组，预测玩家1是否会成为赢家。你可以假设每个玩家的玩法都会使他的分数最大化。  示例 1:输入: [1, 5, 2]输出: Fals">
@@ -399,20 +399,20 @@
 <li>数组里所有分数都为非负数且不会大于10000000。</li>
 <li>如果最终两个玩家的分数相等，那么玩家1仍为赢家。</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>显然，第一个人要么拿第1个要么拿最后1个，具体拿哪个取决于哪种拿法能拿的分数更大。</li>
 <li>此时，我们不妨定义score(nums)代表在剩余数组为nums时，先拿的人能获得的最大分数。</li>
 <li>故第一个人能拿到的最大分数就为score(nums)，第二个人能拿到的分数自然是sum(nums)-score(nums)。因总和不变，所以第二个人的策略是使第一个人能得到的分数尽量小！</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>对于score(nums)，如果len(nums) &lt;= 2，则score(nums) = max(nums)</li>
 <li>如果len(nums)&gt;3，先拿的人可以拿nums[0]，也可以拿nums[-1]，不妨设拿的nums[0]，则此时该第二个人在nums[1:]数组先拿</li>
 <li>第二个人可能拿nums[1]或者nums[-1]，拿哪个取决于让第一个人在剩余数组能获得的最大分数最小，即min(score(nums[2:]),score(nums[1:-1]))</li>
 <li>依次类推，注意中间有大量重复计算，即使nums.len &lt;= 20，我们最好还是用记忆化的形式来计算，又因为list是不可哈希对象，所以先转换成tuple记录</li>
 </ol>
-<p><strong>补充：</strong><br>这种记忆化的递归就是dp，转换成dp更容易想清楚，这里我就不写dp方法了。<br>时间复杂度的分析很简单，观察字典d即可，我们是每递归一次就有一个新的d[nums[i:j]]，i处于(0,n-1),j处于(i+1,n-1)，故为n^2</p>
+<p><b>补充：</b><br>这种记忆化的递归就是dp，转换成dp更容易想清楚，这里我就不写dp方法了。<br>时间复杂度的分析很简单，观察字典d即可，我们是每递归一次就有一个新的d[nums[i:j]]，i处于(0,n-1),j处于(i+1,n-1)，故为n^2</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">PredictTheWinner</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        d = &#123;&#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(nums)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> tuple(nums) <span class="keyword">in</span> d: <span class="keyword">return</span> d[tuple(nums)]</span><br><span class="line">            <span class="keyword">if</span> len(nums) == <span class="number">1</span>: <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> len(nums) == <span class="number">2</span>: <span class="keyword">return</span> max(nums)</span><br><span class="line">            res = max(nums[<span class="number">0</span>] + min(score(nums[<span class="number">2</span>:]),score(nums[<span class="number">1</span>:<span class="number">-1</span>])), nums[<span class="number">-1</span>] + min(score(nums[<span class="number">1</span>:<span class="number">-1</span>]), score(nums[:<span class="number">-2</span>])))</span><br><span class="line">            d[tuple(nums)] = res</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">        s1 = score(nums)</span><br><span class="line">        s2 = sum(nums) - s1</span><br><span class="line">        <span class="keyword">return</span> s1 &gt;= s2</span><br><span class="line"></span><br><span class="line">O(n^<span class="number">2</span>) time, O(n^<span class="number">2</span>) space</span><br><span class="line"><span class="number">61</span> / <span class="number">61</span> test cases passed.</span><br><span class="line">Difficulty: medium</span><br><span class="line">Runtime: <span class="number">40</span> ms, beats <span class="number">73.5</span>%</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1130,6 +1130,8 @@
   
 
   
+  
+
 
   
 

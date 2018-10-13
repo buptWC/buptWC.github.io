@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个整型数组, 你的任务是找到所有该数组的递增子序列，递增子序列的长度至少是2。  示例:输入: [4, 6, 7, 7]输出: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-03T01:31:54.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:05:44.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 491 Increasing Subsequences">
 <meta name="twitter:description" content="给定一个整型数组, 你的任务是找到所有该数组的递增子序列，递增子序列的长度至少是2。  示例:输入: [4, 6, 7, 7]输出: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]">
@@ -396,7 +396,7 @@
 <li>数组中的整数范围是 [-100,100]。</li>
 <li>给定数组中可能包含重复数字，相等的数字应该被视为递增的一种情况。</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>如果你看出来这道题和最长上升子序列是一模一样的话那么答案做出来也就不难了，这也是为什么我把这道题归入dp类的原因</li>
 <li>我们可以先思考一下LIS问题是怎么处理的，我们使用dp[i]表示前i个数字组成的序列中以nums[i]结尾的最长上升子序列的长度，dp[i] = max([dp[j]+1 for j in range(i) if nums[j] &lt; nums[i]]) </li>
@@ -404,7 +404,7 @@
 <li>则可获得递推式 d[i].append(l+nums[i]) for j in range(i) if nums[j] &lt;= nums[i] for l in d[j] </li>
 <li>当然严格来说上式不能算是递推式，我们直接用给出的具体实例来看一下是怎么运作的，初始化d = {0:[[4]],1:[[6]],2:[[7]],3:[[7]]}，我们从1开始分析，nums[1] &gt; nums[0]，所以d[1] = [[6],[4,6]]，依次类推d[2] = [[4,7],[6,7],[4,6,7]]，d[3] = …</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>递推式如分析中所示，但考虑到4,6,7,7,7这种情况，计算第三个7的时候会出现重复情况，所以用一个集合来确保答案中没有重复元素，然后又因为list本身不可hash，所以转化成元祖来进行hash即可</li>
 </ol>
@@ -1125,6 +1125,8 @@
   
 
   
+  
+
 
   
 

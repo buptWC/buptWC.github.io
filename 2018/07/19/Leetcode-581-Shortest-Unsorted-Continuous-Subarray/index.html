@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。你找到的子数组应是最短的，请输出它的长度。  示例 1:输入: [2, 6, 4, 8, 10, 9, 15]输出: 5解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-19T12:17:14.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:08:40.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 581 Shortest Unsorted Continuous Subarray">
 <meta name="twitter:description" content="给定一个整数数组，你需要寻找一个连续的子数组，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。你找到的子数组应是最短的，请输出它的长度。  示例 1:输入: [2, 6, 4, 8, 10, 9, 15]输出: 5解释: 你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。">
@@ -395,13 +395,13 @@
 <li>输入的数组长度范围在 [1, 10,000]。</li>
 <li>输入的数组可能包含重复元素 ，所以升序的意思是&lt;=。</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>我们需要找一段<code>最短无序数组nums[start:end]</code>，使其排序完成后整个数组也是有序的，换个角度想，我们也可以找<code>两段最长的有序数组nums[:start]和nums[end:]</code>，那么怎样找到“最长”的情况呢</li>
 <li>对于某一个元素nums[i]，如果其满足<code>nums[i] &lt; min(nums[i+1:])</code>，则我们可以说nums[i]是处于有序序列中的，即nums[:start]中。</li>
 <li>对于某一个元素nums[j]，如果其满足<code>nums[j] &gt; max(nums[:j])</code>，则我们可以说nums[j]也是处于有序序列中的，即nums[end:]中。</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>从0开始，找到第一个不满足<code>nums[i] &lt; min(nums[i+1:])</code>的i，记为start</li>
 <li>从len(nums)-1开始，找到第一个不满足<code>nums[j] &gt; max(nums[:j])</code>的j，记为end</li>
@@ -1126,6 +1126,8 @@
   
 
   
+  
+
 
   
 

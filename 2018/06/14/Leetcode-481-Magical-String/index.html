@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="A magical string S consists of only ‘1’ and ‘2’ and obeys the following rules: The string S is magical because concatenating the number of contiguous occurrences of characters ‘1’ and ‘2’ generates th">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-14T07:11:16.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:04:14.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 481 Magical String">
 <meta name="twitter:description" content="A magical string S consists of only ‘1’ and ‘2’ and obeys the following rules: The string S is magical because concatenating the number of contiguous occurrences of characters ‘1’ and ‘2’ generates th">
@@ -396,7 +396,7 @@
 <blockquote>
 <p>Example 1:<br>Input: 6<br>Output: 3<br>Explanation: The first 6 elements of magical string S is “12211” and it contains three 1’s, so return 3.</p>
 </blockquote>
-<p><strong>分析：</strong><br>龟龟!第二次在leetcode上写题解，beats 100%太骚了，而且血虐之后的<br><a href="https://leetcode.com/problems/magical-string/discuss/139180/python-solution-78ms-beats-100" target="_blank" rel="noopener">https://leetcode.com/problems/magical-string/discuss/139180/python-solution-78ms-beats-100%</a></p>
+<p><b>分析：</b><br>龟龟!第二次在leetcode上写题解，beats 100%太骚了，而且血虐之后的<br><a href="https://leetcode.com/problems/magical-string/discuss/139180/python-solution-78ms-beats-100" target="_blank" rel="noopener">https://leetcode.com/problems/magical-string/discuss/139180/python-solution-78ms-beats-100%</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">s = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line">index = <span class="number">2</span></span><br><span class="line"><span class="keyword">while</span> len(s) &lt; <span class="number">100000</span>:</span><br><span class="line">	<span class="comment"># according to the last element, we decide the value of 'val'</span></span><br><span class="line">	val = <span class="number">3</span> - s[<span class="number">-1</span>]</span><br><span class="line">	s.extend([val]*s[index])</span><br><span class="line">	index += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">magicalString</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> s[:n].count(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">O(n) time, O(n) space</span><br><span class="line"><span class="number">65</span> / <span class="number">65</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">78</span> ms, beats <span class="number">100</span>%</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1114,6 +1114,8 @@
   
 
   
+  
+
 
   
 

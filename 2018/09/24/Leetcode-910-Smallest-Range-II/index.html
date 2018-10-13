@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个整数数组 A，对于每个整数 A[i]，我们可以选择 x = -K 或是 x = K，并将 x 加到 A[i] 中。在此过程之后，我们得到一些数组 B。返回 B 的最大值和 B 的最小值之间可能存在的最小差值。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-24T14:08:04.152Z">
+<meta property="og:updated_time" content="2018-10-13T08:21:04.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 910 Smallest Range II">
 <meta name="twitter:description" content="给定一个整数数组 A，对于每个整数 A[i]，我们可以选择 x = -K 或是 x = K，并将 x 加到 A[i] 中。在此过程之后，我们得到一些数组 B。返回 B 的最大值和 B 的最小值之间可能存在的最小差值。">
@@ -401,8 +401,8 @@
 <li>0 &lt;= A[i] &lt;= 10000</li>
 <li>0 &lt;= K &lt;= 10000</li>
 </ol>
-<p><strong>题意分析：</strong><br>对于每个A[i]，我们需要将其加上k或者减掉k，使得最后数组中的最大最小值最接近</p>
-<p><strong>思路：</strong><br>初步想法肯定把大的减小，把小的增大，最次也是同时增大或者同时减小，不存在把小的减小反而把大的增大，想到这一步就好做了<br>我们先将A排序，然后将若干个大的减小，剩下的小的增大，但是具体将多少个大的减小呢，这个我们不能确定，所以我们得依次遍历<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">smallestRangeII</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        A.sort()</span><br><span class="line">        <span class="comment"># 初始默认全部加k</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)): A[i] += K</span><br><span class="line">        <span class="comment"># 使用ma,mi保存当前的最大和最小值</span></span><br><span class="line">        ma, mi = A[<span class="number">-1</span>], A[<span class="number">0</span>]</span><br><span class="line">        res = ma - mi</span><br><span class="line">        <span class="comment"># M代表-k的那部分数中的最大值</span></span><br><span class="line">        <span class="comment"># m代表+k的那部分数中的最小值</span></span><br><span class="line">        M,m = ma<span class="number">-2</span>*K,mi</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)<span class="number">-1</span>,<span class="number">0</span>,<span class="number">-1</span>):</span><br><span class="line">            A[i] -= <span class="number">2</span>*K</span><br><span class="line">            ma = max(M, A[i<span class="number">-1</span>])</span><br><span class="line">            mi = min(A[i], m)</span><br><span class="line">            res = min(res, ma - mi)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
+<p><b>题意分析：</b><br>对于每个A[i]，我们需要将其加上k或者减掉k，使得最后数组中的最大最小值最接近</p>
+<p><b>思路：</b><br>初步想法肯定把大的减小，把小的增大，最次也是同时增大或者同时减小，不存在把小的减小反而把大的增大，想到这一步就好做了<br>我们先将A排序，然后将若干个大的减小，剩下的小的增大，但是具体将多少个大的减小呢，这个我们不能确定，所以我们得依次遍历<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">smallestRangeII</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        A.sort()</span><br><span class="line">        <span class="comment"># 初始默认全部加k</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)): A[i] += K</span><br><span class="line">        <span class="comment"># 使用ma,mi保存当前的最大和最小值</span></span><br><span class="line">        ma, mi = A[<span class="number">-1</span>], A[<span class="number">0</span>]</span><br><span class="line">        res = ma - mi</span><br><span class="line">        <span class="comment"># M代表-k的那部分数中的最大值</span></span><br><span class="line">        <span class="comment"># m代表+k的那部分数中的最小值</span></span><br><span class="line">        M,m = ma<span class="number">-2</span>*K,mi</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)<span class="number">-1</span>,<span class="number">0</span>,<span class="number">-1</span>):</span><br><span class="line">            A[i] -= <span class="number">2</span>*K</span><br><span class="line">            ma = max(M, A[i<span class="number">-1</span>])</span><br><span class="line">            mi = min(A[i], m)</span><br><span class="line">            res = min(res, ma - mi)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -1120,6 +1120,8 @@
   
 
   
+  
+
 
   
 

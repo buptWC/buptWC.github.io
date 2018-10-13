@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.  Example 1:Input: S = “ab#c”, T = “ad#c”Output: trueExplanation: Both S">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:51:56.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:14:27.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 844 Backspace String Compare">
 <meta name="twitter:description" content="Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.  Example 1:Input: S = “ab#c”, T = “ad#c”Output: trueExplanation: Both S">
@@ -400,8 +400,8 @@
 <p>Example 4:<br>Input: S = “a#c”, T = “b”<br>Output: false<br>Explanation: S becomes “c” while T becomes “b”.</p>
 </blockquote>
 <p>Note:<br>    1 &lt;= S.length &lt;= 200<br>    1 &lt;= T.length &lt;= 200<br>    S and T only contain lowercase letters and ‘#’ characters.</p>
-<p><strong>分析：无非就是一个带取消键情况的判断输入是否相等的简单题目</strong></p>
-<p><strong>思路：说实话我第一时间还没反应过来这道题应该用栈这么显而易见的思想，果然还是对这些数据结构太不敏感了，还远远不行啊</strong></p>
+<p><b>分析：</b><br>无非就是一个带取消键情况的判断输入是否相等的简单题目</p>
+<p><b>思路：</b><br>说实话我第一时间还没反应过来这道题应该用栈这么显而易见的思想，果然还是对这些数据结构太不敏感了，还远远不行啊</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backspaceCompare</span><span class="params">(self, S, T)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :type T: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(s)</span>:</span></span><br><span class="line">            stack = []</span><br><span class="line">            <span class="keyword">for</span> e <span class="keyword">in</span> s:</span><br><span class="line">                <span class="keyword">if</span> e == <span class="string">'#'</span>:</span><br><span class="line">                    <span class="keyword">if</span> stack:</span><br><span class="line">                        stack.pop()</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    stack.append(e)</span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span>.join(stack)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> helper(S) == helper(T)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">104</span> / <span class="number">104</span> test cases passed.</span><br><span class="line">difficulty: easy</span><br><span class="line">Runtime: <span class="number">38</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1121,6 +1121,8 @@
   
 
   
+  
+
 
   
 

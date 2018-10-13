@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -128,7 +128,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_529_1.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_529_2.png">
-<meta property="og:updated_time" content="2018-07-11T03:29:00.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:08:01.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 529 Minesweeper">
 <meta name="twitter:description" content="让我们一起来玩扫雷游戏！给定一个代表游戏板的二维字符矩阵。 ‘M’ 代表一个未挖出的地雷，’E’ 代表一个未挖出的空方块，’B’ 代表没有相邻（上，下，左，右，和所有4个对角线）地雷的已挖出的空白方块，数字（’1’ 到 ‘8’）表示有多少地雷与这块已挖出的方块相邻，’X’ 则表示一个已挖出的地雷。现在给出在所有未挖出的方块中（’M’或者’E’）的下一个点击位置（行和列索引），根据以下规则，返回相应">
@@ -397,14 +397,14 @@
 </ol>
 <a id="more"></a>
 <p><img src="/images/leetcode_529_1.png" alt=""><br><img src="/images/leetcode_529_2.png" alt=""></p>
-<p><strong>注意:</strong></p>
+<p><b>注意:</b></p>
 <ol>
 <li>输入矩阵的宽和高的范围为 [1,50]。</li>
 <li>点击的位置只能是未被挖出的方块 (‘M’ 或者 ‘E’)，这也意味着面板至少包含一个可点击的方块。</li>
 <li>输入面板不会是游戏结束的状态（即有地雷已被挖出）。</li>
 <li>简单起见，未提及的规则在这个问题中可被忽略。例如，当游戏结束时你不需要挖出所有地雷，考虑所有你可能赢得游戏或标记方块的情况。</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>根据规则中所述，关键有以下几点<ol>
 <li>点击处必为’E’或’M’，若是’M’，将其改为’X’游戏结束</li>
@@ -414,7 +414,7 @@
 </li>
 <li>这里举个简单例子，若点击(0,0)：(<code>不能越过数字去递归(0,2)，这一点从示例1中也能看出</code>)<br>[E,E,E]————&gt;[B,1,E]<br>[E,E,M]————&gt;[B,1,M]</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>当我们递归E的时候如何判断周边是否有雷呢，每次都遍历8个方向会有大量重复工作，虽然在这道题中即使你这样做也可以通过，但是显然这不是我们追求的</li>
 <li>我们使用一个字典d[(i,j)]来存储(i,j)处周围的雷数量，那么容易想到我先遍历每一个雷，然后对雷周围的格子在d中进行一次变换存储</li>
@@ -1138,6 +1138,8 @@
   
 
   
+  
+
 
   
 

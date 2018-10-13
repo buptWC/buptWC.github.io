@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="A robot on an infinite grid starts at point (0, 0) and faces north.  The robot can receive one of three possible types of commands:-2: turn left 90 degrees-1: turn right 90 degrees1 &amp;lt;= x &amp;lt;= 9: m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-22T12:41:52.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:18:35.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 874 Walking Robot Simulation">
 <meta name="twitter:description" content="A robot on an infinite grid starts at point (0, 0) and faces north.  The robot can receive one of three possible types of commands:-2: turn left 90 degrees-1: turn right 90 degrees1 &amp;lt;= x &amp;lt;= 9: m">
@@ -401,14 +401,14 @@
 <li>-30000 &lt;= obstacle[i][1] &lt;= 30000</li>
 <li>The answer is guaranteed to be less than 2 ^ 31.</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>首先应该确定目前行进的方向，我用(1,-1,-2,2)这四个值分别代表上下左右,dire = 1代表目前向上行进，故初始化dire = 1</li>
 <li>当commands[i] = -2 or -1时，改变dire的值，这跟dire当前的值有关，具体方法于思路中说</li>
 <li>因为每次行进的距离不超过10，那么最多也就走90000步，我们完全可以每一步都判断其是否被一个obstacles所阻挡，但是每次比较一个元祖是不是在集合中也太蠢了，所以稍微处理一下，我们用两个字典记录obstacles，例如，dx[x1]代表一个列表，列表里面记录所有横坐标为x1的点的纵坐标,dy[y1]同理</li>
 <li><code>注意，这道题是要求整个过程中达到的最大的欧拉距离，并不是最后的距离，所有每移动一次就要比较一次，我就是没看到这一点，做了特别特别久，都不知道哪里错了！</code></li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>我们用一个directions = {1:[-2,2], -1:[2,-2], -2:[-1,1], 2:[1,-1]}记录方向的变换，对于directions[x]，x代表当前方向，directions[x][0]表示向左转之后的方向，directions[x][1]代表向右转之后的方向</li>
 <li>用position=[x,y]记录此时的位置，每进行一次移动就记录一次</li>
@@ -1131,6 +1131,8 @@
   
 
   
+  
+
 
   
 

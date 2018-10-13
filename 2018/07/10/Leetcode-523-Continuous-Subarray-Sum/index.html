@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个包含非负数的数组和一个目标整数k，编写一个函数来判断该数组是否含有连续的子数组，其大小至少为2，总和为k的倍数，即总和为 n*k，其中n也是一个整数。  示例 1:输入: [23,2,4,6,7], k = 6输出: True解释: [2,4] 是一个大小为 2 的子数组，并且和为 6。示例 2:输入: [23,2,6,4,7], k = 6输出: True解释: [23,2,6,4,7]">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-10T14:02:40.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:07:27.889Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 523 Continuous Subarray Sum">
 <meta name="twitter:description" content="给定一个包含非负数的数组和一个目标整数k，编写一个函数来判断该数组是否含有连续的子数组，其大小至少为2，总和为k的倍数，即总和为 n*k，其中n也是一个整数。  示例 1:输入: [23,2,4,6,7], k = 6输出: True解释: [2,4] 是一个大小为 2 的子数组，并且和为 6。示例 2:输入: [23,2,6,4,7], k = 6输出: True解释: [23,2,6,4,7]">
@@ -395,7 +395,7 @@
 <li>数组的长度不会超过10,000。</li>
 <li>你可以认为所有数字总和在 32 位有符号整数范围内。</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>这道题和560题解法一样，强烈建议先看那道题，具体见<a href="https://leetcode.com/problems/subarray-sum-equals-k/solution/" target="_blank" rel="noopener">https://leetcode.com/problems/subarray-sum-equals-k/solution/</a></li>
 <li>当我们分析数组中连续的若干数之和时，很容易想到先用一个数组sm[i]记录sum(nums[:i])，那么则有<code>sm[j] - sm[i] = sum(nums[i:j])</code></li>
@@ -407,7 +407,7 @@
 </li>
 <li>回到我们这道题上，假设确实存在i,j(j-i&gt;=2)满足<code>sum(nums[i:j]) = n * k</code>，即<code>sm[j] - sm[i] = n * k</code>，此时用上面的方法是不可行的，因为n*k是个不确定的数，我们无法判断其是否在集合内，但我们只用作一个小小的变换————对上式两边同时模k，上式变为<code>sm[j]%k - sm[i]%k = 0</code>，此时就和4中情况是等价的，唯独是集合中存储的数从sm[i]变成了sm[i]%k</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>因为j-i&gt;=2，所以更新集合的时候应当推迟一步，即分析完sm[i]之后才将sm[i-1]%k加入集合之中</li>
 <li>注意k = 0的情况，因为模0操作是不被允许的，所以需要单独处理</li>
@@ -1130,6 +1130,8 @@
   
 
   
+  
+
 
   
 

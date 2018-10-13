@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -127,7 +127,7 @@
 <meta property="og:description" content="Given an array of integers A, consider all non-empty subsequences of A.For any sequence S, let the width of S be the difference between the maximum and minimum element of S.Return the sum of the width">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_891.png">
-<meta property="og:updated_time" content="2018-08-23T08:27:01.310Z">
+<meta property="og:updated_time" content="2018-10-13T08:19:43.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 891 Sum of Subsequence Widths">
 <meta name="twitter:description" content="Given an array of integers A, consider all non-empty subsequences of A.For any sequence S, let the width of S be the difference between the maximum and minimum element of S.Return the sum of the width">
@@ -395,7 +395,7 @@
 <li>1 &lt;= A[i] &lt;= 20000</li>
 </ol>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>首先我们需要明确，题目所求的widths和数组的本身的顺序没有关系，所以排序不会影响最后的结果，其次如果子串长度为1则widths为0，所以可以不用考虑</li>
 <li>OK，对于[1,2,3,4]这个数组，我们从第二个数开始分析：<ol>
@@ -407,7 +407,7 @@
 <li>相信这么一写你肯定已经<em>初步</em>看出规律了，但是如果按照这个规律不做任何处理依次累加的话复杂度仍然是O(n^2)，肯定是不过关的，我们这里再写一下通用的式子吧:<br><img src="/images/leetcode_891.png" alt=""></li>
 <li>至此，递推式关系已出，显然dp[0] = 0, dp[1] = A[1]-A[0].</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>注意递推式中有一个2^(i+1)，因为这个i可以达到20000，所以我们必须先对所有2的次方进行预处理，也就是mod 1e9+7！(把这个作为全局变量，不要来一组数据又重新算一次)</li>
 </ol>
@@ -1130,6 +1130,8 @@
   
 
   
+  
+
 
   
 

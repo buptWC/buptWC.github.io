@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="A positive integer is magical if it is divisible by either A or B.Return the N-th magical number.  Since the answer may be very large, return it modulo 10^9 + 7.  Example 1:Input: N = 1, A = 2, B = 3O">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-09T07:23:59.303Z">
+<meta property="og:updated_time" content="2018-10-13T08:19:09.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 878 Nth Magical Number">
 <meta name="twitter:description" content="A positive integer is magical if it is divisible by either A or B.Return the N-th magical number.  Since the answer may be very large, return it modulo 10^9 + 7.  Example 1:Input: N = 1, A = 2, B = 3O">
@@ -403,7 +403,10 @@
 <ol>
 <li>1 &lt;= N &lt;= 10^9</li>
 <li>2 &lt;= A &lt;= 40000</li>
-<li>2 &lt;= B &lt;= 40000<br>2，3，4，6，8，9，10，12，14，15，16<br><strong>分析:</strong></li>
+<li>2 &lt;= B &lt;= 40000<br>2，3，4，6，8，9，10，12，14，15，16</li>
+</ol>
+<p><b>分析:</b></p>
+<ol>
 <li>在极大的范围内找到一个数,使其满足某种条件，显然是二分法</li>
 <li>对于找到的某个数K，要判断其是不是正好是满足条件的第N个数，也就是判断是不是刚好有N-1个满足条件的数比他小。</li>
 <li>举个例子，N，A，B = 11，2，3<ol>
@@ -414,7 +417,7 @@
 </ol>
 </li>
 </ol>
-<p>思路：</p>
+<p><b>思路：</b></p>
 <ol>
 <li>先找到A,B的最小公倍数</li>
 <li>二分计算结果</li>
@@ -1139,6 +1142,8 @@
   
 
   
+  
+
 
   
 

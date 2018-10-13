@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定两个大小为 m 和 n 的有序数组 nums1 和 nums2 。请找出这两个有序数组的中位数。要求算法的时间复杂度为 O(log (m+n)) 。你可以假设 nums1 和 nums2 不同时为空。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-12T15:23:12.040Z">
+<meta property="og:updated_time" content="2018-10-13T07:59:59.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 4 Median of Two Sorted Arrays">
 <meta name="twitter:description" content="给定两个大小为 m 和 n 的有序数组 nums1 和 nums2 。请找出这两个有序数组的中位数。要求算法的时间复杂度为 O(log (m+n)) 。你可以假设 nums1 和 nums2 不同时为空。">
@@ -387,8 +387,8 @@
       
         <p>给定两个大小为 m 和 n 的有序数组 nums1 和 nums2 。<br>请找出这两个有序数组的中位数。要求算法的时间复杂度为 O(log (m+n)) 。<br>你可以假设 nums1 和 nums2 不同时为空。<br><a id="more"></a><br>示例 1:<br>nums1 = [1, 3]<br>nums2 = [2]<br>中位数是 2.0</p>
 <p>示例 2:<br>nums1 = [1, 2]<br>nums2 = [3, 4]<br>中位数是 (2 + 3)/2 = 2.5</p>
-<p><strong>题意分析：</strong><br>在两个有序数组中寻找中位数，关键要求时间复杂度为0(log(m+n))<br>在第一次见到这个题的时候，我真是惊呆了，当时我还是个小白，没想到这道题居然能有这么巧妙的解法，光看懂答案就花了不知道多少时间。</p>
-<p><strong>思路分析：</strong><br>我们知道中位数的定义是整个数组的最中间的数，换句话说，以中位数为界，可以将数组分为两个长度相等的部分。关键也就在此，例如对于两个有序数组，一个长度为3，一个长度5，那么我们知道按中位数划分后两边的数组长度应该都为4，并且满足左边数组的最大值要小于等于右边数组的最小值。</p>
+<p><b>题意分析:</b><br>在两个有序数组中寻找中位数，关键要求时间复杂度为0(log(m+n))<br>在第一次见到这个题的时候，我真是惊呆了，当时我还是个小白，没想到这道题居然能有这么巧妙的解法，光看懂答案就花了不知道多少时间。</p>
+<p><b>思路分析：</b><br>我们知道中位数的定义是整个数组的最中间的数，换句话说，以中位数为界，可以将数组分为两个长度相等的部分。关键也就在此，例如对于两个有序数组，一个长度为3，一个长度5，那么我们知道按中位数划分后两边的数组长度应该都为4，并且满足左边数组的最大值要小于等于右边数组的最小值。</p>
 <p>根据这个分析，我们只需要找出左边数组的4个数有几个是从第一个数组里面获得的即可。<br>例如我们假定左边数组的4个数中有<code>i个数</code>是从第一个数组中获得，那么则有<code>4-i个数</code>从第二个数组中获得。我们只需要判断 <code>max(nums1[i-1], nums2[4-i-1])</code>（左边数组的最大值）是否小于等于 <code>min(nums1[i], nums1[4-i])</code>（右边数组的最小值），如果满足上述式子，则说明我们成功找到了这个分界点，则中位数可求（要根据长度奇偶来分别计算）！</p>
 <p>我们在寻找具体的<code>i</code>的时候使用二分法，由于<code>i</code>代表的意义为从第一个数组中拿多少数，所以<code>i</code>的最小值为<code>0</code>，最大值为 <code>min(n, (m+n)//2)</code>，所以是满足复杂度为0(log(m+n))这个条件的。</p>
 <p>另一个关键点，我们知道二分法需要不停的变换上下界，那么在这里如果不满足上述条件，<code>lo</code>和<code>hi</code>应该怎样变化呢？关键在于<code>nums[i-1]</code>，如果是<code>nums[i-1] &gt; 右边的最小值</code>，说明我们的<code>i</code>已经选的太大了，故<code>hi = mid</code>；反之，则说明我们的<code>i</code>选的太小了，导致<code>4-i</code>太大了，故<code>lo = mid + 1</code>。</p>
@@ -1113,6 +1113,8 @@
   
 
   
+  
+
 
   
 

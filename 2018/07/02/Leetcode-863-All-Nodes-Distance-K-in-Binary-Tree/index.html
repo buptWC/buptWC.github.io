@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -127,7 +127,7 @@
 <meta property="og:image" content="http://yoursite.com/images/leetcode_863_1.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_863_2.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_863_3.png">
-<meta property="og:updated_time" content="2018-07-02T09:06:52.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:17:40.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 863 All Nodes Distance K in Binary Tree">
 <meta name="twitter:image" content="http://yoursite.com/images/leetcode_863_1.png">
@@ -386,14 +386,14 @@
       
 
       
-        <p><img src="/images/leetcode_863_1.png" alt=""><br><a id="more"></a><br><strong>这道题思想非常简单，但是可能我代码写得有点复杂（因为我回溯用的不好），先着重看思路把，代码实现方法尽量讲一讲</strong></p>
-<p><strong>分析：</strong></p>
+        <p><img src="/images/leetcode_863_1.png" alt=""><br><a id="more"></a><br><b>这道题思想非常简单，但是可能我代码写得有点复杂（因为我回溯用的不好），先着重看思路把，代码实现方法尽量讲一讲</b></p>
+<p><b>分析：</b></p>
 <ol>
 <li>我们先考虑最简单的情况，如果根结点就是目标节点，那么找离根结点距离为K的结点很容易，使用bfs找到第k层所有结点即可，现在定义getAns(root,K)来处理这种情况！</li>
 <li>如下图，如果我们找到目标结点设为self.root，那么圆圈所圈部分中的结果，可直接用getAns(self.root,K)得到<br><img src="/images/leetcode_863_2.png" alt=""></li>
 <li>那么圆圈外的部分，我们应该怎么得到呢？如果我们能想办法将圆圈外的部分也化为以目标节点为根节点的形式就直接解决了， 这次看一个复杂的情形，我们需要把圆圈内所有箭头（即目标节点至根结点路径中所有箭头）反转，才能构建出我们想要的形式，构建完之后使用getAns(self.root,K)计算结果。<br><img src="/images/leetcode_863_3.png" alt=""></li>
 </ol>
-<p><strong>思路：</strong><br><strong>着重讲下search()函数</strong></p>
+<p><b>思路：</b><br><b>着重讲下search()函数</b></p>
 <ol>
 <li>当我们找到目标节点后，先计算一次结果，如分析中第2步。然后将其左右孩子全部抹去，将其本身父结点设为其孩子节点。</li>
 <li>而为了尽量不改变父节点本身的结构，如左孩子为目标节点，则将父结点的left先指向None,方便之后再指向父节点的父节点，依次类推。</li>
@@ -1117,6 +1117,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="You are given an array A of strings.Two strings S and T are special-equivalent if after any number of moves, S == T.A move consists of choosing two indices i and j with i % 2 == j % 2, and swapping S[">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-26T05:35:56.996Z">
+<meta property="og:updated_time" content="2018-10-13T08:20:06.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 893 Groups of Special-Equivalent Strings">
 <meta name="twitter:description" content="You are given an array A of strings.Two strings S and T are special-equivalent if after any number of moves, S == T.A move consists of choosing two indices i and j with i % 2 == j % 2, and swapping S[">
@@ -406,7 +406,7 @@
 <li>All A[i] have the same length.</li>
 <li>All A[i] consist of only lowercase letters.</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>觉不觉得有点像union find，找“同源”的所有元素将其归为一组，最后看有多少组</li>
 <li>我们如何判断两个字符串是否“相同”呢，根据题目要求，奇数位可以和奇数位交换位置，偶数位可以和偶数位交换位置，那么我们自然想到，只要两个字符串分别在奇数位上和偶数位上的字符组成都相同即可，<code>在这即可分两种思路</code>：<ol>
@@ -420,12 +420,12 @@
 </ol>
 </li>
 </ol>
-<p><strong>思路1（针对Counter方法）：</strong></p>
+<p><b>思路1（针对Counter方法）：</b></p>
 <ol>
 <li>我们先默认所有的元素都不“同源”，则应该有len(A)个不同的组</li>
 <li>每次我们遍历到一个字符串，将其和前面所有的字符串进行对比，如果出现同源则将总数减一，且终止比较（否则可能多减，如例4）（虽然实际上我是用的visited来模仿union find的思路）</li>
 </ol>
-<p><strong>思路2（针对sort方法）：</strong></p>
+<p><b>思路2（针对sort方法）：</b></p>
 <ol>
 <li>直接将排序好的字符串作为key值，最后判断有多少种不同的key</li>
 </ol>
@@ -1149,6 +1149,8 @@
   
 
   
+  
+
 
   
 

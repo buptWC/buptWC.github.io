@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="We have a two dimensional matrix A where each value is 0 or 1.A move consists of choosing any row or column, and toggling each value in that row or column: changing all 0s to 1s, and all 1s to 0s.Afte">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-02T02:13:04.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:17:07.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 861 Score After Flipping Matrix">
 <meta name="twitter:description" content="We have a two dimensional matrix A where each value is 0 or 1.A move consists of choosing any row or column, and toggling each value in that row or column: changing all 0s to 1s, and all 1s to 0s.Afte">
@@ -396,7 +396,7 @@
 <li>1 &lt;= A[0].length &lt;= 20</li>
 <li>A[i][j] is 0 or 1.</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>一个二维矩阵A，我们对其进行两种操作，一种是将某一列中的0，1全部反转，一种是将某一行的0，1全部反转</li>
 <li>进行若干次操作后按照每一行的数将其变为二进制数，使得所有行求和最大</li>
@@ -404,7 +404,7 @@
 <li>当第一位全为1后，根据贪心我们想使第二位尽量多1，此时只能改列（改行可能使首位数字变动），也就是对于第二列，如果1的数量比0少，那么我们就进行一次列反转，反之就不进行操作，之后每一列以此类推！</li>
 </ol>
 <p>按照上述操作后我们观察示例中矩阵A中元素变换过程，首先先将首位全部变为1，然后：<br>1 1 0 0    — — — — — — — — &gt;    1 1 0 0    — — — — — — — — &gt;    1 1 1 0 — — — — — — — — &gt;    1 1 1 1<br>1 0 1 0 — —第二列1多— — —&gt;    1 0 1 0 — —第三列0多— — —&gt;    1 0 0 0 — —第四列0多— — —&gt;    1 0 0 1<br>1 1 0 0    — — — — — — — — &gt;    1 1 0 0    — — — — — — — — &gt;    1 1 1 0    — — — — — — — — &gt;    1 1 1 1</p>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>先判断每行第一个元素是否为0，若为0则进行一次行变换</li>
 <li>然后对每一列进行0，1数量的判断，若0多，则进行一次列变换，也就是将1，0的个数对调</li>
@@ -1128,6 +1128,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -127,7 +127,7 @@
 <meta property="og:description" content="你的音乐播放器里有 N 首不同的歌，在旅途中，你的旅伴想要听 L 首歌（不一定不同，即允许歌曲重复）。请你为她按如下规则创建一个播放列表：每首歌至少播放一次。一首歌只有在其他 K 首歌播放完之后才能再次播放。返回可以满足要求的播放列表的数量。由于答案可能非常大，请返回它模 10^9 + 7 的结果。  示例 1：输入：N = 3, L = 3, K = 1输出：6解释：有 6 种可能的播放列表。[">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_920.png">
-<meta property="og:updated_time" content="2018-10-08T04:13:34.577Z">
+<meta property="og:updated_time" content="2018-10-13T08:21:48.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 920 Number of Music Playlists">
 <meta name="twitter:description" content="你的音乐播放器里有 N 首不同的歌，在旅途中，你的旅伴想要听 L 首歌（不一定不同，即允许歌曲重复）。请你为她按如下规则创建一个播放列表：每首歌至少播放一次。一首歌只有在其他 K 首歌播放完之后才能再次播放。返回可以满足要求的播放列表的数量。由于答案可能非常大，请返回它模 10^9 + 7 的结果。  示例 1：输入：N = 3, L = 3, K = 1输出：6解释：有 6 种可能的播放列表。[">
@@ -401,8 +401,8 @@
 <ol>
 <li>0 &lt;= K &lt; N &lt;= L &lt;= 100</li>
 </ol>
-<p><strong>题意分析：</strong><br>总共有n首歌，要听l首歌，必须每首歌至少听一遍，若某一首歌需要听多遍的话，其中间的歌曲数量至少为k首。</p>
-<p><strong>思路分析：</strong><br>在我的很多文中都提到过，看到mod 10^9+7，一定第一时间要想到dp。不说这种题目百分之百是dp，起码在leetcode上的题目基本全是。</p>
+<p><b>题意分析：</b><br>总共有n首歌，要听l首歌，必须每首歌至少听一遍，若某一首歌需要听多遍的话，其中间的歌曲数量至少为k首。</p>
+<p><b>思路分析：</b><br>在我的很多文中都提到过，看到mod 10^9+7，一定第一时间要想到dp。不说这种题目百分之百是dp，起码在leetcode上的题目基本全是。</p>
 <p>那么怎么去分析呢？这道题一看像一个排列组合问题，熟悉排列组合的人对下面这个式子肯定不陌生<br><img src="/images/leetcode_920.png" alt=""><br>这个式子可以这样描述，在n个人里面挑选m个人，我们从挑不挑得到某个特定人X来考虑。<br>若挑得到，那么我们从剩下的n-1个人中再挑m-1个人。<br>若挑不到，那么我们从剩下的n-1个人中挑m个人。</p>
 <p>这道题也是用类似的思路，我们定义f(n,l,k)为题目所求，则有：<br><code>f(n,l,k) = f(n-1,l-1,k) \* n + f(n,l-1,k) \* (n-k)</code><br>其中<code>f(n-1,l-1,k)</code>代表某个特定的歌只最后出现一次，其余n-1首歌填充了前面l-1个位置，因为有n首不同的歌所以乘n。<br><code>f(n,l-1,k)</code>代表最后出现的某个特定的歌前面已经出现过了，这个最后出现的歌和当前最后k个位置的歌应当不相同，故乘(n-k)。</p>
 <p>递推式已经找到，那么初始状态是什么呢？<br>显然当<code>n==l</code>时，则就是一个全排列，即为n!<br>当<code>n &gt; l or k &gt; n</code>时，都不存在解，故为0</p>
@@ -1124,6 +1124,8 @@
   
 
   
+  
+
 
   
 

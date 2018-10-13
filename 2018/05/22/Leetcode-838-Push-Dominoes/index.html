@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_838_1.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_838_2.png">
-<meta property="og:updated_time" content="2018-06-09T16:51:22.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:13:22.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 838 Push Dominoes">
 <meta name="twitter:image" content="http://yoursite.com/images/leetcode_838_1.png">
@@ -386,8 +386,8 @@
 
       
         <p><img src="/images/leetcode_838_1.png" alt="图1"><br><a id="more"></a><br><img src="/images/leetcode_838_2.png" alt="图2"></p>
-<p>分析：就是一个超简单的推木板游戏，我是搞不懂为什么discuss里面那么多人还tle呢，直接遍历一遍就可以出结果，one pass solution,O(1) space, 要不是英文不太好就去发攻略了罒ω罒</p>
-<p>思路：用res存储最后的结果，遍历整个字符串，’.’直接跳过，当遍历到’L’时，看上一个出现的是’L’还是’R’,如果是’L’，全往左边倒，如果是’R’，计算距离一半R一半L；遍历到’R’同理。</p>
+<p><b>分析：</b><br>就是一个超简单的推木板游戏，我是搞不懂为什么discuss里面那么多人还tle呢，直接遍历一遍就可以出结果，one pass solution,O(1) space, 要不是英文不太好就去发攻略了罒ω罒</p>
+<p><b>思路：</b><br>用res存储最后的结果，遍历整个字符串，’.’直接跳过，当遍历到’L’时，看上一个出现的是’L’还是’R’,如果是’L’，全往左边倒，如果是’R’，计算距离一半R一半L；遍历到’R’同理。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pushDominoes</span><span class="params">(self, dominoes)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type dominoes: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = <span class="string">''</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 上一个出现的关键点用last表示，初始为None，处理左边界情况</span></span><br><span class="line">        last = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; len(dominoes):</span><br><span class="line">            j = i</span><br><span class="line">            <span class="comment"># 遍历到'.'就不管，一直到找到一个'R或L'为止</span></span><br><span class="line">            <span class="keyword">while</span> j+<span class="number">1</span> &lt; len(dominoes) <span class="keyword">and</span> dominoes[j] == <span class="string">'.'</span>: j += <span class="number">1</span> </span><br><span class="line">            <span class="comment"># 找到L的情况</span></span><br><span class="line">            <span class="keyword">if</span> dominoes[j] == <span class="string">'L'</span>:</span><br><span class="line">                <span class="keyword">if</span> last == <span class="string">'R'</span>:</span><br><span class="line">                    res += (j-i)/<span class="number">2</span> * <span class="string">'R'</span> + (j-i)%<span class="number">2</span> * <span class="string">'.'</span> + (j-i)/<span class="number">2</span> * <span class="string">'L'</span> + <span class="string">'L'</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    res += <span class="string">'L'</span> * (j-i+<span class="number">1</span>)</span><br><span class="line">                last = <span class="string">'L'</span></span><br><span class="line">            <span class="comment"># 找到R的情况</span></span><br><span class="line">            <span class="keyword">elif</span> dominoes[j] == <span class="string">'R'</span>:</span><br><span class="line">                <span class="keyword">if</span> last == <span class="string">'R'</span>:</span><br><span class="line">                    res += (j-i+<span class="number">1</span>) * <span class="string">'R'</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    res += (j-i) * <span class="string">'.'</span> + <span class="string">'R'</span></span><br><span class="line">                last = <span class="string">'R'</span></span><br><span class="line">            i = j + <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 出来之后，处理右边界情况</span></span><br><span class="line">        <span class="keyword">if</span> last == <span class="string">'R'</span>:</span><br><span class="line">            res += <span class="string">'R'</span> * (len(dominoes)-len(res))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res += <span class="string">'.'</span> * (len(dominoes)-len(res))</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">36</span> / <span class="number">36</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">244</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1105,6 +1105,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -127,7 +127,7 @@
 <meta property="og:description" content="Given an array of integers A, find the sum of min(B), where B ranges over every (contiguous) subarray of A.Since the answer may be large, return the answer modulo 10^9 + 7.  Example 1:Input: [3,1,2,4]">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_907.jpg">
-<meta property="og:updated_time" content="2018-09-16T09:50:53.413Z">
+<meta property="og:updated_time" content="2018-10-13T08:20:44.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 907 Sum of Subarray Minimums">
 <meta name="twitter:description" content="Given an array of integers A, find the sum of min(B), where B ranges over every (contiguous) subarray of A.Since the answer may be large, return the answer modulo 10^9 + 7.  Example 1:Input: [3,1,2,4]">
@@ -397,7 +397,7 @@
 <li>1 &lt;= A[i] &lt;= 30000<a id="more"></a>
 </li>
 </ol>
-<p><strong>分析：</strong><br>首先还是先强调一点，看到这种mod1e9+7的题目，首先要想到的就是dp！<br>那么我们怎样定义dp[i]呢？因为我以前见到过这种题目，所以我知道定义dp[i]为以nums[i]最小的子串的个数，说实话可能对于第一次见的人直接想到这样定义有点难度。<br>如[3,1,2,4]对于“1”来说，子串有[1],[3,1],[1,2],[3,1,2],[1,2,4],[3,1,2,4]，所以dp[1] = 6.</p>
+<p><b>分析：</b><br>首先还是先强调一点，看到这种mod1e9+7的题目，首先要想到的就是dp！<br>那么我们怎样定义dp[i]呢？因为我以前见到过这种题目，所以我知道定义dp[i]为以nums[i]最小的子串的个数，说实话可能对于第一次见的人直接想到这样定义有点难度。<br>如[3,1,2,4]对于“1”来说，子串有[1],[3,1],[1,2],[3,1,2],[1,2,4],[3,1,2,4]，所以dp[1] = 6.</p>
 <p>那么再来思考第二个问题，如何去计算dp[i]呢<br><img src="/images/leetcode_907.jpg" alt=""></p>
 <p>也就是说，我们对于每个A[i]，要分别找到左边和右边第一个比他小的点，以此来确定以A[i]为最小的最长子串<br>例如对于[3,1,4,2,5,3,3,1]中的“2”，我们找到的串就为[4,2,5,3,3]，2左边有1个数，2右边有3个数，所以2作为最小值的串有2*4=8种。读者可以自己检验一下</p>
 <p>那又有一个新的问题，如何对每一个点都找到其左边和右边第一个比他小的点呢？<br>这就要用到stack了，这部分逻辑用文字描述可能有点难度，还是看下面这段代码吧<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 找到每个点左边的第一个比该点小的位置，若无则用-1表示</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getIndex</span><span class="params">(A)</span>:</span></span><br><span class="line">    stack = [<span class="number">0</span>]</span><br><span class="line">    left = [<span class="number">-1</span>] * len(A)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(A)):</span><br><span class="line">        <span class="keyword">if</span> A[i] &gt; A[stack[<span class="number">-1</span>]]:</span><br><span class="line">            left[i] = stack[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">while</span> stack <span class="keyword">and</span> A[i] &lt;= A[stack[<span class="number">-1</span>]]: stack.pop()</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> stack: left[i] = <span class="number">-1</span></span><br><span class="line">            <span class="keyword">else</span>: left[i] = stack[<span class="number">-1</span>]</span><br><span class="line">        stack.append(i)</span><br><span class="line">    <span class="keyword">return</span> left</span><br><span class="line"><span class="comment"># example [3,1,2,4]</span></span><br><span class="line"><span class="comment"># getIndex(A) = [-1,-1,1,2]</span></span><br></pre></td></tr></table></figure></p>
@@ -1121,6 +1121,8 @@
   
 
   
+  
+
 
   
 

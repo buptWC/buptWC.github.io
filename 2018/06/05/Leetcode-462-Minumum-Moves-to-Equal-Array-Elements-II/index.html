@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Given a non-empty integer array, find the minimum number of moves required to make all array elements equal, where a move is incrementing a selected element by 1 or decrementing a selected element by">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:48:52.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:03:31.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 462 Minumum Moves to Equal Array Elements II">
 <meta name="twitter:description" content="Given a non-empty integer array, find the minimum number of moves required to make all array elements equal, where a move is incrementing a selected element by 1 or decrementing a selected element by">
@@ -390,8 +390,8 @@
 <p>Example:<br>Input:<br>[1,2,3]<br>Output:<br>2<br>Explanation:<br>Only two moves are needed (remember each move increments or decrements one element):<br>[1,2,3]  =&gt;  [2,2,3]  =&gt;  [2,2,2]</p>
 </blockquote>
 <a id="more"></a>
-<p><strong>分析：也就是将所有数变成同一个数的花费，数组长度不超过10000，说明n^2的方法不行</strong></p>
-<p>思路：我们先作几个简答的分析，比如一个有序数组，根据长度不同我们来依次分析<br> 1.长度为3，[a,b,c]，那么显然都往b靠花费最小（这个很容易证）<br>     cost = c-b + b-a = c-a<br> 2.长度为4，[a,b,c,d],先分析往b靠好还是往c靠好<br>     cost_b = d-b + c-b + b-a = d+c - (a+b)<br>     cost_c = d-c + c-b + c-a = d+c - (a+b)<br> 3.长度为5，[a,b,c,d,e]，显然是往c靠<br>     cost = e-c + d-c + c-b + c-a = d+e - (a+b)<br> 依次类推，我们发现花费就应该是数组的后半段减去数组的前半段，分奇偶判断一下即可</p>
+<p><b>分析：</b><br>也就是将所有数变成同一个数的花费，数组长度不超过10000，说明n^2的方法不行</p>
+<p><b>思路：</b><br>我们先作几个简答的分析，比如一个有序数组，根据长度不同我们来依次分析<br> 1.长度为3，[a,b,c]，那么显然都往b靠花费最小（这个很容易证）<br>     cost = c-b + b-a = c-a<br> 2.长度为4，[a,b,c,d],先分析往b靠好还是往c靠好<br>     cost_b = d-b + c-b + b-a = d+c - (a+b)<br>     cost_c = d-c + c-b + c-a = d+c - (a+b)<br> 3.长度为5，[a,b,c,d,e]，显然是往c靠<br>     cost = e-c + d-c + c-b + c-a = d+e - (a+b)<br> 依次类推，我们发现花费就应该是数组的后半段减去数组的前半段，分奇偶判断一下即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minMoves2</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        index = len(nums)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> sum(nums[index+<span class="number">1</span>:]) - sum(nums[:index])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> sum(nums[index:]) - sum(nums[:index])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">29</span> / <span class="number">29</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">61</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1111,6 +1111,8 @@
   
 
   
+  
+
 
   
 

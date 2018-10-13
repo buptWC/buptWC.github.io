@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Koko loves to eat bananas.  There are N piles of bananas, the i-th pile has piles[i] bananas.  The guards have gone and will come back in H hours.Koko can decide her bananas-per-hour eating speed of K">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-22T12:40:50.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:18:43.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 875 Koko Eating Bananas">
 <meta name="twitter:description" content="Koko loves to eat bananas.  There are N piles of bananas, the i-th pile has piles[i] bananas.  The guards have gone and will come back in H hours.Koko can decide her bananas-per-hour eating speed of K">
@@ -402,12 +402,12 @@
 <li>piles.length &lt;= H &lt;= 10^9</li>
 <li>1 &lt;= piles[i] &lt;= 10^9</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>去找一个值满足某种条件，这种题见得太多了，显然是二分法，之后我整理一下所有的这种题目做一个合辑。</li>
 <li>那么这里怎么选定初始的lo和hi呢？我们要明确我们找的是吃的速度，那么最低，起码得在吃吧，所以起码lo = 1，那hi呢？我们注意到note中第二点pile.length &lt;= H，因为我们吃的速度就算再快，一次也只能吃一盘而已，所以无论怎样最少都得pile.length个小时才能吃完，所以hi = max(piles)</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>对于某个确定的k值，我们如何计算吃完所有pile需要的时间呢，对于一盘，时间应该是piles[i]/k 向上取整，然后求和判断是否大于H</li>
 <li>若小于，则说明吃完还绰绰有余，还可以吃慢一点，从lo,mid中继续找</li>
@@ -1130,6 +1130,8 @@
   
 
   
+  
+
 
   
 

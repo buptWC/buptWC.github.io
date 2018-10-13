@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="In a string S of lowercase letters, these letters form consecutive groups of the same character. For example, a string like S = “abbxxxxzyy” has the groups “a”, “bb”, “xxxx”, “z” and “yy”. Call a grou">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:50:52.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:12:29.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 830 Positions of Large Groups">
 <meta name="twitter:description" content="In a string S of lowercase letters, these letters form consecutive groups of the same character. For example, a string like S = “abbxxxxzyy” has the groups “a”, “bb”, “xxxx”, “z” and “yy”. Call a grou">
@@ -400,7 +400,7 @@
 <p>Example 3:<br>Input: “abcdddeeeeaabbbcd”<br>Output: [[3,5],[6,9],[12,14]]</p>
 </blockquote>
 <p>Note:  1 &lt;= S.length &lt;= 1000</p>
-<p>思路：<br>一道简单的字符串处理问题。每次判断是否有连续三个以上的字符相同，相同则将下标加入res。注意处理边界问题。</p>
+<p><b>思路：</b><br>一道简单的字符串处理问题。每次判断是否有连续三个以上的字符相同，相同则将下标加入res。注意处理边界问题。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">largeGroupPositions</span><span class="params">(S)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    :type S: str</span></span><br><span class="line"><span class="string">    :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    i,j = <span class="number">0</span>,<span class="number">0</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">while</span> i &lt; len(S):</span><br><span class="line">        j = i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j &lt; len(S) <span class="keyword">and</span> S[j] == S[i]: j+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> j-i &gt;= <span class="number">3</span>: res.append([i,j<span class="number">-1</span>])</span><br><span class="line">        i = j</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="string">"difficulty: easy</span></span><br><span class="line"><span class="string">202 / 202 test cases passed.</span></span><br><span class="line"><span class="string">Runtime: 114 ms"</span></span><br></pre></td></tr></table></figure>
 
       
@@ -1115,6 +1115,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -127,7 +127,7 @@
 <meta property="og:description" content="给定一个字符串，找出不含有重复字符的最长子串的长度。示例 1:输入: “abcabcbb”输出: 3解释: 无重复字符的最长子串是 “abc”，其长度为 3。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_3_1.png">
-<meta property="og:updated_time" content="2018-10-09T15:46:21.316Z">
+<meta property="og:updated_time" content="2018-10-13T07:59:26.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 3 Longest Substring Without Repeating Characters">
 <meta name="twitter:description" content="给定一个字符串，找出不含有重复字符的最长子串的长度。示例 1:输入: “abcabcbb”输出: 3解释: 无重复字符的最长子串是 “abc”，其长度为 3。">
@@ -390,8 +390,8 @@
         <p>给定一个字符串，找出不含有重复字符的最长子串的长度。<br>示例 1:<br>输入: “abcabcbb”<br>输出: 3<br>解释: 无重复字符的最长子串是 “abc”，其长度为 3。<br><a id="more"></a></p>
 <p>示例 2:<br>输入: “bbbbb”<br>输出: 1<br>解释: 无重复字符的最长子串是 “b”，其长度为 1。</p>
 <p>示例 3:<br>输入: “pwwkew”<br>输出: 3<br>解释: 无重复字符的最长子串是 “wke”，其长度为 3。<br>     请注意，答案必须是一个子串，”pwke” 是一个子序列 而不是子串。</p>
-<p> <strong>题意分析：</strong><br> 在一个字符串中找最长子串(substring)，我们需要知道子串是连续的，而子序列(subsequence)是可以不连续的，这是两个不同的定义</p>
-<p><strong>思路分析：</strong><br>通常对于这种在字符串中寻找最长XX的问题，都是使用双指针法。</p>
+<p><b>题意分析：</b><br>在一个字符串中找最长子串(substring)，我们需要知道子串是连续的，而子序列(subsequence)是可以不连续的，这是两个不同的定义</p>
+<p><b>思路分析：</b><br>通常对于这种在字符串中寻找最长XX的问题，都是使用双指针法。</p>
 <p>我们首先固定左边，然后第二个指针向右遍历，使用一个空间记录我们已经访问过的元素，当第二个指针遍历到某个记录过的元素即停止，记录一次长度。</p>
 <p>然后第一个指针向右移动，将遍历过的元素从记录中删除，直到完全删除掉第二个指针指向的元素为止。</p>
 <p>例如对于示例1中的 ‘abcabcbb’，过程如图所示(只截取了一部分，后面同理)：<br><img src="/images/leetcode_3_1.png" alt=""></p>
@@ -1112,6 +1112,8 @@
   
 
   
+  
+
 
   
 

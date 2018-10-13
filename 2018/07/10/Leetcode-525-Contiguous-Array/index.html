@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个二进制数组, 找到含有相同数量的 0 和 1 的最长连续子数组。  示例 1:输入: [0,1]输出: 2说明: [0, 1] 是具有相同数量0和1的最长连续子数组。示例 2:输入: [0,1,0]输出: 2说明: [0, 1] (或 [1, 0]) 是具有相同数量0和1的最长连续子数组。  注意: 给定的二进制数组的长度不会超过50000。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-10T14:59:24.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:07:36.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 525 Contiguous Array">
 <meta name="twitter:description" content="给定一个二进制数组, 找到含有相同数量的 0 和 1 的最长连续子数组。  示例 1:输入: [0,1]输出: 2说明: [0, 1] 是具有相同数量0和1的最长连续子数组。示例 2:输入: [0,1,0]输出: 2说明: [0, 1] (或 [1, 0]) 是具有相同数量0和1的最长连续子数组。  注意: 给定的二进制数组的长度不会超过50000。">
@@ -392,7 +392,7 @@
 <p>注意: 给定的二进制数组的长度不会超过50000。<br><a id="more"></a></p>
 <p><code>不想做重复的工作，这道题和523 560一模一样，如果你想弄懂前缀和的这个解法，建议先看560，再看523，我在另外两篇博客中写得很详细了</code><br>具体见<a href="https://buptwc.github.io/2018/07/10/Leetcode-523-Continuous-Subarray-Sum/" target="_blank" rel="noopener">https://buptwc.github.io/2018/07/10/Leetcode-523-Continuous-Subarray-Sum/</a></p>
 <p><code>当你看懂前两道题后再来分析这道题，将所有的0变成-1，这道题就变成找最长的和为0的连续子数组，前缀和可解</code></p>
-<p><strong>思路：</strong><br>（建议先看560，否则你可能不知道我在说什么）</p>
+<p><b>思路：</b><br>（建议先看560，否则你可能不知道我在说什么）</p>
 <ol>
 <li>改用字典存储已经遍历过的值，对应相应的下标，即d[sum(nums[:i])] = i，相同的key值取最小（最左边）的下标</li>
 <li>依次遍历判断，若成功找到key值，存储一次长度</li>
@@ -1115,6 +1115,8 @@
   
 
   
+  
+
 
   
 

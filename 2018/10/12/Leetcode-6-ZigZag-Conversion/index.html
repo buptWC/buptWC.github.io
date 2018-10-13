@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -127,7 +127,7 @@
 <meta property="og:description" content="将字符串按照Z字型排列成给定的行数，然后从左往右，逐行读取字符">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_5.png">
-<meta property="og:updated_time" content="2018-10-12T15:23:09.995Z">
+<meta property="og:updated_time" content="2018-10-13T08:00:35.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 6 ZigZag Conversion">
 <meta name="twitter:description" content="将字符串按照Z字型排列成给定的行数，然后从左往右，逐行读取字符">
@@ -389,8 +389,8 @@
       
         <p>将字符串按照Z字型排列成给定的行数，然后从左往右，逐行读取字符<br><a id="more"></a></p>
 <p><img src="/images/leetcode_5.png" alt=""></p>
-<p><strong>题意分析：</strong><br>按照Z字形读取字符串并输出</p>
-<p><strong>思路分析：</strong><br>算法题分类中有一种题型叫模拟实现，也就是按照题目给的规则，我们实现算法来模拟过程<br>这道题就属于标准的一种模拟题，有人肯定会疑惑，这道题哪里有模拟嘛，其实你只要这样想，我们现在要读一个字符串，但是要读到不同的位置（行），应该怎么读呢？</p>
+<p><b>题意分析：</b><br>按照Z字形读取字符串并输出</p>
+<p><b>思路分析：</b><br>算法题分类中有一种题型叫模拟实现，也就是按照题目给的规则，我们实现算法来模拟过程<br>这道题就属于标准的一种模拟题，有人肯定会疑惑，这道题哪里有模拟嘛，其实你只要这样想，我们现在要读一个字符串，但是要读到不同的位置（行），应该怎么读呢？</p>
 <p>我们对<code>s = &#39;PAYPALISHIRING&#39;, numRows = 4</code>来进行分析，我们直接写出这个字符串中的每一个字符所处的行数，则应该是 <code>12343212343212</code>。发现规律一下就找到了,下一个字符的行数取决于前一个字符的行数，要么+1要么-1，我们定义一个方向dire，向下走是+1，向上走是-1，当走到边界时(level == 0 or level == numRow-1)转向。具体代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 64ms, beats 80.44%</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">convert</span><span class="params">(self, s, numRows)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> numRows == <span class="number">1</span>: <span class="keyword">return</span> s</span><br><span class="line">        res = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(numRows)]</span><br><span class="line">        level = <span class="number">0</span></span><br><span class="line">        dire = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> ss <span class="keyword">in</span> s:</span><br><span class="line">            res[level].append(ss)</span><br><span class="line">            <span class="keyword">if</span> level == numRows<span class="number">-1</span> <span class="keyword">or</span> level == <span class="number">0</span>: dire *= <span class="number">-1</span></span><br><span class="line">            level += dire</span><br><span class="line"></span><br><span class="line">        ans = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> ss <span class="keyword">in</span> res:</span><br><span class="line">            ans += <span class="string">''</span>.join(ss)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
       
@@ -1105,6 +1105,8 @@
   
 
   
+  
+
 
   
 

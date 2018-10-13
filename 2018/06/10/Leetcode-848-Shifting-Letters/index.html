@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="We have a string S of lowercase letters, and an integer array shifts.Call the shift of a letter, the next letter in the alphabet, (wrapping around so that ‘z’ becomes ‘a’).For example, shift(‘a’) = ‘b">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-10T08:07:58.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:15:17.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 848 Shifting Letters">
 <meta name="twitter:description" content="We have a string S of lowercase letters, and an integer array shifts.Call the shift of a letter, the next letter in the alphabet, (wrapping around so that ‘z’ becomes ‘a’).For example, shift(‘a’) = ‘b">
@@ -390,12 +390,12 @@
 <p>Example 1:<br>Input: S = “abc”, shifts = [3,5,9]<br>Output: “rpl”<br>Explanation:<br>We start with “abc”.<br>After shifting the first 1 letters of S by 3, we have “dbc”.<br>After shifting the first 2 letters of S by 5, we have “igc”.<br>After shifting the first 3 letters of S by 9, we have “rpl”, the answer.<br>Note:<br>1 &lt;= S.length = shifts.length &lt;= 20000<br>0 &lt;= shifts[i] &lt;= 10 ^ 9</p>
 </blockquote>
 <a id="more"></a>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>题目定义了一个shift函数，将字母按照字母表顺序转换到下一个字母，’z’后又是’a’；题目给了一个shift数组，shift[i]代表要对前i+1个字母作shift[i]次shift函数操作。</li>
 <li>注意数据长度达到20000，显然n^2的方法不可行，数据本身大小达到10^9，说明处理必须一步到位。</li>
 </ol>
-<p><strong>思路：</strong><br>建立一个字典使0到25和zabc…xy互相对应，那么我们分析一个字符的时候便可以转换成数字来处理，处理结束后又可转换成字符。</p>
+<p><b>思路：</b><br>建立一个字典使0到25和zabc…xy互相对应，那么我们分析一个字符的时候便可以转换成数字来处理，处理结束后又可转换成字符。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">index = <span class="number">0</span></span><br><span class="line">d = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> <span class="string">'zabcdefghijklmnopqrstuvwxy'</span>:</span><br><span class="line">	d[s] = index</span><br><span class="line">	d[index] = s</span><br><span class="line">	index += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shiftingLetters</span><span class="params">(S, shifts)</span>:</span></span><br><span class="line">	<span class="comment"># 因为每次都是对前i+1个字符进行操作，所以实际第一个字符被处理了sum(shift)，依次类推</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(len(shifts)<span class="number">-2</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">		shifts[i] += shifts[i+<span class="number">1</span>]</span><br><span class="line">	res = []</span><br><span class="line">	<span class="comment"># S.length = shifts.length</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(len(S)):</span><br><span class="line">		index = (d[S[i]] + shifts[i]) % <span class="number">26</span></span><br><span class="line">		res.append(d[index])</span><br><span class="line">	<span class="keyword">return</span> <span class="string">''</span>.join(res)</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1115,6 +1115,8 @@
   
 
   
+  
+
 
   
 

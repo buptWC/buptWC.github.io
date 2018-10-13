@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。 注意:每个数组中的元素不会超过 100数组的大小不会超过 200  示例 1:输入: [1, 5, 11, 5]输出: true解释: 数组可以分割成 [1, 5, 5] 和 [11].">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-03T10:19:38.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:01:50.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 416 Partition Equal Subset Sum">
 <meta name="twitter:description" content="给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。 注意:每个数组中的元素不会超过 100数组的大小不会超过 200  示例 1:输入: [1, 5, 11, 5]输出: true解释: 数组可以分割成 [1, 5, 5] 和 [11].">
@@ -394,13 +394,13 @@
 <blockquote>
 <p>示例 2:<br>输入: [1, 2, 3, 5]<br>输出: false<br>解释: 数组不能分割成两个元素和相等的子集.</p>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>首先，若sum(nums) % 2 != 0，则显然不可分</li>
 <li>题目演变成在数组中找寻是否有若干个数的和为target，target = sum(nums) / 2</li>
 <li>数组大小不超过200，元素不超过100，则target大小不超过20000</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>建立dp数组，其中dp[i] = 1表示nums中有若干数的和为i，则最后返回dp[target]即可，初始化dp[0] = 1</li>
 <li>依次对nums中的数进行分析，如示例1中[1,5,11,5]，首先对nums[0]进行分析，则可得出dp[1] = 1(因为dp[0] = 1)，然后对nums[1]进行分析，则可得出dp[5] = 1,dp[6] = 1(因为dp[0] = 1,dp[1] = 1)，依次类推</li>
@@ -1123,6 +1123,8 @@
   
 
   
+  
+
 
   
 

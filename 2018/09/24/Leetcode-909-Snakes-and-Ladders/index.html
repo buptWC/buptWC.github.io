@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="在一块 N x N 的板子 board 上，从板的左下角开始，每一行交替方向，按从 1 到 N*N 的数字给方格编号。例如，对于一块 6 x 6 大小的板子，可以编号如下：  36 35 34 33 32 3125 26 27 28 29 3024 23 22 21 20 1913 14 15 16 17 1812 11 10 09 08 0701 02 03 04 05 06    从板子的方块">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-24T14:08:00.874Z">
+<meta property="og:updated_time" content="2018-10-13T08:20:54.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 909 Snakes and Ladders">
 <meta name="twitter:description" content="在一块 N x N 的板子 board 上，从板的左下角开始，每一行交替方向，按从 1 到 N*N 的数字给方格编号。例如，对于一块 6 x 6 大小的板子，可以编号如下：  36 35 34 33 32 3125 26 27 28 29 3024 23 22 21 20 1913 14 15 16 17 1812 11 10 09 08 0701 02 03 04 05 06    从板子的方块">
@@ -405,7 +405,7 @@
 <li>编号为 1 的方格上没有坡或梯子。</li>
 <li>编号为 N*N 的方格上没有坡或梯子。</li>
 </ol>
-<p><strong>题意分析：</strong><br>从方格1开始移动，终点为方格N*N。每一次移动有6种选择，例如当前位于方格X上，则下一步可以到方格X+1,X+2,…,X+6上。但若移动到的方格上的值不等于-1，则需跳到这个值对应的方格上，求最少移动次数。<br>在多选择路径上找最小移动次数，显然是bfs方法。每次就像下6个方格中移动，一旦方格值不等于-1就跳到方格值对应的方格（注意别重复计算）。唯一要处理的就是方格的index如何跟board中的下标对应起来了（规律很简单，就是蛇形方格）<br>PS：我对bfs算法在这片博客里有比较详细的介绍，有兴趣的可以参考一下<br><a href="https://buptwc.github.io/2018/07/24/bfs%E7%B3%BB%E5%88%97%E8%AF%A6%E8%A7%A3/" target="_blank" rel="noopener">https://buptwc.github.io/2018/07/24/bfs%E7%B3%BB%E5%88%97%E8%AF%A6%E8%A7%A3/</a></p>
+<p><b>题意分析：</b><br>从方格1开始移动，终点为方格N*N。每一次移动有6种选择，例如当前位于方格X上，则下一步可以到方格X+1,X+2,…,X+6上。但若移动到的方格上的值不等于-1，则需跳到这个值对应的方格上，求最少移动次数。<br>在多选择路径上找最小移动次数，显然是bfs方法。每次就像下6个方格中移动，一旦方格值不等于-1就跳到方格值对应的方格（注意别重复计算）。唯一要处理的就是方格的index如何跟board中的下标对应起来了（规律很简单，就是蛇形方格）<br>PS：我对bfs算法在这片博客里有比较详细的介绍，有兴趣的可以参考一下<br><a href="https://buptwc.github.io/2018/07/24/bfs%E7%B3%BB%E5%88%97%E8%AF%A6%E8%A7%A3/" target="_blank" rel="noopener">https://buptwc.github.io/2018/07/24/bfs%E7%B3%BB%E5%88%97%E8%AF%A6%E8%A7%A3/</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">snakesAndLadders</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        m,n = len(grid),len(grid[<span class="number">0</span>])</span><br><span class="line">        <span class="comment"># 将index转换成对应的下标</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">transIndex</span><span class="params">(index)</span>:</span></span><br><span class="line">            x,y = index // n, index % n</span><br><span class="line">            <span class="keyword">if</span> x % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">if</span> y != <span class="number">0</span>: <span class="keyword">return</span> (m<span class="number">-1</span>-x,y<span class="number">-1</span>)</span><br><span class="line">                <span class="keyword">return</span> (m-x, <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> y != <span class="number">0</span>: <span class="keyword">return</span> (m<span class="number">-1</span>-x,n-y)</span><br><span class="line">                <span class="keyword">return</span> (m-x, n<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">        Q = collections.deque([<span class="number">1</span>])</span><br><span class="line">        level = <span class="number">0</span></span><br><span class="line">        visited = set()</span><br><span class="line">        <span class="keyword">while</span> Q:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(Q)):</span><br><span class="line">                index = Q.popleft()</span><br><span class="line">                <span class="keyword">if</span> index == m*n: <span class="keyword">return</span> level</span><br><span class="line">                <span class="keyword">for</span> x <span class="keyword">in</span> range(index+<span class="number">1</span>,index+<span class="number">7</span>):</span><br><span class="line">                    <span class="keyword">if</span> x &lt;= m*n:</span><br><span class="line">                        i,j = transIndex(x)</span><br><span class="line">                        <span class="keyword">if</span> grid[i][j] != <span class="number">-1</span>: x = grid[i][j]</span><br><span class="line">                        <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                            visited.add(x)</span><br><span class="line">                            Q.append(x)</span><br><span class="line">            level += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 
       
@@ -1124,6 +1124,8 @@
   
 
   
+  
+
 
   
 

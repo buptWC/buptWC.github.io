@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定两个字符串 s1 和 s2，写一个函数来判断 s2 是否包含 s1 的排列。换句话说，第一个字符串的排列之一是第二个字符串的子串。  示例1:输入: s1 = “ab” s2 = “eidbaooo”输出: True解释: s2 包含 s1 的排列之一 (“ba”).">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-09T14:30:14.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:08:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 567 Permutation in String">
 <meta name="twitter:description" content="给定两个字符串 s1 和 s2，写一个函数来判断 s2 是否包含 s1 的排列。换句话说，第一个字符串的排列之一是第二个字符串的子串。  示例1:输入: s1 = “ab” s2 = “eidbaooo”输出: True解释: s2 包含 s1 的排列之一 (“ba”).">
@@ -398,7 +398,7 @@
 <li>输入的字符串只包含小写字母</li>
 <li>两个字符串的长度都在 [1, 10000] 之间</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>标准的滑动窗口解法，示例都太简单，我在这里给出一个例子帮助理解,s1 = ‘abca’,s2 = ‘baabc’</li>
 <li>我们有很多方法判断两个等长的字符串是不是所含字母个数也相同，如collections模块中的Counter函数，如构造一个长度为26的数组，分别记录对应英文字母的个数，这里我们不妨就选后者来进行存储</li>
@@ -410,7 +410,7 @@
 </ol>
 </li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>用ord()函数将字符串转换成asc码</li>
 <li>防止index error，先判断一下len(s2) &lt; len(s1)？</li>
@@ -1134,6 +1134,8 @@
   
 
   
+  
+
 
   
 

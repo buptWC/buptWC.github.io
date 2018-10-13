@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="On a table are N cards, with a positive integer printed on the front and back of each card (possibly different). We flip any number of cards, and after we choose one card.  If the number X on the back">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:49:48.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:10:33.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 822 Card Flipping Game">
 <meta name="twitter:description" content="On a table are N cards, with a positive integer printed on the front and back of each card (possibly different). We flip any number of cards, and after we choose one card.  If the number X on the back">
@@ -392,9 +392,9 @@
 <p>A flip swaps the front and back numbers, so the value on the front is now on the back and vice versa.</p>
 <p><strong>Example:</strong><br>Input: fronts = [1,2,4,4,7], backs = [1,3,4,1,3]<br>Output: 2<br>Explanation: If we flip the second card, the fronts are [1,3,4,4,7] and the backs are [1,2,4,1,3].<br>We choose the second card, which has number 2 on the back, and it isn’t on the front of any card, so 2 is good.</p>
 <p><strong>Note:</strong><br>    1 &lt;= fronts.length == backs.length &lt;= 1000.<br>    1 &lt;= fronts[i] &lt;= 2000.<br>    1 &lt;= backs[i] &lt;= 2000.</p>
-<p><strong>分析：如果我们从fronts 和 backs中最小的数开始考虑，在example中就是1,那么1对应着两张卡，分别是 1，1 和 1，4，对于1，1我们无论如何翻转1都会在正面出现，所以1不可能是good number；对于2来说，2对应着2，3一张卡，那么只要将3朝上，fronts中就没了2,(关键就是只要一个数不是同时出现在一张卡的正反两面，我们通过一定的翻转就一定可以使这个数成为good number)，因为我们是从小到大遍历，所以此时2就是最后答案。注意数据长度不超过1000，数据值不超过2000，说明n^2的方案是可行的</strong></p>
-<p><strong>思路：我们将fronts和backs里面出现的数对应的另一面的数字记录下来，比如对于1这个数字，记录他对应着1，4着两个数，然后从小到大遍历，第一个没出现相同对应数字的数就是答案</strong></p>
-<p><strong>总结：这道题稍微想一下并不难，但是在leetcode上踩的人有丶多，说明大家对单纯的逻辑题的解法还是不太熟。</strong></p>
+<p><b>分析：</b><br>如果我们从fronts和backs中最小的数开始考虑，在example中就是1,那么1对应着两张卡，分别是 1，1 和 1，4，对于1，1我们无论如何翻转1都会在正面出现，所以1不可能是good number；对于2来说，2对应着2，3一张卡，那么只要将3朝上，fronts中就没了2,(关键就是只要一个数不是同时出现在一张卡的正反两面，我们通过一定的翻转就一定可以使这个数成为good number)，因为我们是从小到大遍历，所以此时2就是最后答案。注意数据长度不超过1000，数据值不超过2000，说明n^2的方案是可行的</p>
+<p><b>思路：</b><br>我们将fronts和backs里面出现的数对应的另一面的数字记录下来，比如对于1这个数字，记录他对应着1，4着两个数，然后从小到大遍历，第一个没出现相同对应数字的数就是答案</p>
+<p><b>总结：</b><br>这道题稍微想一下并不难，但是在leetcode上踩的人有丶多，说明大家对单纯的逻辑题的解法还是不太熟。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">flipgame</span><span class="params">(fronts, backs)</span>:</span></span><br><span class="line">    <span class="keyword">import</span> collections</span><br><span class="line">    n = len(fronts)</span><br><span class="line">    d = collections.defaultdict(list)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">        d[fronts[i]].append(backs[i])</span><br><span class="line">        d[backs[i]].append(fronts[i])</span><br><span class="line"></span><br><span class="line">    rec = fronts + backs</span><br><span class="line">    rec.sort()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> rec:</span><br><span class="line">        <span class="keyword">if</span> e <span class="keyword">not</span> <span class="keyword">in</span> d[e]:</span><br><span class="line">            <span class="keyword">return</span> e</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">time: O(n)</span><br><span class="line">space: O(n)</span><br><span class="line">difficulty: medium</span><br><span class="line"><span class="number">169</span> / <span class="number">169</span> test cases passed</span><br><span class="line">runtime: <span class="number">85</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1112,6 +1112,8 @@
   
 
   
+  
+
 
   
 

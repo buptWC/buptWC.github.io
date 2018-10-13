@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_831_1.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_831_2.png">
-<meta property="og:updated_time" content="2018-06-09T16:51:04.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:12:36.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 831 Masking Personal Information">
 <meta name="twitter:image" content="http://yoursite.com/images/leetcode_831_1.png">
@@ -386,7 +386,7 @@
 
       
         <p><img src="/images/leetcode_831_1.png" alt="这是题目描述"><br><a id="more"></a><br><img src="/images/leetcode_831_2.png" alt="这是示例"></p>
-<p>思路:<br>先判断到底是email还是phonenumber，根据情况依次判断<br>email只取@符号前面的字符串的首末两个字符，其余不变(当然要先把所有的变成小写)<br>phone就判断数字有多少个，超过10就多一个+号</p>
+<p><b>思路: </b><br>先判断到底是email还是phonenumber，根据情况依次判断<br>email只取@符号前面的字符串的首末两个字符，其余不变(当然要先把所有的变成小写)<br>phone就判断数字有多少个，超过10就多一个+号</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maskPII</span><span class="params">(S)</span>:</span></span><br><span class="line">	<span class="comment"># 定义一个flag,为1的时候代表是email,为0的时候代表是phonenumber</span></span><br><span class="line">	<span class="comment"># 初始化为1，即默认是email，通过开头是否是数字或符号来判断是否改变</span></span><br><span class="line">	flag = <span class="number">1</span></span><br><span class="line">	<span class="keyword">if</span> S[<span class="number">0</span>] <span class="keyword">in</span> <span class="string">'()0123456789+-'</span>: flag = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	const_str = <span class="string">'***-***-'</span></span><br><span class="line">	<span class="keyword">if</span> flag == <span class="number">0</span>: <span class="comment"># means S is phonenumber</span></span><br><span class="line">		cnt = <span class="number">0</span>   <span class="comment"># 记录S中数字的长度</span></span><br><span class="line">		rec = <span class="string">''</span>  <span class="comment">#	记录S中最后四位数字</span></span><br><span class="line">		<span class="keyword">for</span> e <span class="keyword">in</span> range(len(S)<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">			<span class="keyword">if</span> S[e] <span class="keyword">in</span> <span class="string">'1234567890'</span>: </span><br><span class="line">				cnt += <span class="number">1</span></span><br><span class="line">				<span class="keyword">if</span> cnt &lt;= <span class="number">4</span>: rec += S[e]</span><br><span class="line">		<span class="keyword">if</span> cnt == <span class="number">10</span>: <span class="keyword">return</span> const_str + rec[::<span class="number">-1</span>]</span><br><span class="line">		<span class="keyword">else</span>: <span class="keyword">return</span> <span class="string">'+'</span> + <span class="string">'*'</span>*(cnt<span class="number">-10</span>) + <span class="string">'-'</span> + const_str + rec[::<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> flag == <span class="number">1</span>: <span class="comment"># means S is email address</span></span><br><span class="line">		S = S.lower()</span><br><span class="line">		l,r = S.split(<span class="string">'@'</span>)</span><br><span class="line">		<span class="keyword">return</span> l[<span class="number">0</span>] + <span class="string">'*****'</span> + l[<span class="number">-1</span>] + <span class="string">'@'</span> + r</span><br><span class="line"></span><br><span class="line"><span class="string">"difficulty: midium</span></span><br><span class="line"><span class="string">66 / 66 test cases passed.</span></span><br><span class="line"><span class="string">Runtime: 39 ms"</span></span><br></pre></td></tr></table></figure>
 
       
@@ -1105,6 +1105,8 @@
   
 
   
+  
+
 
   
 

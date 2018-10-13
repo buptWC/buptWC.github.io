@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="There are N rooms and you start in room 0.  Each room has a distinct number in 0, 1, 2, …, N-1, and each room may have some keys to access the next room.  Formally, each room i has a list of keys room">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:51:48.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:14:13.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 841 Keys and Rooms">
 <meta name="twitter:description" content="There are N rooms and you start in room 0.  Each room has a distinct number in 0, 1, 2, …, N-1, and each room may have some keys to access the next room.  Formally, each room i has a list of keys room">
@@ -398,8 +398,8 @@
 <pre><code>1. 1 &lt;= rooms.length &lt;= 1000
 2. 0 &lt;= rooms[i].length &lt;= 1000
 3. The number of keys in all rooms combined is at most 3000.
-</code></pre><p><strong>分析：初始在房间0，每个房间有钥匙，钥匙打开对应的门，可以在打开的门之间任意走动，问能不能打开所有的门，房间数不超过1000，每个房间内钥匙不超过1000</strong></p>
-<p><strong>思路：显然是dfs，用一个visited集合来记录走过了哪些房间，最后判断visied的长度是不是等于房间的长度即可,我觉得这道题不配是medium，应该是easy</strong></p>
+</code></pre><p><b>分析：</b><br>初始在房间0，每个房间有钥匙，钥匙打开对应的门，可以在打开的门之间任意走动，问能不能打开所有的门，房间数不超过1000，每个房间内钥匙不超过1000</p>
+<p><b>思路：</b><br>显然是dfs，用一个visited集合来记录走过了哪些房间，最后判断visied的长度是不是等于房间的长度即可,我觉得这道题不配是medium，应该是easy</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">canVisitAllRoom</span><span class="params">(rooms)</span>:</span></span><br><span class="line">	n = len(rooms)</span><br><span class="line">	visited = set()</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(u)</span>:</span></span><br><span class="line">		<span class="keyword">if</span> u <span class="keyword">in</span> visited: <span class="keyword">return</span></span><br><span class="line">		visited.add(u)</span><br><span class="line">		<span class="keyword">for</span> v <span class="keyword">in</span> rooms[u]:</span><br><span class="line">			dfs(v)</span><br><span class="line"></span><br><span class="line">	dfs(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">return</span> len(visited) == n</span><br><span class="line"></span><br><span class="line"><span class="number">66</span> / <span class="number">66</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">39</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1117,6 +1117,8 @@
   
 
   
+  
+
 
   
 

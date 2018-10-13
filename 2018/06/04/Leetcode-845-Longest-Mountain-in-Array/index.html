@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Let’s call any contiguous subarray B (of A) a mountain if the following properties hold:    B.length &amp;gt;= 3    There exists some 0 &amp;lt; i &amp;lt; B.length - 1 such that B[0] &amp;lt; B[1] &amp;lt; … B[i-1] &amp;lt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:52:04.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:14:47.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 845 Longest Mountain in Array">
 <meta name="twitter:description" content="Let’s call any contiguous subarray B (of A) a mountain if the following properties hold:    B.length &amp;gt;= 3    There exists some 0 &amp;lt; i &amp;lt; B.length - 1 such that B[0] &amp;lt; B[1] &amp;lt; … B[i-1] &amp;lt;">
@@ -395,8 +395,8 @@
 <p>Example 2:<br>Input: [2,2,2]<br>Output: 0<br>Explanation: There is no mountain.</p>
 </blockquote>
 <p>Note:<br>    0 &lt;= A.length &lt;= 10000<br>    0 &lt;= A[i] &lt;= 10000</p>
-<p><strong>分析：在一个数组中找最长的先严格上升后严格下降的连续序列，注意A.length达到10000，n^2方法显然不行</strong></p>
-<p><strong>思路：直接遍历一遍，找到一个上升点然后开始遍历，处理一些小情况即可</strong></p>
+<p><b>分析：</b><br>在一个数组中找最长的先严格上升后严格下降的连续序列，注意A.length达到10000，n^2方法显然不行</p>
+<p><b>思路：</b><br>直接遍历一遍，找到一个上升点然后开始遍历，处理一些小情况即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestMountain</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># O(n) time, O(1) space</span></span><br><span class="line">        i,n = <span class="number">0</span>,len(A)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; n<span class="number">-1</span>:</span><br><span class="line">        	<span class="comment">#找到一个上升点</span></span><br><span class="line">            <span class="keyword">if</span> A[i] &lt; A[i+<span class="number">1</span>]:</span><br><span class="line">            	<span class="comment"># 先找上升序列</span></span><br><span class="line">                j = i+<span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> j &lt; n <span class="keyword">and</span> A[j] &gt; A[j<span class="number">-1</span>]: j += <span class="number">1</span></span><br><span class="line">                <span class="comment"># 如若遍历到数组末尾直接返回结果</span></span><br><span class="line">                <span class="keyword">if</span> j == n: <span class="keyword">return</span> res</span><br><span class="line">                <span class="comment"># 这个判断语句处理[1,2,2,0]这种情况</span></span><br><span class="line">                <span class="keyword">if</span> A[j] != A[j<span class="number">-1</span>]: </span><br><span class="line">                    <span class="keyword">while</span> j &lt; n <span class="keyword">and</span> A[j] &lt; A[j<span class="number">-1</span>]: j += <span class="number">1</span></span><br><span class="line">                    res = max(res,j-i)</span><br><span class="line">                    i = j<span class="number">-2</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    i = j<span class="number">-1</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">O(n) time, O(<span class="number">1</span>) space</span><br><span class="line"><span class="number">72</span> / <span class="number">72</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">73</span> ms</span><br></pre></td></tr></table></figure>
 
       
@@ -1115,6 +1115,8 @@
   
 
   
+  
+
 
   
 

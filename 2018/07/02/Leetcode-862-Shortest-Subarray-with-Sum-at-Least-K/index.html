@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Return the length of the shortest, non-empty, contiguous subarray of A with sum at least K.If there is no non-empty subarray with sum at least K, return -1.  Example 1:Input: A = [1], K = 1Output: 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-02T08:58:34.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:17:19.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 862 Shortest Subarray with Sum at Least K">
 <meta name="twitter:description" content="Return the length of the shortest, non-empty, contiguous subarray of A with sum at least K.If there is no non-empty subarray with sum at least K, return -1.  Example 1:Input: A = [1], K = 1Output: 1">
@@ -403,7 +403,7 @@
 <li>1 &lt;= K &lt;= 10 ^ 9</li>
 </ol>
 <p><strong>这题思路来源于@lee215大神，我没想到用队列来保存下标，只想到了哪些数可以不考虑（见分析第2步中提到的假设）</strong></p>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>显然，我们会想到使用dp[i]记录sum(A[:i])，那么这道题就变成了，给定一个数组dp,找到一组i,j，使得dp[j]-dp[i]&gt;=K，且j-i尽量小！</li>
 <li>数据长度达到50000，显然不能使用O(n^2)复杂度的方法，我们得想办法让i,j只走一遍</li>
@@ -411,7 +411,7 @@
 <li>接下来来了个3，那么根据上面提到的论点，4将会被舍弃，但3比0要大，故此时0，3保留。</li>
 <li>然后来了个5，5-0&gt;=5，故找到一组i,j，记录下来，然后判断 5-3&gt;=5 ?如若确实大于，即再次找到一组i,j，若小于，则5保留（考虑到之后或许来了个10），依次类推</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>建立一个队列记录保留数字，初始为0</li>
 <li>依次对dp中的数进行分析，如果dp[i] - dp[Q[0]] &gt;= K，则记录一次i,j</li>
@@ -1136,6 +1136,8 @@
   
 
   
+  
+
 
   
 

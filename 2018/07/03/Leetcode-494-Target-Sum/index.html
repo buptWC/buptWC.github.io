@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。 返回可以使最终数组和为目标数 S 的所有添加符号的方法数。  示例 1:输入: nums: [1, 1, 1, 1, 1], S: 3输出: 5解释:-1+1+1+1+1 = 3+1-1+1+1+1 = 3+1+1-1+1+">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-03T12:54:20.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:05:54.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 494 Target Sum">
 <meta name="twitter:description" content="给定一个非负整数数组，a1, a2, …, an, 和一个目标数，S。现在你有两个符号 + 和 -。对于数组中的任意一个整数，你都可以从 + 或 -中选择一个符号添加在前面。 返回可以使最终数组和为目标数 S 的所有添加符号的方法数。  示例 1:输入: nums: [1, 1, 1, 1, 1], S: 3输出: 5解释:-1+1+1+1+1 = 3+1-1+1+1+1 = 3+1+1-1+1+">
@@ -397,14 +397,14 @@
 <li>初始的数组的和不会超过1000。</li>
 <li>保证返回的最终结果为32位整数。</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>这道题可以单纯的用暴力法解决，也就是对每个元素分别进行一次正负的累加，复杂度为2^n，因为n不超过20，故也就100w左右，但是在leetcode上同样的解法c++和java可以通过，python是无法通过的</li>
 <li>这里介绍discuss里一位大神提出来的超帅的数学解法，这道题中我们加正负号无非是将nums分为两个子集<code>p</code>,<code>n</code>，p中元素全部加<code>正号</code>，n中元素全部加<code>负号</code>，使得<code>sum(p) - sum(n) = S</code>，而本身又有<code>sum(p) + sum(n) = sum(nums)</code>，故两式相加化简得<code>sum(p) = (sum(nums)+S) / 2</code></li>
 <li>那么这个式子直接给出了一个信息，也就是如果能找到p，则必有<code>sum(nums)+S % 2 == 0</code>这个条件，这个条件可以帮我们快速判断是否有解。</li>
 <li>那么此时题目就变成给定一个数组nums，求有多少组不同的p，使得sum(p) = target，直接dp可解</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>建立dp，dp[i] = j代表数组nums中有j组子集的和为i，初始dp[0] = 1</li>
 <li>如nums = [1,1,1,1,1]，按照如下步骤分析<ol>
@@ -1135,6 +1135,8 @@
   
 
   
+  
+
 
   
 

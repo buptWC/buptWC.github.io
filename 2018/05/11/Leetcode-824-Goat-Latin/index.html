@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_824_1.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_824_2.png">
-<meta property="og:updated_time" content="2018-06-09T16:50:04.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:11:04.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 824 Goat Latin">
 <meta name="twitter:image" content="http://yoursite.com/images/leetcode_824_1.png">
@@ -386,7 +386,7 @@
 
       
         <p><img src="/images/leetcode_824_1.png" alt="图1"></p>
-<p><img src="/images/leetcode_824_2.png" alt="图2"><br><a id="more"></a><br><strong>分析：这道题是真的弱智</strong></p>
+<p><img src="/images/leetcode_824_2.png" alt="图2"><br><a id="more"></a><br><b>分析：</b><br>这道题是真的弱智</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">toGoatLatin</span><span class="params">(S)</span>:</span></span><br><span class="line">    res = S.split()</span><br><span class="line">    <span class="keyword">for</span> i,s <span class="keyword">in</span> enumerate(res):</span><br><span class="line">        <span class="keyword">if</span> s[<span class="number">0</span>] <span class="keyword">in</span> <span class="string">'aeiouAEIOU'</span>:</span><br><span class="line">            res[i] = s + <span class="string">'ma'</span> + <span class="string">'a'</span>*(i+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res[i] = s[<span class="number">1</span>:]+s[<span class="number">0</span>] + <span class="string">'ma'</span> + <span class="string">'a'</span>*(i+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">' '</span>.join(res)</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1104,6 +1104,8 @@
   
 
   
+  
+
 
   
 

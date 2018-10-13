@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。  示例 1:输入: [1,2,1]输出: [2,-1,2]解释: 第一个 1 的下一个更大的数是 2；数字 2 找不到下一个更大的数；第二个 1 的下一个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-05T00:53:32.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:06:36.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 503 Next Greater Element II">
 <meta name="twitter:description" content="给定一个循环数组（最后一个元素的下一个元素是数组的第一个元素），输出每个元素的下一个更大元素。数字 x 的下一个更大的元素是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 -1。  示例 1:输入: [1,2,1]输出: [2,-1,2]解释: 第一个 1 的下一个更大的数是 2；数字 2 找不到下一个更大的数；第二个 1 的下一个">
@@ -390,13 +390,13 @@
 <p>示例 1:<br>输入: [1,2,1]<br>输出: [2,-1,2]<br>解释: 第一个 1 的下一个更大的数是 2；<br>数字 2 找不到下一个更大的数；<br>第二个 1 的下一个最大的数需要循环搜索，结果也是 2。<br>注意: 输入数组的长度不会超过 10000。</p>
 </blockquote>
 <a id="more"></a>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>如果你还没解决next Greater Element I，那么建议你先看一下I的解法，具体思路见<a href="https://buptwc.github.io/2018/07/03/Leetcode-496-Next-Greater-Element-I" target="_blank" rel="noopener">Leetcode-496-Next-Greater-Element-I</a>，看完之后本题解法呼之欲出</li>
 <li>我们只需要对给定的nums数组*2即可，如示例1中nums，我们将其改成[1,2,1, 1,2,1]，用I中思想解即可</li>
 <li>对于数组中最大的数，全设为-1即可</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>初始化res数组，全为-1，len(res) = len(nums) </li>
 <li>利用栈存储数据和其下标，因为我们将nums长度翻倍了，故需判断一下下标是否小于len(res)</li>
@@ -1120,6 +1120,8 @@
   
 
   
+  
+
 
   
 

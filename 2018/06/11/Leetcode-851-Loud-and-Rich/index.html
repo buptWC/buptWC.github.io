@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -127,7 +127,7 @@
 <meta property="og:description" content="In a group of N people (labelled 0, 1, 2, …, N-1), each person has different amounts of money, and different levels of quietness.For convenience, we’ll call the person with label x, simply “person x”.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_851.jpg">
-<meta property="og:updated_time" content="2018-06-11T03:48:44.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:15:39.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 851 Loud and Rich">
 <meta name="twitter:description" content="In a group of N people (labelled 0, 1, 2, …, N-1), each person has different amounts of money, and different levels of quietness.For convenience, we’ll call the person with label x, simply “person x”.">
@@ -394,13 +394,13 @@
 <blockquote>
 <p>Note:<br>1 &lt;= quiet.length = N &lt;= 500<br>0 &lt;= quiet[i] &lt; N, all quiet[i] are different.<br>0 &lt;= richer.length &lt;= N * (N-1) / 2<br>0 &lt;= richer[i][j] &lt; N<br>richer[i][0] != richer[i][1]<br>richer[i]’s are all different.<br>The observations in richer are all logically consistent.</p>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>人的编号从0到n-1，每个人有一定的钱和度，并且都不相同</li>
 <li>返回ans，ans[i]代表比i这个人钱多的人中，度最小的人的编号</li>
 <li>数据（节点）长度500，边长度不超过250000，故显然对边分析时，n^2复杂度不可行</li>
 </ol>
-<p><strong>思路：</strong><br>对于每个人可以直接用dfs找，但是也得用dp存一下。topsort也是一样，都得用dp。由于我对dfs还是运用不到位，这里先写下topsort方法吧。<br>对于example中的例子，关系如图：<br><img src="/images/leetcode_851.jpg" alt=""><br>可以看到2，4，5，6入度为0，即没有比他们更多钱的人，那么对于这种节点 ,ans[i] = i<br>对于3,则要从指向他的节点（4，5，6）以及他自身中找到quiet值最小的点index,ans[3] = min(3,4,5,6,key=lambda x: quiet[ans[x]]) ,依次类推即可</p>
+<p><b>思路：</b><br>对于每个人可以直接用dfs找，但是也得用dp存一下。topsort也是一样，都得用dp。由于我对dfs还是运用不到位，这里先写下topsort方法吧。<br>对于example中的例子，关系如图：<br><img src="/images/leetcode_851.jpg" alt=""><br>可以看到2，4，5，6入度为0，即没有比他们更多钱的人，那么对于这种节点 ,ans[i] = i<br>对于3,则要从指向他的节点（4，5，6）以及他自身中找到quiet值最小的点index,ans[3] = min(3,4,5,6,key=lambda x: quiet[ans[x]]) ,依次类推即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections,Queue</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loudAndRich</span><span class="params">(richer, quiet)</span>:</span></span><br><span class="line">	<span class="comment"># 存储形式 节点： 指向该节点的节点</span></span><br><span class="line">	d = collections.defaultdict(list)</span><br><span class="line">	<span class="comment"># 存储形式 节点： 该节点指向的节点</span></span><br><span class="line">	d1 = collections.defaultdict(list)</span><br><span class="line">	<span class="comment"># 记录入度</span></span><br><span class="line">	count = [<span class="number">0</span>] * len(quiet)</span><br><span class="line">	ans = [float(<span class="string">'inf'</span>)] * len(quiet)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> x,y <span class="keyword">in</span> richer:</span><br><span class="line">		count[y] += <span class="number">1</span></span><br><span class="line">		d[y].append(x)</span><br><span class="line">		d1[x].append(y)</span><br><span class="line">	<span class="comment"># 取入度为0的点</span></span><br><span class="line">	Q = Queue.deque([i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(quiet)) <span class="keyword">if</span> count[i] == <span class="number">0</span>])</span><br><span class="line">	<span class="keyword">while</span> Q:</span><br><span class="line">		node = Q.popleft()</span><br><span class="line">		<span class="comment"># 先默认结果为自身，然后和指向自身的节点依次比较</span></span><br><span class="line">		res = node</span><br><span class="line">		<span class="keyword">for</span> e <span class="keyword">in</span> d[node]:</span><br><span class="line">			<span class="keyword">if</span> quiet[ans[e]] &lt; quiet[res]:</span><br><span class="line">				res = ans[e]</span><br><span class="line">		ans[node] = res</span><br><span class="line">		<span class="comment"># 修改入度，将入度变为0的节点加入队列</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> d1[node]:</span><br><span class="line">			count[i] -= <span class="number">1</span></span><br><span class="line">			<span class="keyword">if</span> count[i] == <span class="number">0</span>:</span><br><span class="line">				Q.append(i)</span><br><span class="line">	<span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">86</span> / <span class="number">86</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">256</span> ms</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1122,6 +1122,8 @@
   
 
   
+  
+
 
   
 

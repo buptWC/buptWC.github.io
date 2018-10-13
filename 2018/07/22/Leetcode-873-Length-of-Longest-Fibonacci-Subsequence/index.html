@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="A sequence X_1, X_2, …, X_n is fibonacci-like if:· n &amp;gt;= 3· X_i + X_{i+1} = X_{i+2} for all i + 2 &amp;lt;= nGiven a strictly increasing array A of positive integers forming a sequence, find the length">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-22T12:05:54.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:18:23.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 873 Length of Longest Fibonacci Subsequence">
 <meta name="twitter:description" content="A sequence X_1, X_2, …, X_n is fibonacci-like if:· n &amp;gt;= 3· X_i + X_{i+1} = X_{i+2} for all i + 2 &amp;lt;= nGiven a strictly increasing array A of positive integers forming a sequence, find the length">
@@ -398,14 +398,14 @@
 <li>3 &lt;= A.length &lt;= 1000</li>
 <li>1 &lt;= A[0] &lt; A[1] &lt; … &lt; A[A.length - 1] &lt;= 10^9<br>(The time limit has been reduced by 50% for submissions in Java, C, and C++.)</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>对于这种找子串的问题，大家应该敏感一点，虽然不说绝对，但是极大可能是dp，在这里写一下我分析这道题的心路历程</li>
 <li>第一反应，dp[i]表示nums[:i]的最长fiboc序列长度。但仔细想想dp[i]只记录长度，我根本没法去判断nums[i]能否组出一个更长的序列，那用dp[i]记录下一个期望的数（序列中最后两个数的和）？但是就想example2一样，首先可能会有很多期望的值，其次，可能最后最长的那个序列在最初分析数组前几个数时根本不包括其中，所以这个方法应该是行不通。</li>
 <li>第二反应，发现A的长度不超过1000，这不是暗示我n^2的方法嘛，一想dp[i][j]表示nums[i:j]的最长fibco序列长度，乍一看好像可行诶，首先可以初始化，因为j-i&lt;2则dp[i][j] = 0，所有的j-i=2都可以判断出来（因为就三个数），对于j-i&gt;2，可以依次分析dp[i][i+2],dp[i][i+3]…dp[i][j-1]与nums[j]能否构成更长的序列，取最长的那个保存，但想到这里的时候，发现这个方法复杂度好像有点高哦，达到n^3了，想了一会也没想到怎么优化，而且也还是会面临第2点中说的第一个问题，遂放弃。</li>
 <li>第三反应，逆向思维一下，像上面两个方法都是判断最后一个数能不能和前面的组成更长的序列，那为什么不固定住最后的序列，去找前面的序列呢(这个思维正好把第2点中提到的那个“其次”解决了)，dp[i][j]表示以nums[i]和nums[j]结尾的fibco序列的最长长度，则dp[i][j] = dp[nums[j]-nums[i]的index][i] + 1，当然这必须要满足nums[j]-nums[i]在A中</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>用一个字典保存值和下标的对应关系，用于获得nums[j]-nums[i]的index</li>
 <li>集合记录A（有序）中元素，判断nums[j]-nums[i]是否在A中</li>
@@ -1130,6 +1130,8 @@
   
 
   
+  
+
 
   
 

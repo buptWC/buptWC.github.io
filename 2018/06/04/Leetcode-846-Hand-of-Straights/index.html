@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Alice has a hand of cards, given as an array of integers.Now she wants to rearrange the cards into groups so that each group is size W, and consists of W consecutive cards.Return true if and only if s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:52:10.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:15:03.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 846 Hand of Straights">
 <meta name="twitter:description" content="Alice has a hand of cards, given as an array of integers.Now she wants to rearrange the cards into groups so that each group is size W, and consists of W consecutive cards.Return true if and only if s">
@@ -394,8 +394,8 @@
 <p>Example 2:<br>Input: hand = [1,2,3,4,5], W = 4<br>Output: false<br>Explanation: Alice’s hand can’t be rearranged into groups of 4.</p>
 </blockquote>
 <p>Note:<br>    1 &lt;= hand.length &lt;= 10000<br>    0 &lt;= hand[i] &lt;= 10^9<br>    1 &lt;= W &lt;= hand.length</p>
-<p><strong>分析：将一组数据分为若干组，每组大小都是W，并且是W个连续数(我一开始看错题目了，以为是分成W组，并每组都是W大小，搞得提交错了好几次)</strong></p>
-<p><strong>思路：先判断能不能均分，不能直接False，然后用字典将数组存起来，每次用最小的数开始分析，判断连续W个数是不是都存在，直至字典为空</strong></p>
+<p><b>分析：</b><br>将一组数据分为若干组，每组大小都是W，并且是W个连续数(我一开始看错题目了，以为是分成W组，并每组都是W大小，搞得提交错了好几次)</p>
+<p><b>思路：</b><br>先判断能不能均分，不能直接False，然后用字典将数组存起来，每次用最小的数开始分析，判断连续W个数是不是都存在，直至字典为空</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isNStraightHand</span><span class="params">(self, hand, W)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type hand: List[int]</span></span><br><span class="line"><span class="string">        :type W: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 判断是否能均分</span></span><br><span class="line">        n = len(hand)</span><br><span class="line">        <span class="keyword">if</span> n % W != <span class="number">0</span>: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        d = collections.Counter(hand)</span><br><span class="line">        <span class="keyword">while</span> d:</span><br><span class="line">            m = min(d.keys())</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(W):</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> d[m+i]: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                d[m+i] -= <span class="number">1</span></span><br><span class="line">                <span class="comment"># 如果数字用光了则删除key值</span></span><br><span class="line">                <span class="keyword">if</span> d[m+i] == <span class="number">0</span>: <span class="keyword">del</span> d[m+i]</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="number">65</span> / <span class="number">65</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">1156</span> ms</span><br></pre></td></tr></table></figure>
 <p>因为每次都要取最小值，其实这个复杂度达到了n^2/W,也是测试数据给面子吧，讲道理这个复杂度应该是不行的<br>当然要修改很简单，我们直接对d.keys()从小到大遍历，如果d[i]&gt;0我们才进行操作，否则跳过</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isNStraightHand</span><span class="params">(hand,W)</span>:</span></span><br><span class="line">	n = len(hand)</span><br><span class="line">	<span class="keyword">if</span> n % W != <span class="number">0</span>: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">	d = collections.Counter(hand)</span><br><span class="line">	<span class="keyword">for</span> e <span class="keyword">in</span> sorted(d.keys()):</span><br><span class="line">		<span class="keyword">if</span> d[e] &gt; <span class="number">0</span>:</span><br><span class="line">			<span class="comment"># 这里倒序遍历是因为要保证d[e]的值最后才变</span></span><br><span class="line">			<span class="keyword">for</span> step <span class="keyword">in</span> range(W)[::<span class="number">-1</span>]:</span><br><span class="line">				d[e+step] -= d[e]</span><br><span class="line">				<span class="keyword">if</span> d[e+step] &lt; <span class="number">0</span>: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="number">65</span> / <span class="number">65</span> test cases passed.</span><br><span class="line">difficulty: medium</span><br><span class="line">Runtime: <span class="number">194</span> ms</span><br></pre></td></tr></table></figure>
@@ -1115,6 +1115,8 @@
   
 
   
+  
+
 
   
 

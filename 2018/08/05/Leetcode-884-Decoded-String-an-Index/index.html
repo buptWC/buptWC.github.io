@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="An encoded string S is given.  To find and write the decoded string to a tape, the encoded string is read one character at a time and the following steps are taken:If the character read is a letter, t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-05T08:00:06.778Z">
+<meta property="og:updated_time" content="2018-10-13T08:19:20.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 884 Decoded String an Index">
 <meta name="twitter:description" content="An encoded string S is given.  To find and write the decoded string to a tape, the encoded string is read one character at a time and the following steps are taken:If the character read is a letter, t">
@@ -401,7 +401,7 @@
 <li>1 &lt;= K &lt;= 10^9</li>
 <li>The decoded string is guaranteed to have less than 2^63 letters.</li>
 </ol>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>这道题是把字符串按照给定的规则展开，然后返回展开后的字符串的第K个字符，应该要怎么思考呢？</li>
 <li>我不知道大家注意到note的第5点没有，为什么他在这里突然加这么一点，告诉我们长度小于2^63，其实就是在暗示我们要用到总长度（因为我们不可能真把展开后的字符串写出来）</li>
@@ -409,7 +409,7 @@
 <li>S = ‘leet2code3problem’，这个字符串展开后总长度为43，’problem’是没有重复的部分，前面’leet2code3’总长度是36，那么假设此时K = 37,38,39…，43，我们可以直接得出答案。那如果K小于37呢，那么问题是不是可以转换成在S=’leet2code3’求第K个字符（多余的部分可以直接不要）</li>
 <li>当以数字结尾时，那么整个字符串就是S[:-1]的若干次重复，例如此时S=’leet2code3’的长度为36，设K=18吧，那么基本字符串的长度应该为36/3=12，那么我们要求的字符应该是第18%12=6个字符，现在问题转换成了S=’leet2code’,K=6,又变成我们第4点中分析的情况了，依次类推即可</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>分析过程很简单明了，但是代码却不太好写，比较繁杂</li>
 <li>我们先去找S中最后一个数字的位置，然后判断K是不是处于这个数字后面的那串字符串中（关键），若是则直接返回</li>
@@ -1133,6 +1133,8 @@
   
 
   
+  
+
 
   
 

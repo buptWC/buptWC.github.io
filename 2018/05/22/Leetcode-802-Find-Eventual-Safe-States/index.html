@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -125,7 +125,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_802.png">
-<meta property="og:updated_time" content="2018-06-09T16:49:26.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:09:39.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 802 Find Eventual Safe States">
 <meta name="twitter:image" content="http://yoursite.com/images/leetcode_802.png">
@@ -384,8 +384,8 @@
       
 
       
-        <p><img src="/images/leetcode_802.png" alt="description"><br><a id="more"></a><br><strong>分析：这道题是要在一个图里找不在环路中的节点，显然，dfs遍历即可，不过这里用拓扑排序方法也可以做，因为dfs这个方法我掌握得还不太熟练，老出各种小错误，等我钻研更深之后再补上dfs方法</strong></p>
-<p><strong>思路：记录下每个节点的出度，如果出度为0那必然是环路外的节点，然后将该点以及指向该点的边删除，继续寻找出度为0的点</strong></p>
+        <p><img src="/images/leetcode_802.png" alt="description"><br><a id="more"></a><br><b>分析：</b><br>这道题是要在一个图里找不在环路中的节点，显然，dfs遍历即可，不过这里用拓扑排序方法也可以做，因为dfs这个方法我掌握得还不太熟练，老出各种小错误，等我钻研更深之后再补上dfs方法</p>
+<p><b>思路：</b><br>记录下每个节点的出度，如果出度为0那必然是环路外的节点，然后将该点以及指向该点的边删除，继续寻找出度为0的点</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eventualSafeNodes</span><span class="params">(self, graph)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type graph: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> graph: <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        n = len(graph)</span><br><span class="line">        <span class="comment"># 用字段存储每个节点的父节点</span></span><br><span class="line">        d = &#123;u:[] <span class="keyword">for</span> u <span class="keyword">in</span> range(n)&#125;</span><br><span class="line">        degree = [<span class="number">0</span>] * n</span><br><span class="line">        <span class="keyword">for</span> u <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">for</span> v <span class="keyword">in</span> graph[u]:</span><br><span class="line">                d[v].append(u)</span><br><span class="line">            degree[u] = len(graph[u])</span><br><span class="line"></span><br><span class="line">        Q = [u <span class="keyword">for</span> u <span class="keyword">in</span> range(n) <span class="keyword">if</span> degree[u]==<span class="number">0</span>]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> Q:</span><br><span class="line">            node = Q.pop()</span><br><span class="line">            res.append(node)</span><br><span class="line">            <span class="keyword">for</span> nodes <span class="keyword">in</span> d[node]:</span><br><span class="line">                degree[nodes] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> degree[nodes] == <span class="number">0</span>:</span><br><span class="line">                    Q.append(nodes)</span><br><span class="line">        <span class="keyword">return</span> sorted(res)</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1107,6 +1107,8 @@
   
 
   
+  
+
 
   
 

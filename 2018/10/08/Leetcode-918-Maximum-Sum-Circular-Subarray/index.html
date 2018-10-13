@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -129,7 +129,7 @@
 <meta property="og:image" content="http://yoursite.com/images/leetcode_918.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_918_1.png">
 <meta property="og:image" content="http://yoursite.com/images/leetcode_918_2.png">
-<meta property="og:updated_time" content="2018-10-08T04:13:37.312Z">
+<meta property="og:updated_time" content="2018-10-13T08:21:23.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 918 Maximum Sum Circular Subarray">
 <meta name="twitter:description" content="给定一个由整数数组 A 表示的环形数组 C，求 C 的非空子数组的最大可能和。在此处，环形数组意味着数组的末端将会与开头相连呈环状。（形式上，当0 &amp;lt;= i &amp;lt; A.length 时 C[i] = A[i]，而当 i &amp;gt;= 0 时 C[i+A.length] = C[i]）此外，子数组最多只能包含固定缓冲区 A 中的每个元素一次。（形式上，对于子数组 C[i], C[i+1],">
@@ -411,8 +411,8 @@
 <li>-30000 &lt;= A[i] &lt;= 30000</li>
 <li>1 &lt;= A.length &lt;= 30000</li>
 </ol>
-<p><strong>题意分析：</strong><br>这道题是要求数组连续和的最大值，但这里需要把数组看做是一个圆圈。是<a href="https://leetcode.com/problems/maximum-subarray/description/" target="_blank" rel="noopener">leetcode 53 Maximum Subarray</a>的升级版！</p>
-<p><strong>思路分析：</strong><br>我们可以直接将这个“圆圈”数组看做两个相同数组连接在一起<br><img src="/images/leetcode_918.png" alt=""><br>考虑到56题的情况，我们很容易想到将这道题分成两种情况来解决：<br>第一种情况即最大值就在第一部分中，第二种情况即最大值横跨两个部分但距离不得超过n，n为数组A的长度。分别如下图所示：<br><img src="/images/leetcode_918_1.png" alt=""><br><img src="/images/leetcode_918_2.png" alt=""></p>
+<p><b>题意分析：</b><br>这道题是要求数组连续和的最大值，但这里需要把数组看做是一个圆圈。是<a href="https://leetcode.com/problems/maximum-subarray/description/" target="_blank" rel="noopener">leetcode 53 Maximum Subarray</a>的升级版！</p>
+<p><b>思路分析：</b><br>我们可以直接将这个“圆圈”数组看做两个相同数组连接在一起<br><img src="/images/leetcode_918.png" alt=""><br>考虑到56题的情况，我们很容易想到将这道题分成两种情况来解决：<br>第一种情况即最大值就在第一部分中，第二种情况即最大值横跨两个部分但距离不得超过n，n为数组A的长度。分别如下图所示：<br><img src="/images/leetcode_918_1.png" alt=""><br><img src="/images/leetcode_918_2.png" alt=""></p>
 <p>对于第一种情况，我们可以直接按53题的解法做<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">left = [A[<span class="number">0</span>]] * len(A)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(A)):</span><br><span class="line">    left[i] = max(A[i], left[i<span class="number">-1</span>]+A[i])</span><br><span class="line">res = max(left)</span><br></pre></td></tr></table></figure></p>
 <p>对于第二种情况，我们注意到数组一定经过A[-1]，对于某个左边界i，他能产生的最大和为<br>sum(A[i:]) + max(sum(A[n:j-n]) for every j &lt; i+n)<br>显然每次都要找前缀和最大的值，我们使用一个数组将其保存以节省开销。<br>定义s[i] = sum(A[:i+1])<br>定义r_max[i] = max(s[:i+1])<br>则对于某个左边界i，他能产生的最大和为sum(A[i:]) + r_max(i)<br>完整代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubarraySumCircular</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        left = [A[<span class="number">0</span>]] * len(A)</span><br><span class="line">        s = [A[<span class="number">0</span>]] * len(A)</span><br><span class="line">        r_max = [s[<span class="number">0</span>]] * len(A)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(A)):</span><br><span class="line">            left[i] = max(A[i], left[i<span class="number">-1</span>]+A[i])</span><br><span class="line">            s[i] = s[i<span class="number">-1</span>] + A[i]</span><br><span class="line">            r_max[i] = max(s[i], r_max[i<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line">        res = max(left)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)):</span><br><span class="line">            res = max(res, s[<span class="number">-1</span>] - s[i] + r_max[i])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
 
@@ -1132,6 +1132,8 @@
   
 
   
+  
+
 
   
 

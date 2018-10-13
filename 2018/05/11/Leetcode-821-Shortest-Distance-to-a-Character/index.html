@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string.  Example 1:Input: S = “loveleetcode”, C = ‘e’Output: [3, 2, 1, 0,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:49:36.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:09:58.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 821 Shortest Distance to a Character">
 <meta name="twitter:description" content="Given a string S and a character C, return an array of integers representing the shortest distance from the character C in the string.  Example 1:Input: S = “loveleetcode”, C = ‘e’Output: [3, 2, 1, 0,">
@@ -391,8 +391,8 @@
 </blockquote>
 <a id="more"></a>
 <p><strong>Note:</strong><br>    S string length is in [1, 10000].<br>    C is a single character, and guaranteed to be in string S.<br>    All letters in S and C are lowercase.</p>
-<p><strong>分析：找S中所有元素距离给定C的最小距离，注意数据长度10000，说明n^2不行</strong></p>
-<p><strong>思路：先将S中所有的C的位置找出来，然后以这些位置两两为一段，对这一段中的元素判断离那边端点更近就OK，-1处和len(s)处默认有一个，这两个边界问题注意处理</strong></p>
+<p><b>分析：</b><br>找S中所有元素距离给定C的最小距离，注意数据长度10000，说明n^2不行</p>
+<p><b>思路：</b><br>先将S中所有的C的位置找出来，然后以这些位置两两为一段，对这一段中的元素判断离那边端点更近就OK，-1处和len(s)处默认有一个，这两个边界问题注意处理</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">shortestToChar</span><span class="params">(S, C)</span>:</span></span><br><span class="line">    res = [<span class="number">-1</span>] * len(S)</span><br><span class="line">    <span class="comment"># 找到所有的C的位置</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(S)):</span><br><span class="line">        <span class="keyword">if</span> S[i] == C: res[i] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 左边界定为-1</span></span><br><span class="line">    i = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(S):</span><br><span class="line">        j = i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j &lt; len(S) <span class="keyword">and</span> res[j] != <span class="number">0</span>: j+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> xrange(i+<span class="number">1</span>,j):</span><br><span class="line">        	<span class="comment"># 如果在左边界</span></span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">-1</span>:</span><br><span class="line">                res[k] = j-k</span><br><span class="line">            <span class="comment"># 如果到达右边界</span></span><br><span class="line">            <span class="keyword">elif</span> j == len(S):</span><br><span class="line">                res[k] = k-i</span><br><span class="line">            <span class="comment"># 在中间</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res[k] = min(j-k,k-i)</span><br><span class="line">        i = j</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1110,6 +1110,8 @@
   
 
   
+  
+
 
   
 

@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &amp;lt;= i &amp;lt;= N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件：第 i 位的数字能被 i 整除i 能被第 i 位上的数字整除现在给定一个整数 N，请问可以构造多少个优美的排列？  示例1:输入: 2输出: 2解释:第 1 个优美的排列是 [1, 2]: 第">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T10:23:20.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:07:46.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 526 Beautiful Arrangement">
 <meta name="twitter:description" content="假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &amp;lt;= i &amp;lt;= N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件：第 i 位的数字能被 i 整除i 能被第 i 位上的数字整除现在给定一个整数 N，请问可以构造多少个优美的排列？  示例1:输入: 2输出: 2解释:第 1 个优美的排列是 [1, 2]: 第">
@@ -393,14 +393,14 @@
 <blockquote>
 <p>说明:<br>N 是一个正整数，并且不会超过15。</p>
 </blockquote>
-<p><strong>分析：</strong></p>
+<p><b>分析：</b></p>
 <ol>
 <li>当你看到N不超过15的时候，你可以在leetcode上把这个15个数的答案都测出来然后返回就完事了，当然这是开玩笑的！</li>
 <li>这道题是标准的回溯，相当于有N个位置，我们依次往每个位置上放置数字，要满足 nums[i] % i == 0 or i % nums[i] == 0.（和N皇后问题一样，只是限制条件不同）</li>
 <li>不妨假设N=15，那么对于第一个位置我们有15种可能，取其中一种记录（之后放置时不能使用重复数字），第二个位置我们有14种可能，第三个位置13种，依次类推。我们发现如果这样重复迭代的话计算量非常之大，因为相当于我们要遍历15!种情况，虽然因为有限制条件剪枝，但仍然太多了（N=15时会超时）</li>
 <li>那么我们需要想到，其实对于第i个位置我们并不用遍历所有的15个数，而只要事先记录15个数中能放在i位置上的数有哪些，只遍历这一部分数（一般只有4个左右）即可，大大减少了运行时间（可以通过）</li>
 </ol>
-<p><strong>思路：</strong></p>
+<p><b>思路：</b></p>
 <ol>
 <li>字典d[i]记录能放在i位置上的所有数</li>
 <li>从第1个位置开始，依次分析，如若能到第N+1个位置（说明N个位置全部放置完毕），res += 1</li>
@@ -1124,6 +1124,8 @@
   
 
   
+  
+
 
   
 

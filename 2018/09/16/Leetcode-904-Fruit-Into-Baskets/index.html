@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="In a row of trees, the i-th tree produces fruit with type tree[i].You start at any tree of your choice, then repeatedly perform the following steps:Add one piece of fruit from this tree to your basket">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-16T06:53:15.957Z">
+<meta property="og:updated_time" content="2018-10-13T08:20:27.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 904 Fruit Into Baskets">
 <meta name="twitter:description" content="In a row of trees, the i-th tree produces fruit with type tree[i].You start at any tree of your choice, then repeatedly perform the following steps:Add one piece of fruit from this tree to your basket">
@@ -404,7 +404,7 @@
 <li>1 &lt;= tree.length &lt;= 40000</li>
 <li>0 &lt;= tree[i] &lt; tree.length</li>
 </ol>
-<p>分析：</p>
+<p><b>分析：</b></p>
 <ol>
 <li>这道题实际上是找到一段最长的距离，使得这段距离内包含的元素只有两种，显然双指针解决，使用一个字典存储已经有的元素及对应的数量。</li>
 <li>对tree[j]分析时，若向字典中加入tree[j]使得字典中元素数量大于2，便开始从左开始删元素，直至字典元素只剩1种，然后将tree[j]加入</li>
@@ -1130,6 +1130,8 @@
   
 
   
+  
+
 
   
 

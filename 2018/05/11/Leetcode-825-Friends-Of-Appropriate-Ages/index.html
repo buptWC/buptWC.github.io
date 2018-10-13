@@ -90,16 +90,16 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/favicon.ico?v=5.1.4" color="#222">
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
 
 
 
@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="Some people will make friend requests. The list of their ages is given and ages[i] is the age of the ith person.  Person A will NOT friend request person B (B != A) if any of the following conditions">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T16:50:22.000Z">
+<meta property="og:updated_time" content="2018-10-13T08:11:23.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode_825_Friends_Of_Appropriate_Ages">
 <meta name="twitter:description" content="Some people will make friend requests. The list of their ages is given and ages[i] is the age of the ith person.  Person A will NOT friend request person B (B != A) if any of the following conditions">
@@ -393,8 +393,8 @@
 <p><strong>Example 2:</strong><br>Input: [16,17,18]<br>Output: 2<br>Explanation: Friend requests are made 17 -&gt; 16, 18 -&gt; 17.</p>
 <p><strong>Example 3:</strong><br>Input: [20,30,100,110,120]<br>Output: 3<br>Explanation: Friend requests are made 110 -&gt; 100, 120 -&gt; 110, 120 -&gt; 100.</p>
 <p><strong>Notes:</strong><br>    1 &lt;= ages.length &lt;= 20000.<br>    1 &lt;= ages[i] &lt;= 120.</p>
-<p><strong>分析：对于A这个人交朋友来说，根据条件2比他年级大的一概排除，比他年级小的要满足条件1，条件3没用，不知道这个出题的人在想什么，注意数据长度达到20000，所以复杂度n^2是不行的</strong></p>
-<p><strong>思路：首先将ages数组从大到小排序，然后用两个指针遍历即可</strong></p>
+<p><b>分析：</b><br>对于A这个人交朋友来说，根据条件2比他年级大的一概排除，比他年级小的要满足条件1，条件3没用，不知道这个出题的人在想什么，注意数据长度达到20000，所以复杂度n^2是不行的</p>
+<p><b>思路：</b><br>首先将ages数组从大到小排序，然后用两个指针遍历即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numFriendRequests</span><span class="params">(ages)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(ages) == <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    ages.sort(reverse=<span class="keyword">True</span>)</span><br><span class="line">    i,j = <span class="number">0</span>,<span class="number">1</span></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    cnt = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(ages):</span><br><span class="line">        <span class="keyword">while</span> j &lt; len(ages) <span class="keyword">and</span> ages[j] &gt; <span class="number">0.5</span>*ages[i] + <span class="number">7</span>:</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">        <span class="comment"># 如果对于age[0]来说,age[1,2,3,4,5]他都可以交朋友</span></span><br><span class="line">        <span class="comment"># 那么对于age[1]来说,age[2,3,4,5]也是必可以的，所以只用遍历一遍就可以了</span></span><br><span class="line">        res += j - i - <span class="number">1</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i &lt; len(ages) <span class="keyword">and</span> ages[i] &gt; <span class="number">14</span>:</span><br><span class="line">            <span class="keyword">if</span> ages[i] == ages[i<span class="number">-1</span>]: res += cnt + <span class="number">1</span>;cnt += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>: cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> i &gt;= j: j = i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="string">"difficulty: medium</span></span><br><span class="line"><span class="string">83 / 83 test cases passed</span></span><br><span class="line"><span class="string">runtime: 305 ms"</span></span><br></pre></td></tr></table></figure>
       
     </div>
@@ -1112,6 +1112,8 @@
   
 
   
+  
+
 
   
 
