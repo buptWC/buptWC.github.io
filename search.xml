@@ -3,6 +3,59 @@
   
     
     <entry>
+      <title>Leetcode 15 3Sum</title>
+      <link href="/2018/10/20/Leetcode-15-3Sum/"/>
+      <url>/2018/10/20/Leetcode-15-3Sum/</url>
+      <content type="html"><![CDATA[<p>给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。</p><p>注意：答案中不可以包含重复的三元组。<br><a id="more"></a><br>例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，<br>满足要求的三元组集合为：<br>[<br>  [-1, 0, 1],<br>  [-1, -1, 2]<br>]</p><p><b>题意分析：</b><br>在数组找三个数，使三个数的和为0，关键在于答案中不能包含重复三元组！</p><p><b>思路分析：</b><br>碰到3Sum问题，我们一般倾向于把他变成一个2Sum问题。<br>我们首先将数组排序，然后固定住第一个数，在剩下的数组中使用双指针法来寻找剩下两个数。</p><p>那如何去重呢？<br>对于我们固定的第一个数来说，例如[-1, -1, 0, 1, 2]<br>第一个-1能组成的三元组，完全包含住了第二个-1可能组成的三元组。所以可以将第二个-1跳过。</p><p>对于双指针法找到的两个数j,k，一旦成功找到一组(j,k)那么和(j,k)相等的数全部可以跳过。</p><p><b>优化：</b><br>因为数组排序后是从小到大的，如果第一个数就大于0了，那已经不可能存在和为0的情况了</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 584ms, beats 86.61%</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        res = []</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; <span class="number">0</span>: <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]: <span class="keyword">continue</span></span><br><span class="line">            j,k = i+<span class="number">1</span>,len(nums)<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> j &lt; k:</span><br><span class="line">                <span class="keyword">while</span> j &lt; k <span class="keyword">and</span> nums[i]+nums[j]+nums[k] &lt; <span class="number">0</span>:</span><br><span class="line">                    j += <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> j &lt; k <span class="keyword">and</span> nums[i]+nums[j]+nums[k] &gt; <span class="number">0</span>:</span><br><span class="line">                    k -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> j == k: <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">if</span> nums[i]+nums[j]+nums[k] == <span class="number">0</span>:</span><br><span class="line">                    res.append([nums[i],nums[j],nums[k]])</span><br><span class="line">                    <span class="keyword">while</span> j &lt; k <span class="keyword">and</span> nums[j] == nums[j+<span class="number">1</span>]:</span><br><span class="line">                        j += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span> j &lt; k <span class="keyword">and</span> nums[k] == nums[k<span class="number">-1</span>]:</span><br><span class="line">                        k -= <span class="number">1</span></span><br><span class="line">                    j += <span class="number">1</span>; k -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Leetcode problems </tag>
+            
+            <tag> array </tag>
+            
+            <tag> two pointers </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Leetcode 14 Longest Common Prefix</title>
+      <link href="/2018/10/20/Leetcode-14-Longest-Common-Prefix/"/>
+      <url>/2018/10/20/Leetcode-14-Longest-Common-Prefix/</url>
+      <content type="html"><![CDATA[<p>编写一个函数来查找字符串数组中的最长公共前缀。<br>如果不存在公共前缀，返回空字符串 “”。</p><a id="more"></a><blockquote><p>示例 1:<br>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”</p></blockquote><blockquote><p>示例 2:<br>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。</p></blockquote><p>说明:<br>所有输入只包含小写字母 a-z 。</p><p><b>题意分析：</b><br>需要找到一个最长的字符串，使得这个字符串是数组中所有字符的公共前缀。</p><p><b>思路分析：</b><br>如果你是看我题解比较多的人，应该看到我题意分析中的语句可能就已经懂了这道题要怎么做了。<br><code>找一个数，使这个数满足某种条件</code>，符合这种描述的题型，极有可能是二分法。</p><p>这道题也不例外，因为前缀最长也只能是数组中最短的字符串<code>ss</code>的长度，我们只需要判断到底要在<code>ss</code>中选择多长的前缀即可。</p><p>对于我们每次选择的长度，我们判断其到底是不是数组中每个字符的前缀，如果是，说明最后的结果长度可能更长；反之，说明结果长度不够。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 24ms, beats 88.14%</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestCommonPrefix</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">        ss = min(s, key=len)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">isPre</span><span class="params">(s,ss,mid)</span>:</span></span><br><span class="line">            pre = ss[:mid]</span><br><span class="line">            <span class="keyword">if</span> all(e.startswith(pre) <span class="keyword">for</span> e <span class="keyword">in</span> s): <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        l,r = <span class="number">0</span>,len(ss)</span><br><span class="line">        <span class="keyword">while</span> l &lt; r<span class="number">-1</span>:</span><br><span class="line">            mid = (l+r) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> isPre(s,ss,mid):</span><br><span class="line">                l = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                r = mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">if</span> isPre(s,ss,r): <span class="keyword">return</span> ss[:r]</span><br><span class="line">        <span class="keyword">return</span> ss[:l]</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Leetcode problems </tag>
+            
+            <tag> binary search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Leetcode 13 Roman to Integer</title>
+      <link href="/2018/10/20/Leetcode-13-Roman-to-Integer/"/>
+      <url>/2018/10/20/Leetcode-13-Roman-to-Integer/</url>
+      <content type="html"><![CDATA[<p>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。<br>字符          数值<br>I             1<br>V             5<br>X             10<br>L             50<br>C             100<br>D             500<br>M             1000<br>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p><p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p><p>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。<br>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。<br>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。<br>给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。<br><a id="more"></a></p><blockquote><p>示例 1:<br>输入: “III”<br>输出: 3</p></blockquote><blockquote><p>示例 2:<br>输入: “IV”<br>输出: 4</p></blockquote><blockquote><p>示例 3:<br>输入: “IX”<br>输出: 9</p></blockquote><blockquote><p>示例 4:<br>输入: “LVIII”<br>输出: 58<br>解释: L = 50, V= 5, III = 3.</p></blockquote><blockquote><p>示例 5:<br>输入: “MCMXCIV”<br>输出: 1994<br>解释: M = 1000, CM = 900, XC = 90, IV = 4.</p></blockquote><p><b>题意分析：</b><br>这道题和上道题刚好相反，将罗马数字转换成阿拉伯数字。</p><p><b>思路分析：</b><br>在上道题我们分析了罗马数字是怎样表示数字的<br><code>III = 1 + 1 + 1</code><br><code>IV = -1 + 5 = 4</code><br><code>VIII = 5 + 1 + 1 + 1</code><br><code>IX = -1 + 10 = 9</code></p><p>其实我觉得这样写出来其实已经很清楚了，一般普通的字符我们就直接将其对于的数值累加即可。<br>唯独对于<code>4,9</code>这两个数字，应当是先减再加。而这两个数字的罗马表现形式都有一个共同的特点，那就是在<code>后面的字符所代表的数值更大</code>，想到这一步这题可解了。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 108ms, beats 37.57%</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">romanToInt</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        d = &#123;<span class="string">'M'</span>:<span class="number">1000</span>, <span class="string">'D'</span>:<span class="number">500</span>, <span class="string">'C'</span>:<span class="number">100</span>, <span class="string">'L'</span>:<span class="number">50</span>, <span class="string">'X'</span>:<span class="number">10</span>, <span class="string">'V'</span>:<span class="number">5</span>, <span class="string">'I'</span>:<span class="number">1</span>&#125;</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)<span class="number">-1</span>):</span><br><span class="line">            res = res + d[s[i]] * [<span class="number">1</span>,<span class="number">-1</span>][d[s[i]] &lt; d[s[i+<span class="number">1</span>]]]</span><br><span class="line">        res += d[s[<span class="number">-1</span>]]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Leetcode problems </tag>
+            
+            <tag> implemetation </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Leetcode 12 Integer to Roman</title>
       <link href="/2018/10/18/Leetcode-12-Integer-to-Roman/"/>
       <url>/2018/10/18/Leetcode-12-Integer-to-Roman/</url>
@@ -290,9 +343,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> string </tag>
-            
             <tag> dp </tag>
+            
+            <tag> string </tag>
             
         </tags>
       
@@ -619,9 +672,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> math </tag>
-            
             <tag> dp </tag>
+            
+            <tag> math </tag>
             
         </tags>
       
@@ -965,9 +1018,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> string </tag>
-            
             <tag> dp </tag>
+            
+            <tag> string </tag>
             
         </tags>
       
