@@ -65,21 +65,6 @@
     </entry>
     
     <entry>
-      <title>python c++ 语法</title>
-      <link href="/2018/11/01/python-c-%E8%AF%AD%E6%B3%95/"/>
-      <url>/2018/11/01/python-c-%E8%AF%AD%E6%B3%95/</url>
-      <content type="html"><![CDATA[<p>由于对c++的不熟悉，故在这篇博客中记录下c++中的各种操作。</p><a id="more"></a><table><thead><tr><th style="text-align:center">列表</th><th style="text-align:center">python</th><th style="text-align:center">c++</th></tr></thead><tbody><tr><td style="text-align:center">初始化</td><td style="text-align:center">res = []</td><td style="text-align:center"><code>vector&lt;int&gt; res;</code></td></tr><tr><td style="text-align:center">带值初始化</td><td style="text-align:center">res = [1] * 10</td><td style="text-align:center"><code>vector&lt;int&gt; res(10,1);</code></td></tr><tr><td style="text-align:center">末尾增加值</td><td style="text-align:center">res.append(val)</td><td style="text-align:center"><code>res.push_back(val);</code></td></tr><tr><td style="text-align:center">末尾删除值</td><td style="text-align:center">res.pop()</td><td style="text-align:center"><code>res.pop_back();</code></td></tr><tr><td style="text-align:center">取长度</td><td style="text-align:center">len(res)</td><td style="text-align:center"><code>res.size();</code></td></tr><tr><td style="text-align:center">切片取值</td><td style="text-align:center">res[i:j]</td><td style="text-align:center"><code>res.begin()+i, res.begin()+j</code></td></tr><tr><td style="text-align:center">清空元素</td><td style="text-align:center">res = []</td><td style="text-align:center"><code>res.clear();</code></td></tr><tr><td style="text-align:center">判断为空</td><td style="text-align:center">if res</td><td style="text-align:center"><code>if(!res.empty())</code></td></tr><tr><td style="text-align:center">合并</td><td style="text-align:center">res = res + ans</td><td style="text-align:center"><code>res.insert(res.end(),ans.begin(),ans.end());</code></td></tr><tr><td style="text-align:center">排序</td><td style="text-align:center">res.sort()</td><td style="text-align:center"><code>sort(res.begin(), res.end());</code></td></tr><tr><td style="text-align:center">翻转</td><td style="text-align:center">res = res.reverse()</td><td style="text-align:center"><code>res.reverse();</code></td></tr></tbody></table>]]></content>
-      
-      
-        <tags>
-            
-            <tag> 知识积累 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>Leetcode 18 4Sum</title>
       <link href="/2018/10/31/Leetcode-18-4Sum/"/>
       <url>/2018/10/31/Leetcode-18-4Sum/</url>
