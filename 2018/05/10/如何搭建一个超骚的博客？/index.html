@@ -143,7 +143,15 @@
 <meta property="og:image" content="http://yoursite.com/images/如何搭建博客_15.png">
 <meta property="og:image" content="http://yoursite.com/images/如何搭建博客_16.png">
 <meta property="og:image" content="http://yoursite.com/images/如何搭建博客_17.png">
-<meta property="og:updated_time" content="2018-11-22T07:53:27.944Z">
+<meta property="og:image" content="http://yoursite.com/images/如何搭建博客_18.png">
+<meta property="og:image" content="http://yoursite.com/images/如何搭建博客_19.png">
+<meta property="og:image" content="http://yoursite.com/images/如何搭建博客_20.png">
+<meta property="og:image" content="http://yoursite.com/images/如何搭建博客_21.png">
+<meta property="og:image" content="http://yoursite.com/images/如何搭建博客_23.png">
+<meta property="og:image" content="http://yoursite.com/images/如何搭建博客_24.png">
+<meta property="og:image" content="http://yoursite.com/images/如何搭建博客_25.png">
+<meta property="og:image" content="http://yoursite.com/images/如何搭建博客_26.png">
+<meta property="og:updated_time" content="2018-11-22T16:05:49.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何搭建一个这样的博客？">
 <meta name="twitter:description" content="在一次突发奇想觉得该记录一下我做的各种事情后，便开始有了搭建一个博客的想法。 但是普通的CSDN或者其他的吧，就感觉挺没有逼格的，刚好记得有人说过可以用Github做博客，便疯狂百度如何用github搭建自己的博客，历经各种意外事件最后好歹也算搭建起来了，搭建完确认无误之后第一件事那必是记录下搭建博客的整个过程。(不过刚好赶上报告的deadline，写报告加开会拖了好久)">
@@ -448,6 +456,31 @@
 <p>更多操作你都可以在其自带的hello-world.md文件中看到！</p>
 <p>当然你可能会觉得hexo这个界面是真的丑，你可以去自己选比较好看的主题，我是用的next主题，也是比较流行的一种主题。你可以在这个网址上选择不同的主题：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
 <p>这里再推荐一个教程：<a href="https://www.jianshu.com/p/bcdbe7347c8d" target="_blank" rel="noopener">https://www.jianshu.com/p/bcdbe7347c8d</a><br>可以从这个网址里看一看几个比较优秀的主题，然后看是怎么配置的<br>PS: 我超喜欢maupassant这个主题，可惜瑞了，懒得重新配了</p>
+<hr>
+<hr>
+<hr>
+<p><b>update:2018.11.22</b><br>历经六个月，博客的访问人数终于破万了，所以给自己的博客买了个域名，这次更新就补上如何绑定域名以及设置主题的方法吧。</p>
+<h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>我一直认为，博客最重要的就是简洁，所以有些花里胡哨，超多背景图的主题这里就不介绍了。</p>
+<p>主题1： maupassant<br>展示链接： <a href="https://www.haomwei.com/technology/maupassant-hexo.html" target="_blank" rel="noopener">https://www.haomwei.com/technology/maupassant-hexo.html</a><br>下载链接： <a href="https://github.com/icylogic/maupassant-hexo" target="_blank" rel="noopener">https://github.com/icylogic/maupassant-hexo</a></p>
+<p>主题2： yilia<br>展示链接： <a href="http://litten.me/" target="_blank" rel="noopener">http://litten.me/</a><br>下载链接： <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia</a></p>
+<p>主题3： bluelake（推荐）<br>展示链接： <a href="https://chaoo.oschina.io/" target="_blank" rel="noopener">https://chaoo.oschina.io/</a><br>下载链接： <a href="https://github.com/chaooo/hexo-theme-BlueLake" target="_blank" rel="noopener">https://github.com/chaooo/hexo-theme-BlueLake</a></p>
+<p>主题4：chan<br>展示链接： <a href="http://blog.sprabbit.com/hexo-theme-chan/" target="_blank" rel="noopener">http://blog.sprabbit.com/hexo-theme-chan/</a><br>下载链接： <a href="https://github.com/denjones/hexo-theme-chan" target="_blank" rel="noopener">https://github.com/denjones/hexo-theme-chan</a></p>
+<p>以bluelake主题为例，进入到下载链接，复制这个链接<br><img src="/images/如何搭建博客_18.png" alt=""></p>
+<p>然后进入命令行，一直到博客站点目录下的主题文件夹<br>然后输入 git clone “复制的链接” “要取的名字”<br>如： <code>git clone https://github.com/chaooo/hexo-theme-BlueLake.git bluelake</code><br><img src="/images/如何搭建博客_19.png" alt=""><br><img src="/images/如何搭建博客_20.png" alt=""></p>
+<p>下载完成后会在themes文件夹中看到下载的主题：<br><img src="/images/如何搭建博客_21.png" alt=""></p>
+<p>然后在站点目录下的配置文件_config.yml中修改theme字段为<code>bluelake</code>，注意这个名字一定要和themes文件夹中的文件名完全一致。</p>
+<p>OK，输入hexo s，就可以初步在本地博客上观看效果了。<br>想真正部署到博客网页上得用hexo d -g才行。<br>细节配置需要在主题配置文件中修改，这里不再做说明。</p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>绑定域名的第一步是先得去购买个域名。<br>购买域名的渠道有很多，百度云，腾讯云，阿里云，还有一些外国的网站，不过我还是建议就在国内买，因为都是一样的。<br>但是这三家的钱却不是一样的，起码我买的时候是有明显差距的。时间为2018.11.22<br><b>以下都是.com后缀的价格</b><br>百度云此时 1年25， 2年90， 3年155<br>腾讯云此时 1年55， 3年170<br>阿里云此时 1年55， 3年193（不过有30元无门槛优惠券）</p>
+<p>百度云购买链接：<br><a href="https://cloud.baidu.com/product/bcd.html" target="_blank" rel="noopener">https://cloud.baidu.com/product/bcd.html</a></p>
+<p>腾讯云购买链接：<br><a href="https://dnspod.cloud.tencent.com/?from=qcloudProductDns" target="_blank" rel="noopener">https://dnspod.cloud.tencent.com/?from=qcloudProductDns</a></p>
+<p>阿里云购买链接：<br><a href="https://wanwang.aliyun.com/domain/com/?spm=5176.10695662.1158081.1.598542341U3wPe" target="_blank" rel="noopener">https://wanwang.aliyun.com/domain/com/?spm=5176.10695662.1158081.1.598542341U3wPe</a></p>
+<p>由于国内购买的域名需要实名制，所以一定要等域名状态变为正常（起码颜色得是绿色的）后才能进行绑定<br><img src="/images/如何搭建博客_23.png" alt=""></p>
+<p>我们点进去解析按钮，一共需要创建两条解析记录，分别配置为<br><img src="/images/如何搭建博客_24.png" alt=""><br><img src="/images/如何搭建博客_25.png" alt=""></p>
+<p>接下来需要在本地进行操作。在站点目录的source文件夹下添加一个CNAME文件（无后缀名）<br>文件中只需要输入你购买的域名即可，不要www，直接输xxxx.com<br>然后将博客重新部署一遍即可。（hexo g, hexo d）</p>
+<p>若进入github的仓库设置处看到你的网址替换为你购买的网址，则说明配置成功。<br><img src="/images/如何搭建博客_26.png" alt=""></p>
+<p>注意：通常上述操作全部完成后还需等一小段时间（不固定，10分钟or更多）才可真正访问，耐心等待即可。（当然如果等很久发现还是不行，那说明配错了）</p>
+<p>正常来说，你可以通过以下三个网址来访问你的博客：<br>buptwc.github.io<br>buptwc.com<br><a href="http://www.buptwc.com" target="_blank" rel="noopener">www.buptwc.com</a><br>万一提示找不到地址，可以尝试一下<a href="https://www.buptwc.com" target="_blank" rel="noopener">https://www.buptwc.com</a></p>
+<p>嘿，万一还是不行，我也不是谦虚，你还是另请高明吧，嘻嘻！</p>
 
       
     </div>
@@ -629,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#github配置"><span class="nav-number">1.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地配置"><span class="nav-number">2.</span> <span class="nav-text">本地配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github和本地联动"><span class="nav-number">3.</span> <span class="nav-text">github和本地联动</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#github配置"><span class="nav-number">1.</span> <span class="nav-text">github配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地配置"><span class="nav-number">2.</span> <span class="nav-text">本地配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github和本地联动"><span class="nav-number">3.</span> <span class="nav-text">github和本地联动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置主题"><span class="nav-number">4.</span> <span class="nav-text">设置主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定域名"><span class="nav-number">5.</span> <span class="nav-text">绑定域名</span></a></li></ol></div>
             
 
           </div>
