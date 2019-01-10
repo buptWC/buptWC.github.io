@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="演员的自我修养">
 <meta property="og:description" content="给定两个字符串 S 和 T，每个字符串代表一个非负有理数，只有当它们表示相同的数字时才返回 true；否则，返回 false。字符串中可以使用括号来表示有理数的重复部分。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-10T03:42:39.170Z">
+<meta property="og:updated_time" content="2019-01-10T04:16:01.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 972 Equal Rational Numbers">
 <meta name="twitter:description" content="给定两个字符串 S 和 T，每个字符串代表一个非负有理数，只有当它们表示相同的数字时才返回 true；否则，返回 false。字符串中可以使用括号来表示有理数的重复部分。">
@@ -409,10 +409,10 @@
 <p>提示：</p>
 <ol>
 <li>每个部分仅由数字组成。</li>
-<li>整数部分 <integerpart> 不会以 2 个或更多的零开头。（对每个部分的数字没有其他限制）。</integerpart></li>
-<li>1 &lt;= <integerpart>.length &lt;= 4</integerpart></li>
-<li>0 &lt;= <nonrepeatingpart>.length &lt;= 4</nonrepeatingpart></li>
-<li>1 &lt;= <repeatingpart>.length &lt;= 4</repeatingpart></li>
+<li>整数部分 <code>&lt;IntegerPart&gt;</code> 不会以 2 个或更多的零开头。（对每个部分的数字没有其他限制）。</li>
+<li>1 &lt;= <code>&lt;IntegerPart&gt;.length</code> &lt;= 4</li>
+<li>0 &lt;= <code>&lt;NonRepeatingPart&gt;.length</code> &lt;= 4</li>
+<li>1 &lt;= <code>&lt;RepeatingPart&gt;.length</code> &lt;= 4</li>
 </ol>
 <p><b>思路分析：</b><br>其他语言我不太清楚，但是在python中，浮点数的比较是不准确的。这是因为浮点数在计算机中保存的精度问题导致的。<br>下面是我在cmd里敲的几个例子，可以看到在浮点数除法(1/6)中显示出来的结果保存 小数点后17位</p>
 <pre><code>&gt;&gt;&gt; 1 / 6
@@ -428,7 +428,7 @@ True
 &gt;&gt;&gt; 0.1666666666666666 == 1 / 6 (手动判断16位是否相等)
 False
 </code></pre><p>严格来说，这里面的任何一个case都应该是false，因为 1/6 是无限循环小数，要大于上面输入的任何一个数(除去case3)，但由于浮点数自身的特点，当小数位大于17位的时候，他会自动判定为相等</p>
-<p>那么这道题就很简单了，对于循环小数，我们只要将小数点位数循环到17位以上，就相当于获得了这个数的<code>真值</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isRationalEqual</span><span class="params">(self, S, T)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">traverse</span><span class="params">(s)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">'('</span> <span class="keyword">not</span> <span class="keyword">in</span> s:</span><br><span class="line">                <span class="keyword">return</span> float(s)</span><br><span class="line">            index = s.index(<span class="string">'('</span>)</span><br><span class="line">            s = s[:index] + s[index+<span class="number">1</span>:<span class="number">-1</span>] * <span class="number">17</span></span><br><span class="line">            <span class="keyword">return</span> float(s)</span><br><span class="line">        <span class="keyword">return</span> traverse(S) == traverse(T)</span><br><span class="line"></span><br><span class="line"><span class="number">61</span> / <span class="number">61</span> test cases passed.</span><br><span class="line">diffculty: hard</span><br><span class="line">Runtime: <span class="number">28</span> ms</span><br></pre></td></tr></table></figure></p>
+<p>那么这道题就很简单了，对于循环小数，我们只要将小数点位数循环到17位以上，就相当于获得了这个数的<code>&quot;真值&quot;</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isRationalEqual</span><span class="params">(self, S, T)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">traverse</span><span class="params">(s)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">'('</span> <span class="keyword">not</span> <span class="keyword">in</span> s:</span><br><span class="line">                <span class="keyword">return</span> float(s)</span><br><span class="line">            index = s.index(<span class="string">'('</span>)</span><br><span class="line">            s = s[:index] + s[index+<span class="number">1</span>:<span class="number">-1</span>] * <span class="number">17</span></span><br><span class="line">            <span class="keyword">return</span> float(s)</span><br><span class="line">        <span class="keyword">return</span> traverse(S) == traverse(T)</span><br><span class="line"></span><br><span class="line"><span class="number">61</span> / <span class="number">61</span> test cases passed.</span><br><span class="line">diffculty: hard</span><br><span class="line">Runtime: <span class="number">28</span> ms</span><br></pre></td></tr></table></figure></p>
 <p>提一句，万一记不住17这个数字，直接x100就可以了</p>
 
       
@@ -541,7 +541,7 @@ False
                 alt="王琛" />
             
               <p class="site-author-name" itemprop="name">王琛</p>
-              <p class="site-description motion-element" itemprop="description">sorry,最近忙于开题和项目，暂时没时间更新，2018.12.30后更新，一定会将进度补上</p>
+              <p class="site-description motion-element" itemprop="description">我要证明谁才是世界第一的actor</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -551,7 +551,7 @@ False
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">161</span>
+                  <span class="site-state-item-count">162</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -684,14 +684,13 @@ False
   
 
 
-
-
-
-
-
-
   
-  
+
+
+
+
+
+
 
 
 
@@ -729,12 +728,7 @@ False
 
   
   
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1164,6 +1158,8 @@ False
 
 
 <!-- 后来新加的，出现背景动画 -->
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 
 </body>
