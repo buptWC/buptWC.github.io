@@ -105,7 +105,7 @@
 
 
 
-  <meta name="keywords" content="Leetcode problems,two pointers,array," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -118,18 +118,17 @@
 
 
 
-<meta name="description" content="给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。 注意：答案中不可以包含重复的三元组。">
-<meta name="keywords" content="Leetcode problems,two pointers,array">
+<meta name="description" content="给定一个二叉树，我们在树的节点上安装摄像头。节点上的每个摄影头都可以监视其父对象、自身及其直接子对象。计算监控树的所有节点所需的最小摄像头数量。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 15 3Sum">
-<meta property="og:url" content="http://yoursite.com/2018/10/20/Leetcode-15-3Sum/index.html">
+<meta property="og:title" content="Leetcode 968 Binary Tree Cameras">
+<meta property="og:url" content="http://yoursite.com/2019/01/10/Leetcode-968-Binary-Tree-Cameras/index.html">
 <meta property="og:site_name" content="演员的自我修养">
-<meta property="og:description" content="给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。 注意：答案中不可以包含重复的三元组。">
+<meta property="og:description" content="给定一个二叉树，我们在树的节点上安装摄像头。节点上的每个摄影头都可以监视其父对象、自身及其直接子对象。计算监控树的所有节点所需的最小摄像头数量。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T04:24:05.479Z">
+<meta property="og:updated_time" content="2019-01-10T04:09:14.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode 15 3Sum">
-<meta name="twitter:description" content="给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。 注意：答案中不可以包含重复的三元组。">
+<meta name="twitter:title" content="Leetcode 968 Binary Tree Cameras">
+<meta name="twitter:description" content="给定一个二叉树，我们在树的节点上安装摄像头。节点上的每个摄影头都可以监视其父对象、自身及其直接子对象。计算监控树的所有节点所需的最小摄像头数量。">
 
 
 
@@ -159,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/20/Leetcode-15-3Sum/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/10/Leetcode-968-Binary-Tree-Cameras/"/>
 
 
 
 
 
-  <title>Leetcode 15 3Sum | 演员的自我修养</title>
+  <title>Leetcode 968 Binary Tree Cameras | 演员的自我修养</title>
   
 
 
@@ -328,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/20/Leetcode-15-3Sum/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/10/Leetcode-968-Binary-Tree-Cameras/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王琛">
@@ -345,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Leetcode 15 3Sum</h1>
+          <h1 class="post-title" itemprop="name headline">Leetcode 968 Binary Tree Cameras</h1>
         
 
         <div class="post-meta">
@@ -357,8 +356,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T12:14:50+08:00">
-                2018-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T12:07:58+08:00">
+                2019-01-10
               </time>
             
 
@@ -395,14 +394,11 @@
       
 
       
-        <p>给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。</p>
-<p>注意：答案中不可以包含重复的三元组。<br><a id="more"></a><br>例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，<br>满足要求的三元组集合为：<br>[<br>  [-1, 0, 1],<br>  [-1, -1, 2]<br>]</p>
-<p><b>题意分析：</b><br>在数组找三个数，使三个数的和为0，关键在于答案中不能包含重复三元组！</p>
-<p><b>思路分析：</b><br>碰到3Sum问题，我们一般倾向于把他变成一个2Sum问题。<br>我们首先将数组排序，然后固定住第一个数，在剩下的数组中使用双指针法来寻找剩下两个数。</p>
-<p>那如何去重呢？<br>对于我们固定的第一个数来说，例如[-1, -1, 0, 1, 2]<br>第一个-1能组成的三元组，完全包含住了第二个-1可能组成的三元组。所以可以将第二个-1跳过。</p>
-<p>对于双指针法找到的两个数j,k，一旦成功找到一组(j,k)那么和(j,k)相等的数全部可以跳过。</p>
-<p><b>优化：</b><br>因为数组排序后是从小到大的，如果第一个数就大于0了，那已经不可能存在和为0的情况了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 584ms, beats 86.61%</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        res = []</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; <span class="number">0</span>: <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]: <span class="keyword">continue</span></span><br><span class="line">            j,k = i+<span class="number">1</span>,len(nums)<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> j &lt; k:</span><br><span class="line">                <span class="keyword">while</span> j &lt; k <span class="keyword">and</span> nums[i]+nums[j]+nums[k] &lt; <span class="number">0</span>:</span><br><span class="line">                    j += <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> j &lt; k <span class="keyword">and</span> nums[i]+nums[j]+nums[k] &gt; <span class="number">0</span>:</span><br><span class="line">                    k -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> j == k: <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">if</span> nums[i]+nums[j]+nums[k] == <span class="number">0</span>:</span><br><span class="line">                    res.append([nums[i],nums[j],nums[k]])</span><br><span class="line">                    <span class="keyword">while</span> j &lt; k <span class="keyword">and</span> nums[j] == nums[j+<span class="number">1</span>]:</span><br><span class="line">                        j += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span> j &lt; k <span class="keyword">and</span> nums[k] == nums[k<span class="number">-1</span>]:</span><br><span class="line">                        k -= <span class="number">1</span></span><br><span class="line">                    j += <span class="number">1</span>; k -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+        <p>给定一个二叉树，我们在树的节点上安装摄像头。<br>节点上的每个摄影头都可以监视其父对象、自身及其直接子对象。<br>计算监控树的所有节点所需的最小摄像头数量。<br><a id="more"></a><br><strong>题意分析：</strong><br>在一棵树中放置若干相机来监管所有的节点。每个相机可以监视当前节点，以及当前节点的父节点和子节点。</p>
+<p><strong>思路分析：</strong><br>一棵树中的节点数是固定的，我们想用最少的相机来监管所有的节点，那么每个相机都要监管得足够多才行。</p>
+<p>那么我们从树的最底部开始分析，如果在最后一层的某个节点A放置相机，那么这个相机最多能监管到2个节点，也就是A自身以及父节点B（可能不存在）。但如果将相机放到B节点，那么这个相机至少能监控2个节点，至多能监控4个节点，B自身，两个子节点，一个父节点。<br>而且为了点亮最底层的A节点，我们必须从A,B两个节点里面选一个，所以我们肯定选择B。<br>从这里我们可以看出，从下往上分析，对于当前还没被监控到的层来说，一个相机放在该层的上一层始终比放在该层要更优。那么贪心算法可行。</p>
+<p><strong>具体方法：</strong><br>因为要从下至上分析，我这里先采用前序遍历将所有的节点存储下来，然后从最后一个开始分析。<br>对于遍历的节点，我们首先判断其是否已经被监控，若是则跳过，若否则在其父节点（若存在）处放置一个相机。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minCameraCover</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right: <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        nums = []</span><br><span class="line">        d = &#123;root: <span class="keyword">None</span>&#125; <span class="comment"># 使用d记录每个子节点的父节点</span></span><br><span class="line">        q = collections.deque([root])</span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            node = q.popleft()</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                d[node.left] = node</span><br><span class="line">                q.append(node.left)</span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                d[node.right] = node</span><br><span class="line">                q.append(node.right)</span><br><span class="line">            nums.append(node)</span><br><span class="line">        </span><br><span class="line">        dp = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">            parent = d[nums[i]]</span><br><span class="line">            <span class="comment"># 判断当前节点是否已经被监控</span></span><br><span class="line">            <span class="keyword">if</span> nums[i] <span class="keyword">in</span> dp <span class="keyword">or</span> nums[i].left <span class="keyword">in</span> dp <span class="keyword">or</span> nums[i].right <span class="keyword">in</span> dp:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            dp[parent] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> sum(dp.values())</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -417,16 +413,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Leetcode-problems/" rel="tag"># Leetcode problems</a>
-          
-            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
-          
-            <a href="/tags/array/" rel="tag"># array</a>
-          
-        </div>
-      
 
       
       
@@ -436,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/Leetcode-14-Longest-Common-Prefix/" rel="next" title="Leetcode 14 Longest Common Prefix">
-                <i class="fa fa-chevron-left"></i> Leetcode 14 Longest Common Prefix
+              <a href="/2019/01/09/Leetcode-972-Equal-Rational-Numbers/" rel="next" title="Leetcode 972 Equal Rational Numbers">
+                <i class="fa fa-chevron-left"></i> Leetcode 972 Equal Rational Numbers
               </a>
             
           </div>
@@ -445,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/21/Leetcode-925-Long-Pressed-Name/" rel="prev" title="Leetcode 925 Long Pressed Name">
-                Leetcode 925 Long Pressed Name <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
