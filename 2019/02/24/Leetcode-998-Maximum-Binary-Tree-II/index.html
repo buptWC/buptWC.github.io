@@ -118,18 +118,18 @@
 
 
 
-<meta name="description" content="medium question!">
+<meta name="description" content="给定一个最大树的根节点：最大树是指每个节点的值都大于该节点子树中的任何一个值。 这个最大树是由一个列表A生成的，生成规则如下：  如果A为空，return null 否则，找到A中最大的元素A[i]，生成值为A[i]的节点作为根节点 根节点的左孩子将由A[:i]生成 根节点的右孩子将由A[i+1:]生成 返回根节点  现在给定一个已经根据上述规则构造好的树的根节点root，原始列表为A。现在向A末">
 <meta name="keywords" content="Leetcode problems,tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 998 Maximum Binary Tree II">
 <meta property="og:url" content="http://yoursite.com/2019/02/24/Leetcode-998-Maximum-Binary-Tree-II/index.html">
 <meta property="og:site_name" content="演员的自我修养">
-<meta property="og:description" content="medium question!">
+<meta property="og:description" content="给定一个最大树的根节点：最大树是指每个节点的值都大于该节点子树中的任何一个值。 这个最大树是由一个列表A生成的，生成规则如下：  如果A为空，return null 否则，找到A中最大的元素A[i]，生成值为A[i]的节点作为根节点 根节点的左孩子将由A[:i]生成 根节点的右孩子将由A[i+1:]生成 返回根节点  现在给定一个已经根据上述规则构造好的树的根节点root，原始列表为A。现在向A末">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-24T03:50:29.389Z">
+<meta property="og:updated_time" content="2019-02-24T15:58:47.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 998 Maximum Binary Tree II">
-<meta name="twitter:description" content="medium question!">
+<meta name="twitter:description" content="给定一个最大树的根节点：最大树是指每个节点的值都大于该节点子树中的任何一个值。 这个最大树是由一个列表A生成的，生成规则如下：  如果A为空，return null 否则，找到A中最大的元素A[i]，生成值为A[i]的节点作为根节点 根节点的左孩子将由A[:i]生成 根节点的右孩子将由A[i+1:]生成 返回根节点  现在给定一个已经根据上述规则构造好的树的根节点root，原始列表为A。现在向A末">
 
 
 
@@ -417,7 +417,16 @@
       
 
       
-        <p>medium question!</p>
+        <p>给定一个最大树的根节点：最大树是指每个节点的值都大于该节点子树中的任何一个值。</p>
+<p>这个最大树是由一个列表A生成的，生成规则如下：</p>
+<ol>
+<li>如果A为空，return <code>null</code></li>
+<li>否则，找到A中最大的元素<code>A[i]</code>，生成值为A[i]的节点作为根节点</li>
+<li>根节点的左孩子将由<code>A[:i]</code>生成</li>
+<li>根节点的右孩子将由<code>A[i+1:]</code>生成</li>
+<li>返回根节点</li>
+</ol>
+<p>现在给定一个已经根据上述规则构造好的树的根节点<code>root</code>，原始列表为A。<br>现在向A末尾添加一个元素<code>val</code>，新数组定义为B，请你返回由数组B按照上述规则构造的树。</p>
 <a id="more"></a>
 <p><b>题意分析：</b><br>根据题目所说构造树的方式，也就是<code>最大值为根节点，最大值左边的数组为左子树，右边的数组为右子树</code>，很容易看出来如果将树还原成数组的话，应该是<code>中序遍历</code></p>
 <p>那么这里我们先将树还原成数组，然后将新加的值放进数组中，最后再将数组构造成树</p>
@@ -540,7 +549,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">179</span>
+                  <span class="site-state-item-count">183</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
