@@ -118,18 +118,18 @@
 
 
 
-<meta name="description" content="题意分析：在一个8x8的方格中观察车能吃到多少个兵，那么我们只需要找出车所在的位置然后分别向四个方向进行遍历寻找，一旦出界或者碰到障碍物（己方主教或地方小兵）就停止 12345678910111213141516171819class Solution(object):    def numRookCaptures(self, board):        # 找到rook位置        r">
+<meta name="description" content="easy question!">
 <meta name="keywords" content="Leetcode problems,implementation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 999 Available Captures for Rook">
 <meta property="og:url" content="http://yoursite.com/2019/02/24/Leetcode-999-Available-Captures-for-Rook/index.html">
 <meta property="og:site_name" content="演员的自我修养">
-<meta property="og:description" content="题意分析：在一个8x8的方格中观察车能吃到多少个兵，那么我们只需要找出车所在的位置然后分别向四个方向进行遍历寻找，一旦出界或者碰到障碍物（己方主教或地方小兵）就停止 12345678910111213141516171819class Solution(object):    def numRookCaptures(self, board):        # 找到rook位置        r">
+<meta property="og:description" content="easy question!">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-24T03:17:25.057Z">
+<meta property="og:updated_time" content="2019-02-24T03:50:21.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 999 Available Captures for Rook">
-<meta name="twitter:description" content="题意分析：在一个8x8的方格中观察车能吃到多少个兵，那么我们只需要找出车所在的位置然后分别向四个方向进行遍历寻找，一旦出界或者碰到障碍物（己方主教或地方小兵）就停止 12345678910111213141516171819class Solution(object):    def numRookCaptures(self, board):        # 找到rook位置        r">
+<meta name="twitter:description" content="easy question!">
 
 
 
@@ -417,7 +417,8 @@
       
 
       
-        <a id="more"></a>
+        <p>easy question!</p>
+<a id="more"></a>
 <p><b>题意分析：</b><br>在一个8x8的方格中观察车能吃到多少个兵，那么我们只需要找出车所在的位置<br>然后分别向四个方向进行遍历寻找，一旦出界或者碰到障碍物（己方主教或地方小兵）就停止</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numRookCaptures</span><span class="params">(self, board)</span>:</span></span><br><span class="line">        <span class="comment"># 找到rook位置</span></span><br><span class="line">        rook = [<span class="number">-1</span>,<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(board)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(board[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] == <span class="string">'R'</span>:</span><br><span class="line">                    rook = [i,j]</span><br><span class="line">        <span class="comment"># 四个方向依次分析</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> directions <span class="keyword">in</span> [[<span class="number">0</span>,<span class="number">-1</span>], [<span class="number">-1</span>,<span class="number">0</span>], [<span class="number">0</span>,<span class="number">1</span>], [<span class="number">1</span>,<span class="number">0</span>]]:</span><br><span class="line">            x, y = directions</span><br><span class="line">            i,j = rook</span><br><span class="line">            <span class="keyword">while</span> <span class="number">0</span>&lt;=i&lt;<span class="number">8</span> <span class="keyword">and</span> <span class="number">0</span>&lt;=j&lt;<span class="number">8</span> <span class="keyword">and</span> board[i][j] <span class="keyword">in</span> <span class="string">'R.'</span>:</span><br><span class="line">                i += x; j += y</span><br><span class="line">            <span class="comment"># 如果是碰到障碍物，判断障碍物是否为地方小兵</span></span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span>&lt;=i&lt;<span class="number">8</span> <span class="keyword">and</span> <span class="number">0</span>&lt;=j&lt;<span class="number">8</span> <span class="keyword">and</span> board[i][j] == <span class="string">'p'</span>:</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 

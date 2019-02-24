@@ -118,18 +118,18 @@
 
 
 
-<meta name="description" content="题意分析：这道题需要我们找到一个法官，这个法官呢不相信任何人，而其他的所有人都必须相信这个法官那么转成图问题就是，找到一个点，这个点的入度恰好为N-1（总共N个人），出度为0 这里使用一个flag数组代表该点是否有出度，用degree数组表示这个点的入度123456789101112class Solution(object):    def findJudge(self, N, trust):">
+<meta name="description" content="easy question!">
 <meta name="keywords" content="Leetcode problems,graph">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 997 Find the Town Judge">
 <meta property="og:url" content="http://yoursite.com/2019/02/24/Leetcode-997-Find-the-Town-Judge/index.html">
 <meta property="og:site_name" content="演员的自我修养">
-<meta property="og:description" content="题意分析：这道题需要我们找到一个法官，这个法官呢不相信任何人，而其他的所有人都必须相信这个法官那么转成图问题就是，找到一个点，这个点的入度恰好为N-1（总共N个人），出度为0 这里使用一个flag数组代表该点是否有出度，用degree数组表示这个点的入度123456789101112class Solution(object):    def findJudge(self, N, trust):">
+<meta property="og:description" content="easy question!">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-24T03:13:20.986Z">
+<meta property="og:updated_time" content="2019-02-24T03:50:34.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 997 Find the Town Judge">
-<meta name="twitter:description" content="题意分析：这道题需要我们找到一个法官，这个法官呢不相信任何人，而其他的所有人都必须相信这个法官那么转成图问题就是，找到一个点，这个点的入度恰好为N-1（总共N个人），出度为0 这里使用一个flag数组代表该点是否有出度，用degree数组表示这个点的入度123456789101112class Solution(object):    def findJudge(self, N, trust):">
+<meta name="twitter:description" content="easy question!">
 
 
 
@@ -417,7 +417,8 @@
       
 
       
-        <a id="more"></a>
+        <p>easy question!</p>
+<a id="more"></a>
 <p><b>题意分析：</b><br>这道题需要我们找到一个法官，这个法官呢不相信任何人，而其他的所有人都必须相信这个法官<br>那么转成图问题就是，找到一个点，这个点的入度恰好为N-1（总共N个人），出度为0</p>
 <p>这里使用一个flag数组代表该点是否有出度，用degree数组表示这个点的入度<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findJudge</span><span class="params">(self, N, trust)</span>:</span></span><br><span class="line">        degree = [<span class="number">0</span>] * (<span class="number">1</span>+N)</span><br><span class="line">        flag = [<span class="number">0</span>] * (<span class="number">1</span>+N)</span><br><span class="line">        <span class="keyword">for</span> a,b <span class="keyword">in</span> trust:</span><br><span class="line">            flag[a] = <span class="number">-1</span></span><br><span class="line">            degree[b] += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> degree[i] == N<span class="number">-1</span> <span class="keyword">and</span> flag[i] != <span class="number">-1</span>:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure></p>
 

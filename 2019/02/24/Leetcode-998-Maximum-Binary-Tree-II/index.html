@@ -118,18 +118,18 @@
 
 
 
-<meta name="description" content="题意分析：根据题目所说构造树的方式，也就是最大值为根节点，最大值左边的数组为左子树，右边的数组为右子树，很容易看出来如果将树还原成数组的话，应该是中序遍历 那么这里我们先将树还原成数组，然后将新加的值放进数组中，最后再将数组构造成树 12345678910111213141516171819202122232425262728293031class Solution(object):    de">
+<meta name="description" content="medium question!">
 <meta name="keywords" content="Leetcode problems,tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 998 Maximum Binary Tree II">
 <meta property="og:url" content="http://yoursite.com/2019/02/24/Leetcode-998-Maximum-Binary-Tree-II/index.html">
 <meta property="og:site_name" content="演员的自我修养">
-<meta property="og:description" content="题意分析：根据题目所说构造树的方式，也就是最大值为根节点，最大值左边的数组为左子树，右边的数组为右子树，很容易看出来如果将树还原成数组的话，应该是中序遍历 那么这里我们先将树还原成数组，然后将新加的值放进数组中，最后再将数组构造成树 12345678910111213141516171819202122232425262728293031class Solution(object):    de">
+<meta property="og:description" content="medium question!">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-24T03:22:14.121Z">
+<meta property="og:updated_time" content="2019-02-24T03:50:29.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode 998 Maximum Binary Tree II">
-<meta name="twitter:description" content="题意分析：根据题目所说构造树的方式，也就是最大值为根节点，最大值左边的数组为左子树，右边的数组为右子树，很容易看出来如果将树还原成数组的话，应该是中序遍历 那么这里我们先将树还原成数组，然后将新加的值放进数组中，最后再将数组构造成树 12345678910111213141516171819202122232425262728293031class Solution(object):    de">
+<meta name="twitter:description" content="medium question!">
 
 
 
@@ -417,7 +417,8 @@
       
 
       
-        <a id="more"></a>
+        <p>medium question!</p>
+<a id="more"></a>
 <p><b>题意分析：</b><br>根据题目所说构造树的方式，也就是<code>最大值为根节点，最大值左边的数组为左子树，右边的数组为右子树</code>，很容易看出来如果将树还原成数组的话，应该是<code>中序遍历</code></p>
 <p>那么这里我们先将树还原成数组，然后将新加的值放进数组中，最后再将数组构造成树</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insertIntoMaxTree</span><span class="params">(self, root, val)</span>:</span></span><br><span class="line">        A = []</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">inorder</span><span class="params">(root)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root.left:</span><br><span class="line">                inorder(root.left)</span><br><span class="line">            A.append(root.val)</span><br><span class="line">            <span class="keyword">if</span> root.right:</span><br><span class="line">                inorder(root.right)</span><br><span class="line">        <span class="comment"># 中序遍历获得原数组</span></span><br><span class="line">        inorder(root)</span><br><span class="line">        A.append(val)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> self.transToTree(A)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transToTree</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="comment"># 递归方式构造树</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">construct</span><span class="params">(nums)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</span><br><span class="line">                node = TreeNode(nums[<span class="number">0</span>])</span><br><span class="line">                <span class="keyword">return</span> node</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">            maximum = max(nums)</span><br><span class="line">            i = nums.index(maximum)</span><br><span class="line">            root = TreeNode(maximum)</span><br><span class="line">            root.left = construct(nums[:i])</span><br><span class="line">            root.right = construct(nums[i+<span class="number">1</span>:])</span><br><span class="line">            <span class="keyword">return</span> root</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> construct(nums)</span><br></pre></td></tr></table></figure>
