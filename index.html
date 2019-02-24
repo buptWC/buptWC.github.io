@@ -876,6 +876,537 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/Leetcode-1001-Grid-IIIumination/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王琛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="演员的自我修养">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/24/Leetcode-1001-Grid-IIIumination/" itemprop="url">Leetcode 1001 Grid IIIumination</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-24T11:23:06+08:00">
+                2019-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/24/Leetcode-1001-Grid-IIIumination/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/24/Leetcode-1001-Grid-IIIumination/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p><b>题意分析：</b><br>在一个很大很大的方格中(N&lt;10^9)有若干灯，每个灯能照亮横排，竖排，左斜排，右斜排</p>
+<p>现在开始问询，问某个格子是否被照亮，然后将这个格子为中心的9个空格的灯全部熄灭，进行下一次问询</p>
+<p><b>思路分析：</b><br>那我们知道，既然方格很大，我们肯定是不可能用数组去存每个格子的状态的<br>那如果你做过<code>N皇后问题</code>，你应该对这个结论有印象：<br>在同一条左斜线上的点，方程式都形如<code>x+y = c</code>，也就是他们的坐标之和相等<br>在同一条右斜线上的点，方程式都刑辱<code>y = x+c</code>，也就是他们的坐标之差相等</p>
+<p>有了这个结论，这道题中我们只需要去记录坐标之间的关系即可<br>建立四个集合，分别为横轴，竖轴，左斜轴，右斜轴，将坐标加入其中，然后每次判断问询点的坐标是否存在于这些集合中即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gridIllumination</span><span class="params">(self, N, lamps, queries)</span>:</span></span><br><span class="line">        <span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">        lamps = map(tuple, lamps)</span><br><span class="line">        light_set = set(lamps)</span><br><span class="line">        horizontal = Counter()  <span class="comment"># 横</span></span><br><span class="line">        vertical = Counter()    <span class="comment"># 竖</span></span><br><span class="line">        l_oblique = Counter()   <span class="comment"># 左斜</span></span><br><span class="line">        r_oblique = Counter()   <span class="comment"># 右斜</span></span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> lamps:</span><br><span class="line">            horizontal[x] += <span class="number">1</span></span><br><span class="line">            vertical[y] += <span class="number">1</span></span><br><span class="line">            l_oblique[x+y] += <span class="number">1</span></span><br><span class="line">            r_oblique[y-x] += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> x,y <span class="keyword">in</span> queries:</span><br><span class="line">            <span class="keyword">if</span> x <span class="keyword">in</span> horizontal <span class="keyword">or</span> y <span class="keyword">in</span> vertical <span class="keyword">or</span> x+y <span class="keyword">in</span> l_oblique <span class="keyword">or</span> y-x <span class="keyword">in</span> r_oblique:</span><br><span class="line">                res.append(<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res.append(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> dx <span class="keyword">in</span> [<span class="number">-1</span>, <span class="number">0</span> ,<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">for</span> dy <span class="keyword">in</span> [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>]:</span><br><span class="line">                    xpos, ypos = x + dx, y + dy</span><br><span class="line">                    <span class="keyword">if</span> (xpos, ypos) <span class="keyword">in</span> light_set: <span class="comment"># 如果附近有灯，则熄灭，修改4个集合的内部值</span></span><br><span class="line">                        light_set.remove((xpos, ypos))</span><br><span class="line">                        horizontal[xpos] -= <span class="number">1</span></span><br><span class="line">                        <span class="keyword">if</span> horizontal[xpos] == <span class="number">0</span>: <span class="keyword">del</span> horizontal[xpos]</span><br><span class="line">                        </span><br><span class="line">                        vertical[ypos] -= <span class="number">1</span></span><br><span class="line">                        <span class="keyword">if</span> vertical[ypos] == <span class="number">0</span>: <span class="keyword">del</span> vertical[ypos]</span><br><span class="line">                        </span><br><span class="line">                        l_oblique[xpos+ypos] -= <span class="number">1</span></span><br><span class="line">                        <span class="keyword">if</span> l_oblique[xpos+ypos] == <span class="number">0</span>: <span class="keyword">del</span> l_oblique[xpos+ypos]</span><br><span class="line">                            </span><br><span class="line">                        r_oblique[ypos-xpos] -= <span class="number">1</span></span><br><span class="line">                        <span class="keyword">if</span> r_oblique[ypos-xpos] == <span class="number">0</span>: <span class="keyword">del</span> r_oblique[ypos-xpos]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/Leetcode-998-Maximum-Binary-Tree-II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王琛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="演员的自我修养">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/24/Leetcode-998-Maximum-Binary-Tree-II/" itemprop="url">Leetcode 998 Maximum Binary Tree II</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-24T11:18:04+08:00">
+                2019-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/24/Leetcode-998-Maximum-Binary-Tree-II/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/24/Leetcode-998-Maximum-Binary-Tree-II/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p><b>题意分析：</b><br>根据题目所说构造树的方式，也就是<code>最大值为根节点，最大值左边的数组为左子树，右边的数组为右子树</code>，很容易看出来如果将树还原成数组的话，应该是<code>中序遍历</code></p>
+<p>那么这里我们先将树还原成数组，然后将新加的值放进数组中，最后再将数组构造成树</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insertIntoMaxTree</span><span class="params">(self, root, val)</span>:</span></span><br><span class="line">        A = []</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">inorder</span><span class="params">(root)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root.left:</span><br><span class="line">                inorder(root.left)</span><br><span class="line">            A.append(root.val)</span><br><span class="line">            <span class="keyword">if</span> root.right:</span><br><span class="line">                inorder(root.right)</span><br><span class="line">        <span class="comment"># 中序遍历获得原数组</span></span><br><span class="line">        inorder(root)</span><br><span class="line">        A.append(val)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> self.transToTree(A)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transToTree</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="comment"># 递归方式构造树</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">construct</span><span class="params">(nums)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> len(nums) == <span class="number">1</span>:</span><br><span class="line">                node = TreeNode(nums[<span class="number">0</span>])</span><br><span class="line">                <span class="keyword">return</span> node</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">            maximum = max(nums)</span><br><span class="line">            i = nums.index(maximum)</span><br><span class="line">            root = TreeNode(maximum)</span><br><span class="line">            root.left = construct(nums[:i])</span><br><span class="line">            root.right = construct(nums[i+<span class="number">1</span>:])</span><br><span class="line">            <span class="keyword">return</span> root</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> construct(nums)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/Leetcode-999-Available-Captures-for-Rook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王琛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="演员的自我修养">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/24/Leetcode-999-Available-Captures-for-Rook/" itemprop="url">Leetcode 999 Available Captures for Rook</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-24T11:13:59+08:00">
+                2019-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/24/Leetcode-999-Available-Captures-for-Rook/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/24/Leetcode-999-Available-Captures-for-Rook/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p><b>题意分析：</b><br>在一个8x8的方格中观察车能吃到多少个兵，那么我们只需要找出车所在的位置<br>然后分别向四个方向进行遍历寻找，一旦出界或者碰到障碍物（己方主教或地方小兵）就停止</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numRookCaptures</span><span class="params">(self, board)</span>:</span></span><br><span class="line">        <span class="comment"># 找到rook位置</span></span><br><span class="line">        rook = [<span class="number">-1</span>,<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(board)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(board[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] == <span class="string">'R'</span>:</span><br><span class="line">                    rook = [i,j]</span><br><span class="line">        <span class="comment"># 四个方向依次分析</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> directions <span class="keyword">in</span> [[<span class="number">0</span>,<span class="number">-1</span>], [<span class="number">-1</span>,<span class="number">0</span>], [<span class="number">0</span>,<span class="number">1</span>], [<span class="number">1</span>,<span class="number">0</span>]]:</span><br><span class="line">            x, y = directions</span><br><span class="line">            i,j = rook</span><br><span class="line">            <span class="keyword">while</span> <span class="number">0</span>&lt;=i&lt;<span class="number">8</span> <span class="keyword">and</span> <span class="number">0</span>&lt;=j&lt;<span class="number">8</span> <span class="keyword">and</span> board[i][j] <span class="keyword">in</span> <span class="string">'R.'</span>:</span><br><span class="line">                i += x; j += y</span><br><span class="line">            <span class="comment"># 如果是碰到障碍物，判断障碍物是否为地方小兵</span></span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span>&lt;=i&lt;<span class="number">8</span> <span class="keyword">and</span> <span class="number">0</span>&lt;=j&lt;<span class="number">8</span> <span class="keyword">and</span> board[i][j] == <span class="string">'p'</span>:</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/Leetcode-997-Find-the-Town-Judge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王琛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="演员的自我修养">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/24/Leetcode-997-Find-the-Town-Judge/" itemprop="url">Leetcode 997 Find the Town Judge</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-24T11:10:43+08:00">
+                2019-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/24/Leetcode-997-Find-the-Town-Judge/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/24/Leetcode-997-Find-the-Town-Judge/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<p><b>题意分析：</b><br>这道题需要我们找到一个法官，这个法官呢不相信任何人，而其他的所有人都必须相信这个法官<br>那么转成图问题就是，找到一个点，这个点的入度恰好为N-1（总共N个人），出度为0</p>
+<p>这里使用一个flag数组代表该点是否有出度，用degree数组表示这个点的入度<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findJudge</span><span class="params">(self, N, trust)</span>:</span></span><br><span class="line">        degree = [<span class="number">0</span>] * (<span class="number">1</span>+N)</span><br><span class="line">        flag = [<span class="number">0</span>] * (<span class="number">1</span>+N)</span><br><span class="line">        <span class="keyword">for</span> a,b <span class="keyword">in</span> trust:</span><br><span class="line">            flag[a] = <span class="number">-1</span></span><br><span class="line">            degree[b] += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> degree[i] == N<span class="number">-1</span> <span class="keyword">and</span> flag[i] != <span class="number">-1</span>:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/10/Leetcode-992-Subarrays-with-K-Different-Integers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1136,545 +1667,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/10/Leetcode-990-Satisfiablitity-of-Equality-Equations/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王琛">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog_logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="演员的自我修养">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/10/Leetcode-990-Satisfiablitity-of-Equality-Equations/" itemprop="url">Leetcode 990 Satisfiablitity of Equality Equations</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-10T13:59:16+08:00">
-                2019-02-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/10/Leetcode-990-Satisfiablitity-of-Equality-Equations/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/10/Leetcode-990-Satisfiablitity-of-Equality-Equations/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>给定一系列字符串来表示两个变量之间的关系，每个字符串固定为4长度，并且是以下两种表现形式：</p>
-<ol>
-<li>“a==b”</li>
-<li>“a!=b”<br>这里的a,b只是示例。<br>返回true如果所有变量之间的关系都可以符合！
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/10/Leetcode-990-Satisfiablitity-of-Equality-Equations/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/10/Leetcode-989-Add-to-Array-Form-of-Integer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王琛">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog_logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="演员的自我修养">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/10/Leetcode-989-Add-to-Array-Form-of-Integer/" itemprop="url">Leetcode 989 Add to Array-Form of Integer</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-10T13:50:34+08:00">
-                2019-02-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/10/Leetcode-989-Add-to-Array-Form-of-Integer/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/10/Leetcode-989-Add-to-Array-Form-of-Integer/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>给定一个非负整数x的列表表示形式，例如<code>x = 1231</code>，那么列表形式就是<code>[1,2,3,1</code><br>现在给定一个X的列表表示形式及一个整数K，求<code>X+K</code>的列表表示形式</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/10/Leetcode-989-Add-to-Array-Form-of-Integer/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/Leetcode-980-Unique-Paths-III/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王琛">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog_logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="演员的自我修养">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/22/Leetcode-980-Unique-Paths-III/" itemprop="url">Leetcode 980 Unique Paths III</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T21:43:23+08:00">
-                2019-01-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/22/Leetcode-980-Unique-Paths-III/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/22/Leetcode-980-Unique-Paths-III/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>给定一个二维矩阵grid，里面包含4种不同的块：<br>1代表起始位置，确保矩阵里只有一个起始位置<br>2代表终点位置，确保矩阵里只有一个终点位置<br>0代表空白，可以在空白路径上移动<br>-1代表障碍，不可以再障碍物处移动<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/22/Leetcode-980-Unique-Paths-III/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/22/Leetcode-979-Distribute-Coins-in-Binary-Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王琛">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog_logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="演员的自我修养">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/22/Leetcode-979-Distribute-Coins-in-Binary-Tree/" itemprop="url">Leetcode 979 Distribute Coins in Binary Tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-22T16:06:52+08:00">
-                2019-01-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/22/Leetcode-979-Distribute-Coins-in-Binary-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/22/Leetcode-979-Distribute-Coins-in-Binary-Tree/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>给定一个N个结点的树，每个结点node包含node.val个硬币，在树中一个有N个硬币。<br>每一次移动，我们可能选择两个相邻的节点然后将一个硬币从一个结点移动到另一个结点，返回总共需要移动的次数使得每个结点上恰好只有1个硬币。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/22/Leetcode-979-Distribute-Coins-in-Binary-Tree/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1729,7 +1721,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">175</span>
+                  <span class="site-state-item-count">179</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
