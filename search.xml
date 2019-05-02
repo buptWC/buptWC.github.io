@@ -3,6 +3,40 @@
   
     
     <entry>
+      <title>Leetcode 1034 Coloring A Border</title>
+      <link href="/2019/05/02/Leetcode-1034-Coloring-A-Border/"/>
+      <url>/2019/05/02/Leetcode-1034-Coloring-A-Border/</url>
+      <content type="html"><![CDATA[<p>给定一个二维矩阵grid，矩阵中的值代表在矩阵那处位置的颜色。<br>相连的颜色被认为是一个连通区域。</p><p>连通区域的边界是指那些和不属于该连通区域的块相连的部分，或者是处于整个矩阵的边界处的部分。</p><p>给定一个位置(r0, c0)，和一个颜色color。将(r0, c0)所在连通区域的颜色全部改成color，然后返回最终的矩阵grid.</p><a id="more"></a><blockquote><p>示例 1:<br>输入: grid = [[1,1],[1,2]], r0 = 0, c0 = 0, color = 3<br>输出: [[3, 3], [3, 2]]</p></blockquote><blockquote><p>示例 2:<br>输入: grid = [[1,2,2],[2,3,2]], r0 = 0, c0 = 1, color = 3<br>输出: [[1, 3, 3], [2, 3, 3]]</p></blockquote><blockquote><p>示例 3:<br>输入: grid = [[1,1,1],[1,1,1],[1,1,1]], r0 = 1, c0 = 1, color = 2<br>输出: [[2, 2, 2], [2, 1, 2], [2, 2, 2]]</p></blockquote><p>提示：</p><ol><li>1 &lt;= grid.length, grid.length[0] &lt;= 50</li><li>1 &lt;= grid[i][j] &lt;= 100</li><li>0 &lt;= r0 &lt;= grid.length</li><li>0 &lt;= c0 &lt;= grid[0].length</li><li>1 &lt;= color &lt;= 1000</li></ol><p><b>思路分析：</b><br>这道题就是单纯的dfs，然后判断连通区域的点是不是在边界上。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">colorBorder</span><span class="params">(self, grid: List[List[int]], r0: int, c0: int, color: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        n,m = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        tmp = grid[r0][c0]</span><br><span class="line">        <span class="comment"># dfs找连通区域所有点</span></span><br><span class="line">        vis = set()</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(grid, i, j)</span>:</span></span><br><span class="line">            <span class="keyword">for</span> x,y <span class="keyword">in</span> ((i+<span class="number">1</span>,j),(i<span class="number">-1</span>,j),(i,j+<span class="number">1</span>),(i,j<span class="number">-1</span>)):</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span>&lt;=x&lt;n <span class="keyword">and</span> <span class="number">0</span>&lt;=y&lt;m <span class="keyword">and</span> (x,y) <span class="keyword">not</span> <span class="keyword">in</span> vis <span class="keyword">and</span> grid[x][y] == tmp:</span><br><span class="line">                    vis.add((x,y))</span><br><span class="line">                    dfs(grid, x, y)</span><br><span class="line">        </span><br><span class="line">        vis.add((r0,c0))</span><br><span class="line">        dfs(grid, r0, c0)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># check()找边界点</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(i,j)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> (<span class="number">0</span>,n<span class="number">-1</span>) <span class="keyword">or</span> j <span class="keyword">in</span> (<span class="number">0</span>,m<span class="number">-1</span>): <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">for</span> x,y <span class="keyword">in</span> ((i+<span class="number">1</span>,j),(i<span class="number">-1</span>,j),(i,j+<span class="number">1</span>),(i,j<span class="number">-1</span>)):</span><br><span class="line">                <span class="keyword">if</span> grid[x][y] != tmp: <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        </span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> x,y <span class="keyword">in</span> vis:</span><br><span class="line">            <span class="keyword">if</span> check(x,y): res.append((x,y))</span><br><span class="line">        <span class="comment"># 修改边界点</span></span><br><span class="line">        <span class="keyword">for</span> x,y <span class="keyword">in</span> res:</span><br><span class="line">            grid[x][y] = color</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> grid</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 154 / 154 test cases passed.</span></span><br><span class="line"><span class="comment"># Status: Accepted</span></span><br><span class="line"><span class="comment"># Runtime: 96 ms, beats 96.15%</span></span><br><span class="line"><span class="comment"># Memory Usage: 13.2 MB</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Leetcode problems </tag>
+            
+            <tag> dfs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Leetcode 1033 Moving Stones Until Consecutive</title>
+      <link href="/2019/05/02/Leetcode-1033-Moving-Stones-Until-Consecutive/"/>
+      <url>/2019/05/02/Leetcode-1033-Moving-Stones-Until-Consecutive/</url>
+      <content type="html"><![CDATA[<p>三个石头在一条直线上，分别在位置a, b, c处</p><p>每轮你可以选择一个最左或最右处的石头，然后将其移动至原先最左最右处的中间某处位置（不能和另外两个点重合）。</p><p>你需要一直移动石头直至三个石头处在连续位置。<br>当游戏结束时，返回达成上述局面所需的最小移动次数和最大移动次数。<br><a id="more"></a></p><blockquote><p>示例1：<br>输入：a = 1, b = 2, c = 5<br>输出：[1,2]<br>解释：最小是将5移动到3，最大是从5移动到4再移动到3</p></blockquote><p>提示：</p><ol><li>1 &lt;= a, b, c &lt;= 100</li><li>a != b != c</li></ol><p><b>思路分析</b><br>不妨设a &lt; b &lt; c，首先分析最小情况：<br>对于任意三个数，我们总可以在<code>两步之内</code>将其变成连续的三个数，如a,b,c<br>将a变成b-1，将c变成b+1。<br>如果a,b,c已经有序，那么最小移动次数是0次<br>如果a,b,c满足已经有两个数临近或间隔为2，也就是 <code>1,2,x</code> 或 <code>1,3,x</code>的情况，那么最小移动次数是1次<br>其余情况全为2次</p><p>分析最大情况：<br>因为每次移动之后三个数总要靠近，那么每一次只靠近一步就是最大次数<br>对于a,b,c，最大移动次数为 c-b+1 + b-a+1</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numMovesStones</span><span class="params">(self, a: int, b: int, c: int)</span> -&gt; List[int]:</span></span><br><span class="line">        a, b, c = sorted([a, b, c])</span><br><span class="line">        <span class="keyword">if</span> a == b<span class="number">-1</span> <span class="keyword">and</span> b == c<span class="number">-1</span>: minv = <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> b-a&lt;=<span class="number">2</span> <span class="keyword">or</span> c-b&lt;=<span class="number">2</span>: minv = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>: minv = <span class="number">2</span></span><br><span class="line">        maxv = c - b - <span class="number">1</span> + (b - a - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> [minv, maxv]</span><br><span class="line"></span><br><span class="line"><span class="comment">#187 / 187 test cases passed.</span></span><br><span class="line"><span class="comment">#Status: Accepted</span></span><br><span class="line"><span class="comment">#Runtime: 36 ms, beats 100%</span></span><br><span class="line"><span class="comment">#Memory Usage: 13.1 MB</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Leetcode problems </tag>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>2019-03-16 头条笔试</title>
       <link href="/2019/03/16/2019-03-16-%E5%A4%B4%E6%9D%A1%E7%AC%94%E8%AF%95/"/>
       <url>/2019/03/16/2019-03-16-%E5%A4%B4%E6%9D%A1%E7%AC%94%E8%AF%95/</url>
@@ -193,9 +227,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> implementation </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> implementation </tag>
             
         </tags>
       
@@ -229,9 +263,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> bit </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> bit </tag>
             
         </tags>
       
@@ -402,9 +436,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> implementation </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> implementation </tag>
             
             <tag> tree </tag>
             
@@ -423,9 +457,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> implementation </tag>
-            
             <tag> math </tag>
+            
+            <tag> implementation </tag>
             
         </tags>
       
@@ -729,9 +763,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> dp </tag>
-            
             <tag> implementation </tag>
+            
+            <tag> dp </tag>
             
         </tags>
       
@@ -1666,9 +1700,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> dp </tag>
-            
             <tag> math </tag>
+            
+            <tag> dp </tag>
             
         </tags>
       
@@ -2199,11 +2233,11 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> dp </tag>
+            <tag> dfs </tag>
             
             <tag> Backtracking </tag>
             
-            <tag> dfs </tag>
+            <tag> dp </tag>
             
         </tags>
       
@@ -2600,9 +2634,9 @@
             
             <tag> Leetcode problems </tag>
             
-            <tag> dp </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> dp </tag>
             
             <tag> topsort </tag>
             
