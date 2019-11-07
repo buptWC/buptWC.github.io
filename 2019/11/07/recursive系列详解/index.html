@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/blog_logo.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog_logo.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog_logo.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/blog_logo.jpg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="recursion,经典算法分析," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="演员的自我修养" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Recursion套路兄弟萌，这个真的特别重要，这个要是会了，dfs, backtracking就都会了。">
+<meta name="keywords" content="recursion,经典算法分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="recursion系列详解">
+<meta property="og:url" content="http://yoursite.com/2019/11/07/recursive系列详解/index.html">
+<meta property="og:site_name" content="演员的自我修养">
+<meta property="og:description" content="Recursion套路兄弟萌，这个真的特别重要，这个要是会了，dfs, backtracking就都会了。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/recursion_1.png">
+<meta property="og:image" content="http://yoursite.com/images/recursion_2.png">
+<meta property="og:image" content="http://yoursite.com/images/recursion_3.png">
+<meta property="og:image" content="http://yoursite.com/images/recursion_4.png">
+<meta property="og:updated_time" content="2019-11-07T16:19:09.129Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="recursion系列详解">
+<meta name="twitter:description" content="Recursion套路兄弟萌，这个真的特别重要，这个要是会了，dfs, backtracking就都会了。">
+<meta name="twitter:image" content="http://yoursite.com/images/recursion_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/07/recursive系列详解/"/>
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "d3caaf77"
+    });
+  daovoice('update');
+  </script>
+
+
+
+  <title>recursion系列详解 | 演员的自我修养</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">演员的自我修养</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+            
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/recursive系列详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王琛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog_logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="演员的自我修养">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">recursion系列详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-07T12:25:08+08:00">
+                2019-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/11/07/recursive系列详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/11/07/recursive系列详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Recursion套路"><a href="#Recursion套路" class="headerlink" title="Recursion套路"></a>Recursion套路</h1><p>兄弟萌，这个真的特别重要，这个要是会了，dfs, backtracking就都会了。</p>
+<a id="more"></a>
+<h2 id="什么是递归？"><a href="#什么是递归？" class="headerlink" title="什么是递归？"></a>什么是递归？</h2><p>explanation from baike:<br>递归,就是在运行的过程中调用自己。 构成递归需具备的条件: </p>
+<ol>
+<li>子问题须与原始问题为同样的事,且更为简单;</li>
+<li>不能无限制地调用本身,须有个出口,化简为非递归状况处理。</li>
+</ol>
+<p>talk is cheap, show me the code.<br>斐波那契数列大家都知道，就是下一项等于前两项的和，形如<br><code>1, 1, 2, 3, 5, ...</code><br>请问，这个数列的第30项是多少呢？当然我们可以很轻松的写出这样的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getNthFib</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span> <span class="keyword">or</span> n == <span class="number">2</span>: <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> getNthFib(n<span class="number">-1</span>) + getNthFib(n<span class="number">-2</span>)</span><br><span class="line"></span><br><span class="line">print(getNthFib(<span class="number">30</span>))</span><br></pre></td></tr></table></figure></p>
+<p>当然，实际有更好的写法，这里我们先不考虑，就看这段代码。对于斐波那契数列来说，这样的求解方式完美契合了上面说的递归条件吧，每个子问题都比原问题更为简单（n越来越小），不能无限制地调用自身（n=1 or n=2停止递归），那么这就是一个最简单的递归示例。</p>
+<p>我们直接来以小见大，写递归需要：</p>
+<ol>
+<li>找到问题与子问题的关系，且子问题通常更简单</li>
+<li>需存在终止条件，且子问题最后能够走到终止条件</li>
+</ol>
+<p>那有人就会问了，我怎么去找一个问题的子问题呢？确实，这是一个不算简单的事，但也没那么难，先看下面这段话。</p>
+<p>在我给很多人讲递归问题的过程中，我发现大家都有一个通病，就是对递归过程总是很迷糊，总觉得想不清楚，非要用一组数据对着代码一句一句去检验。（别以为你看懂了上面的那个例子就觉得你没有这个毛病）</p>
+<p>我自己最初也是这样，所以我特意针对这个问题分析了一下，关键点就在于<code>函数定义</code>，这就仿佛高中数学里面的通项公式，我们是根据定义来写代码的，这样空说或许很难懂，我们就以上面这段代码来解释说明。</p>
+<p>我们要求什么？斐波那契数列里面的第30个数，那我们定义getNthFib(n)代表斐波那契数列里面的第n个数，这样最后返回getNthFib(30)即可。</p>
+<p>根据斐波那契定义，<code>第n个数 = 第n-1个数 + 第n-2个数</code>，转换成我们定义的函数<code>getNthFib(n) = getNthFib(n-1) + getNthFib(n-2)</code>，那么关系就找出来了，接下来看终止条件，我们发现n每次减少1or2，最后一定会减到1或者2，终止条件定<code>n==1 or n==2</code>即可</p>
+<p>那现在回到刚才的问题，怎么去找一个问题的子问题？<br>其实就是去找定义，根据你的定义来get子问题，有时候我们定义的函数直接就是所求，而有时候又不是，需要我们自己去思考。</p>
+<p>在看例题之前再重申一下：关键在定义！定义！根据定义写推导式和终止条件，写完就直接结束，千万别一个一个拿数据再去代。</p>
+<h2 id="leetcode-100-Same-Tree"><a href="#leetcode-100-Same-Tree" class="headerlink" title="leetcode 100 Same Tree"></a>leetcode 100 Same Tree</h2><p>给定两棵树的根结点p,q，判断这两棵树是否相同<br><img src="/images/recursion_1.png" alt=""></p>
+<p><b>思路分析</b>：<br>我们怎么去比较两棵树是不是相同，那肯定是每个结点都比一下嘛，那是不是先看下根结点是否相同，如果根结点不相同下面的节点也不用看了。那比完根结点，再看下左子树是不是相同，再看下右子树是不是相同。</p>
+<p>定义：isSame(p, q)代表<code>以p,q为根结点的两棵树是否相同</code>，函数返回值类型为bool，根据定义则有（注意代码内的序号，代码的实际书写顺序应按照序号书写）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isSame</span><span class="params">(p, q)</span>:</span> <span class="comment"># return type = bool</span></span><br><span class="line">    <span class="comment"># 3 根据“函数”定义确定终止条件</span></span><br><span class="line">    <span class="comment"># 两棵树都为空，那肯定是相同的，一个空一个不空，肯定不同</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> p <span class="keyword">and</span> <span class="keyword">not</span> q: <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> p <span class="keyword">or</span> <span class="keyword">not</span> q: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. 根结点若不同直接返回false</span></span><br><span class="line">    <span class="keyword">if</span> p.val != q.val: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">    <span class="comment"># 2. 根结点相同的情况下，左子树必须相同且右子树也必须相同</span></span><br><span class="line">    <span class="keyword">return</span> isSame(p.left, q.left) <span class="keyword">and</span> isSame(p.right, q.right)</span><br></pre></td></tr></table></figure></p>
+<p>在这里重复一遍，根据定义写推导式和终止条件，写完就直接结束，千万别一个一个拿数据再去代。</p>
+<p>是不是没看懂？ 不急不急，多看两道，多看两道就有感觉了。</p>
+<hr>
+<h2 id="leetcode-112-Path-Sum"><a href="#leetcode-112-Path-Sum" class="headerlink" title="leetcode 112 Path Sum"></a>leetcode 112 Path Sum</h2><p>给一颗二叉树和一个数target，问是否存在一条从根结点到叶子结点的路径，使得路径和等于target.<br><img src="/images/recursion_2.png" alt=""></p>
+<p><b>思路分析</b>：<br>让我们找一条从根结点到叶子结点的路径，第一反应应该是dfs，也确实就是dfs，只是说我们从定义的角度去写。</p>
+<p>那怎么定义呢，我们稍微分析一下题目，这条路径要从根结点出发，那么<code>根结点的值一定在路径中</code>吧，以示例来说，这道题是不是可以看成<br><img src="/images/recursion_3.png" alt=""></p>
+<p>那么显然，定义：dfs(root, target)表示<code>在以root为根结点的树中，能否找到一条从根结点到叶子结点的路径，使得路径和等于target</code>，函数返回值类型为bool<br>则有 <code>dfs(root, target) = dfs(root.left, target-root.val) or dfs(root.right, target-root.val)</code></p>
+<p>代码如下，注意序号，代码的实际书写顺序应按照序号书写<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(root, target)</span>:</span> <span class="comment"># return type = bool</span></span><br><span class="line">    <span class="comment"># 3. 根据函数定义确定终止条件</span></span><br><span class="line">    <span class="comment"># 要找路径，连路都没有的话，自然找不到</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1. 如果当前结点为叶子结点，判断结点值是否等于target</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right <span class="keyword">and</span> root.val == target:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 当前结点不是叶子结点，则从左右子树中继续寻找答案</span></span><br><span class="line">    l = dfs(root.left, target - root.val)</span><br><span class="line">    r = dfs(root.right, target - root.val)</span><br><span class="line">    <span class="keyword">return</span> l <span class="keyword">or</span> r</span><br></pre></td></tr></table></figure></p>
+<p>注意奥，终止条件可不是随便写的，要保证两点原则，那就是<br>条件：<code>if not root</code>是通过递推式确定的，要保证参数值能走到这个条件里<br>结果：<code>return False</code>是通过函数定义来确定的，在root为空的条件下，根据函数的定义，我们应该返回false<br>还不懂？别急别急，先继续看。</p>
+<hr>
+<h2 id="leetcode-113-Path-Sum-II"><a href="#leetcode-113-Path-Sum-II" class="headerlink" title="leetcode 113 Path Sum II"></a>leetcode 113 Path Sum II</h2><p>给定一颗二叉树和一个数target，请找出所有从根结点到叶子结点的路径，使得路径和等于target<br><img src="/images/recursion_4.png" alt=""><br><b>思路分析</b>：<br>和上道题一样的吧，根结点是肯定要的，所以在左右子树中继续去寻找路径，不过之前定义的函数是返回bool，这次返回的应该是一个二维list</p>
+<p>定义：dfs(root, target)表示<code>在以root为根结点的树中，所有从根结点到叶子结点的路径，使得路径和等于target</code>，函数返回值为二维List.</p>
+<p>对于子树中找到的全部路径，我们可以在里面每个路径前都加上root.val来获得结果</p>
+<p>以示例来说，就比如两个子树中找到了这样的路径构成17，<br>[<br>  [4, 11, 2],<br>  [8, 4, 5]<br>]<br>只要依次在前面加上5，即可得到最后的答案，看代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(root, target)</span>:</span> <span class="comment"># return type = List[List[int]]</span></span><br><span class="line">    <span class="comment"># 3. 根据函数定义确定终止条件</span></span><br><span class="line">    <span class="comment"># 找所有路径，都没路的话，自然找不到，注意返回的是空的二维list</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1.当前为叶子结点且值为target，返回结果，注意是二维List</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right <span class="keyword">and</span> root.val == target:</span><br><span class="line">        <span class="keyword">return</span> [[target]]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2.对子树中找到的路径，在每个路径前面加上当前的val值</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> path <span class="keyword">in</span> dfs(root.left, target-root.val) + dfs(root.right, target-root.val):</span><br><span class="line">        res.append([root.val] + path)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<hr>
+<p>还没感觉真说不过去了奥，起码对于树相关的题目应该明白了吧<br>为什么说对于树呢，因为树相关的题递推关系好找，通常就在结点与子结点之间找，而且函数定义也是求什么就定义什么，来检验一下自己吧</p>
+<p><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">https://leetcode.com/problems/maximum-depth-of-binary-tree/</a></p>
+<p>下面看个数组的</p>
+<hr>
+<h2 id="leetcode-78-Subsets"><a href="#leetcode-78-Subsets" class="headerlink" title="leetcode 78 Subsets"></a>leetcode 78 Subsets</h2><p>给一系列不同的整数，返回所有的子集。</p>
+<blockquote>
+<p>example 1:<br>input: nums = [1, 2, 3]<br>output: [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]</p>
+</blockquote>
+<p><b>思路分析</b>：<br>问：已知[2, 3]的全部子集是 [[], [2], [3], [2, 3]]，怎么获得[1, 2, 3]的全部子集</p>
+<p>答：[1, 2, 3]的子集可以拆分成包含1和不包含1的两部分，其中不包含1的部分就是[2, 3]的全部子集，包含1的部分就是在[2,3]的子集里全部加1。即<br><code>[[], [2], [3], [2, 3]] + [[1], [1, 2], [1, 3], [1, 2, 3]]</code></p>
+<p>基于这个结果，我们定义dfs(nums)表示<code>nums的全部子集</code>，函数返回值为二维list<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(nums)</span>:</span> <span class="comment"># return type = List[List[int]]</span></span><br><span class="line">    <span class="comment"># 2. 根据定义确定终止条件</span></span><br><span class="line">    <span class="comment"># 空集是任何集合的子集，注意要返回二维列表</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> [[]]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 1. 对nums[1:]的每个子集subset，将其‘自身’和‘自身加上nums[0]’加入结果</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> subset <span class="keyword">in</span> dfs(nums[<span class="number">1</span>:]):</span><br><span class="line">        res.append(subset)</span><br><span class="line">        res.append([nums[<span class="number">0</span>]] + subset)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
+<p>当然，实际每次对数组做切片操作 消耗代价有点大，通常以下标来表示取的数组的哪个区间<br>定义dfs(index)表示<code>nums[index:]数组的全部子集</code>，那么dfs(0)即为所求<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nums = [1, 2, 3]</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(index)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> index == n: <span class="keyword">return</span> [[]]</span><br><span class="line"></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> subset <span class="keyword">in</span> dfs(index+<span class="number">1</span>):</span><br><span class="line">        res.append(subset)</span><br><span class="line">        res.append([nums[index]] + subset)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">n = len(nums)</span><br><span class="line"><span class="keyword">return</span> dfs(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>其实有没有发现，数组找关系也差不多，nums与nums[1:]之间找，或者nums[i:j]与nums[i+1:j]和nums[i:j-1]找</p>
+<p>handrew ph, do you understand now?</p>
+<hr>
+<p>未完待续~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/recursion/" rel="tag"># recursion</a>
+          
+            <a href="/tags/经典算法分析/" rel="tag"># 经典算法分析</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/04/二分法系列详解/" rel="next" title="二分法系列详解">
+                <i class="fa fa-chevron-left"></i> 二分法系列详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog_logo.jpg"
+                alt="王琛" />
+            
+              <p class="site-author-name" itemprop="name">王琛</p>
+              <p class="site-description motion-element" itemprop="description">我要证明谁才是世界第一的actor</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">188</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Recursion套路"><span class="nav-number">1.</span> <span class="nav-text">Recursion套路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是递归？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是递归？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-100-Same-Tree"><span class="nav-number">1.2.</span> <span class="nav-text">leetcode 100 Same Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-112-Path-Sum"><span class="nav-number">1.3.</span> <span class="nav-text">leetcode 112 Path Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-113-Path-Sum-II"><span class="nav-number">1.4.</span> <span class="nav-text">leetcode 113 Path Sum II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode-78-Subsets"><span class="nav-number">1.5.</span> <span class="nav-text">leetcode 78 Subsets</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王琛</span>
+
+  
+</div>
+
+
+<!--  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'rl2apgpj8O7YFOheKsz7ecUG-gzGzoHsz',
+        appKey: 'Q6p12xOwNKPuYrBvSnoqII6e',
+        placeholder: 'anything you want',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'5' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+
+<!-- 后来新加的，出现背景动画 -->
+
+
+</body>
+</html>
+
+<!-- 后来新加的，页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
